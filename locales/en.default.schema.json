@@ -3512,6 +3512,11 @@
       "line_2": "Second line",
       "phone_link": "Phone number to dial",
       "phone_link_info": "Optional. Makes the second line a phone link"
+    },
+    "collection": {
+      "name": "CBW collection",
+      "products_per_page": "Products per page (default view)",
+      "show_description": "Show collection description"
     }
   }
 }

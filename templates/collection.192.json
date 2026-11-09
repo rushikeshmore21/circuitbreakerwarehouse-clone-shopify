@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "cbw-main-collection",
+      "settings": {
+        "products_per_page": 32,
+        "show_description": true
+      }
+    }
+  },
+  "order": ["main"]
+}

@@ -1,0 +1,140 @@
+{%- liquid
+  assign page_size = template.suffix | plus: 0
+  if page_size < 1 or page_size > 250
+    assign page_size = section.settings.products_per_page
+  endif
+  assign sort_by = collection.sort_by | default: collection.default_sort_by
+-%}
+
+<div class="cbw-container">
+  <div class="cbw-layout cbw-layout--sidebar">
+    {%- render 'cbw-sidebar' -%}
+    <div class="cbw-listing">
+      {%- render 'cbw-breadcrumb', current: collection.title -%}
+      <h1 class="cbw-listing__title">{{ collection.title | escape }}</h1>
+      {%- if section.settings.show_description and collection.description != blank -%}
+        <div class="cbw-listing__description">{{ collection.description }}</div>
+      {%- endif -%}
+
+      {%- paginate collection.products by page_size -%}
+        {%- if collection.products_count > 0 -%}
+          {%- render 'cbw-listing-toolbar',
+            paginate: paginate,
+            action: collection.url,
+            sort_by: sort_by,
+            sort_values: 'price-ascending,price-descending,best-selling,title-ascending,created-descending,created-ascending',
+            page_size: page_size
+          -%}
+          <ul class="cbw-listing__grid" role="list">
+            {%- for product in collection.products -%}
+              {%- liquid
+                assign lazy = true
+                if forloop.index <= 4
+                  assign lazy = false
+                endif
+              -%}
+              <li class="cbw-listing__item">
+                {%- render 'cbw-product-card', product: product, align: 'center', show_availability: true, lazy: lazy -%}
+              </li>
+            {%- endfor -%}
+          </ul>
+          {%- render 'cbw-listing-toolbar',
+            paginate: paginate,
+            action: collection.url,
+            sort_by: sort_by,
+            sort_values: '',
+            page_size: page_size,
+            position: 'bottom'
+          -%}
+        {%- else -%}
+          <p class="cbw-listing__empty">{{ 'cbw.listing.empty_collection' | t }}</p>
+        {%- endif -%}
+      {%- endpaginate -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .cbw-listing {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+  .cbw .cbw-listing__title {
+    margin: 15px 0 0;
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .cbw-listing__description {
+    margin-top: 10px;
+  }
+  .cbw-listing__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 -15px;
+    padding: 0;
+    list-style: none;
+  }
+  .cbw-listing__item .cbw-card {
+    margin: 11px auto;
+    padding: 30px 5px;
+  }
+  .cbw-listing__item .cbw-card__image {
+    align-items: flex-start;
+    height: 200px;
+    margin-bottom: 5px;
+  }
+  .cbw-listing__item .cbw-card__image img {
+    max-width: 100%;
+    max-height: 137px;
+  }
+  .cbw-listing__item .cbw-card__title {
+    margin-bottom: 33px;
+  }
+  .cbw-listing__item .cbw-price__save {
+    font-size: 15px;
+  }
+  .cbw-listing__empty {
+    margin: 30px 0;
+  }
+  @media (min-width: 768px) {
+    .cbw-listing__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 4%;
+      margin: 0;
+    }
+  }
+  @media (min-width: 992px) {
+    .cbw-listing__grid {
+      grid-template-columns: repeat(4, 197px);
+      justify-content: space-between;
+      column-gap: 0;
+      margin: 0 -4px;
+    }
+    .cbw-listing__item .cbw-card {
+      padding: 30px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.collection.name",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "t:cbw.collection.products_per_page",
+      "min": 8,
+      "max": 64,
+      "step": 4,
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "show_description",
+      "label": "t:cbw.collection.show_description",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

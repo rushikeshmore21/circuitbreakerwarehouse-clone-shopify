@@ -573,6 +573,31 @@
       "subject_to_availability": "Subject to availability",
       "free_shipping": "Free Shipping",
       "placeholder_title": "Product title"
+    },
+    "breadcrumb": {
+      "label": "Breadcrumb",
+      "home": "Home"
+    },
+    "listing": {
+      "sort_by": "Sort By:",
+      "go": "Go",
+      "per_page_label": "Products per page",
+      "per_page": "{{ count }} per page",
+      "page": "Page",
+      "of_pages": "of {{ pages }}",
+      "go_to_page": "Go to page",
+      "prev": "Prev",
+      "next": "Next",
+      "empty_collection": "There are no products in this category."
+    },
+    "sort": {
+      "price_ascending": "Price: Low to High",
+      "price_descending": "Price: High to Low",
+      "best_selling": "Most Popular",
+      "title_ascending": "Title",
+      "created_descending": "Newest",
+      "created_ascending": "Oldest",
+      "relevance": "Relevance"
     }
   }
 }
