@@ -1,0 +1,757 @@
+{%- liquid
+  assign cart_discounts = cart.cart_level_discount_applications
+-%}
+
+<div class="cbw-container cbw-cart" data-cbw-cart data-applying="{{ 'cbw.cart.applying' | t | escape_once }}">
+  {%- if cart == empty -%}
+    <p class="cbw-cart__page-title">{{ section.settings.title | escape }}</p>
+  {%- endif -%}
+
+  <a class="cbw-cart__shop" href="{{ section.settings.shop_link | default: routes.all_products_collection_url }}">
+    {{- 'cbw.cart.shop_more' | t -}}
+  </a>
+
+  {%- if section.settings.show_guarantee -%}
+    <div class="cbw-cart__guarantee">
+      <span class="cbw-cart__norton">
+        <img src="{{ 'cbw-buysafe-seal.png' | asset_url }}" alt="{{ 'cbw.cart.guarantee_alt' | t }}" width="100" height="54" loading="lazy">
+      </span>
+      <ul class="cbw-cart__benefits">
+        <li>{%- render 'cbw-icon', name: 'shield' -%}{{ 'cbw.cart.id_theft' | t }}</li>
+        <li>{%- render 'cbw-icon', name: 'check-mark' -%}{{ 'cbw.cart.purchase_guarantee' | t }}</li>
+        <li>{%- render 'cbw-icon', name: 'money' -%}{{ 'cbw.cart.lowest_price' | t }}</li>
+      </ul>
+    </div>
+  {%- endif -%}
+
+  <h1 class="cbw-cart__title">{{ 'cbw.cart.your_cart' | t }}</h1>
+
+  {%- if cart == empty -%}
+    <p class="cbw-cart__empty">{{ 'cbw.cart.empty' | t }}</p>
+  {%- else -%}
+    <form class="cbw-cart__form" action="{{ routes.cart_url }}" method="post" id="CbwCartForm" novalidate>
+      <table class="cbw-cart__table">
+        <caption class="cbw-visually-hidden">{{ 'cbw.cart.your_cart' | t }}</caption>
+        <thead>
+          <tr>
+            <th class="cbw-cart__col-image" scope="col"><span class="cbw-visually-hidden">{{ 'cbw.cart.image' | t }}</span></th>
+            <th class="cbw-cart__col-name" scope="col">{{ 'cbw.cart.item_description' | t }}</th>
+            <th class="cbw-cart__col-each" scope="col">{{ 'cbw.cart.each' | t }}</th>
+            <th class="cbw-cart__col-qty" scope="col">{{ 'cbw.cart.qty' | t }}</th>
+            <th class="cbw-cart__col-total" scope="col">{{ 'cbw.cart.total' | t }}</th>
+            <th class="cbw-cart__col-remove" scope="col"><span class="cbw-visually-hidden">{{ 'cbw.cart.remove' | t }}</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for item in cart.items -%}
+            <tr class="cbw-cart__item">
+              <td class="cbw-cart__col-image">
+                {%- if item.image != blank -%}
+                  <a href="{{ item.url }}" tabindex="-1" aria-hidden="true">
+                    {{ item.image | image_url: width: 120 | image_tag: loading: 'lazy', alt: '', class: 'cbw-cart__image' }}
+                  </a>
+                {%- endif -%}
+              </td>
+              <td class="cbw-cart__col-name">
+                <a class="cbw-cart__name" href="{{ item.url }}">{{ item.product.title | escape }}</a>
+                {%- unless item.product.has_only_default_variant -%}
+                  <span class="cbw-cart__variant">{{ item.variant.title | escape }}</span>
+                {%- endunless -%}
+                {%- for discount in item.line_level_discount_allocations -%}
+                  <span class="cbw-cart__line-discount">{{ discount.discount_application.title | escape }} (-{{ discount.amount | money }})</span>
+                {%- endfor -%}
+              </td>
+              <td class="cbw-cart__col-each" data-label="{{ 'cbw.cart.each_label' | t }}">
+                {{ item.final_price | money }}
+              </td>
+              <td class="cbw-cart__col-qty">
+                <label class="cbw-visually-hidden" for="CbwQty-{{ forloop.index }}">
+                  {{- 'cbw.cart.qty_for' | t: title: item.product.title -}}
+                </label>
+                <input
+                  class="cbw-cart__qty"
+                  id="CbwQty-{{ forloop.index }}"
+                  type="number"
+                  name="updates[]"
+                  value="{{ item.quantity }}"
+                  min="0"
+                  inputmode="numeric"
+                >
+              </td>
+              <td class="cbw-cart__col-total" data-label="{{ 'cbw.cart.total_label' | t }}">
+                {{ item.final_line_price | money }}
+              </td>
+              <td class="cbw-cart__col-remove">
+                <a class="cbw-cart__remove" href="{{ item.url_to_remove }}">
+                  <span class="cbw-cart__remove-icon" aria-hidden="true">{%- render 'cbw-icon', name: 'close' -%}</span>
+                  <span class="cbw-cart__remove-text">{{ 'cbw.cart.remove_item' | t }}</span>
+                  <span class="cbw-visually-hidden">{{ item.product.title | escape }}</span>
+                </a>
+              </td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+
+      <div class="cbw-cart__actions">
+        <button class="cbw-cart__link-button cbw-cart__empty-link" type="submit" form="CbwCartClear">
+          <span class="cbw-cart__remove-icon" aria-hidden="true">{%- render 'cbw-icon', name: 'close' -%}</span>
+          {{ 'cbw.cart.empty_cart' | t }}
+        </button>
+        <div
+          class="cbw-cart__coupon"
+          data-cbw-coupon
+          data-invalid="{{ 'cbw.cart.coupon_invalid' | t | escape_once }}"
+          data-error="{{ 'cbw.cart.coupon_error' | t | escape_once }}"
+        >
+          <label for="CbwCoupon">{{ 'cbw.cart.coupon_label' | t }}</label>
+          <input id="CbwCoupon" class="cbw-cart__coupon-input" type="text" autocomplete="off" data-cbw-coupon-input>
+          <button class="cbw-cart__link-button" type="button" data-cbw-coupon-apply>
+            <span class="cbw-cart__apply-icon" aria-hidden="true">{%- render 'cbw-icon', name: 'check-mark' -%}</span>
+            {{ 'cbw.cart.apply' | t }}
+          </button>
+          <p class="cbw-cart__coupon-message" role="status" data-cbw-coupon-message></p>
+        </div>
+        <button class="cbw-cart__link-button cbw-cart__recalculate" type="submit" name="update">
+          {{- 'cbw.cart.recalculate' | t -}}
+        </button>
+      </div>
+
+      <div class="cbw-cart__summary">
+        {%- if section.settings.show_shipping_estimator and cart.requires_shipping -%}
+          <div
+            class="cbw-cart__shipping"
+            data-cbw-shipping
+            data-select-state="{{ 'cbw.cart.select_state' | t | escape_once }}"
+            data-loading="{{ 'cbw.cart.rates_loading' | t | escape_once }}"
+            data-none="{{ 'cbw.cart.rates_none' | t | escape_once }}"
+            data-free="{{ 'cbw.cart.rates_free' | t | escape_once }}"
+            data-error="{{ 'cbw.cart.rates_error' | t | escape_once }}"
+          >
+            <p class="cbw-cart__shipping-title">
+              {{ 'cbw.cart.calculate_shipping' | t }} <small>{{ 'cbw.cart.optional' | t }}</small>
+            </p>
+            <div class="cbw-cart__field">
+              <label for="CbwShipCountry">{{ 'cbw.cart.country' | t }}</label>
+              <select id="CbwShipCountry" data-cbw-ship-country data-default="{{ section.settings.default_country | escape }}">
+                {{ country_option_tags }}
+              </select>
+            </div>
+            <div class="cbw-cart__field" data-cbw-ship-province-field>
+              <label for="CbwShipProvince">{{ 'cbw.cart.state' | t }}</label>
+              <select id="CbwShipProvince" data-cbw-ship-province></select>
+            </div>
+            <div class="cbw-cart__field">
+              <label for="CbwShipZip">{{ 'cbw.cart.zip' | t }}</label>
+              <input id="CbwShipZip" class="cbw-cart__zip" type="text" autocomplete="postal-code" data-cbw-ship-zip>
+            </div>
+            <button class="cbw-cart__pill" type="button" data-cbw-ship-get>{{ 'cbw.cart.get_shipping' | t }}</button>
+            <div class="cbw-cart__rates" role="status" data-cbw-ship-rates></div>
+          </div>
+        {%- endif -%}
+
+        <dl class="cbw-cart__totals">
+          {%- for discount in cart_discounts -%}
+            <div class="cbw-cart__totals-row">
+              <dt>{{ 'cbw.cart.discount' | t }} ({{ discount.title | escape }}):</dt>
+              <dd>-{{ discount.total_allocated_amount | money }}</dd>
+            </div>
+          {%- endfor -%}
+          <div class="cbw-cart__totals-row cbw-cart__totals-row--tax">
+            <dt>{{ 'cbw.cart.tax' | t }}</dt>
+            <dd>{{ 'cbw.cart.tax_at_checkout' | t }}</dd>
+          </div>
+          <div class="cbw-cart__totals-row cbw-cart__totals-row--total">
+            <dt>{{ 'cbw.cart.grand_total' | t }}</dt>
+            <dd>{{ cart.total_price | money }}</dd>
+          </div>
+        </dl>
+
+        <div class="cbw-cart__checkout">
+          <button class="cbw-btn cbw-cart__checkout-button" type="submit" name="checkout">
+            {{- 'cbw.cart.checkout' | t -}}
+          </button>
+          {%- if additional_checkout_buttons and section.settings.show_express -%}
+            <div class="cbw-cart__express">{{ content_for_additional_checkout_buttons }}</div>
+          {%- endif -%}
+        </div>
+      </div>
+    </form>
+    <form id="CbwCartClear" action="{{ routes.cart_url }}/clear" method="post" hidden></form>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .cbw-cart {
+    padding-top: 25px;
+    padding-bottom: 50px;
+  }
+  .cbw-cart__page-title {
+    margin: 0 0 50px;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+  }
+  .cbw .cbw-cart__shop,
+  .cbw .cbw-cart__pill {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid var(--cbw-navy);
+    border-radius: 20px;
+    background: var(--cbw-navy);
+    color: #fff;
+    font-family: var(--cbw-font);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .cbw .cbw-cart__shop:hover,
+  .cbw .cbw-cart__pill:hover {
+    border-color: var(--cbw-red);
+    background: var(--cbw-red);
+    color: #fff;
+  }
+  .cbw-cart__guarantee {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 22px;
+    border: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+  }
+  .cbw-cart__norton {
+    display: block;
+    width: 94px;
+    height: 28px;
+    overflow: hidden;
+  }
+  .cbw-cart__norton img {
+    display: block;
+    width: 94px;
+    height: auto;
+    margin-top: -3px;
+  }
+  .cbw-cart__benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    margin: 0;
+    padding: 0 8px;
+    list-style: none;
+  }
+  .cbw-cart__benefits li {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .cbw-cart__benefits .cbw-icon {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+  }
+  .cbw .cbw-cart__title {
+    margin: 22px 0 40px;
+    font-size: 41px;
+    line-height: 1.1;
+  }
+  .cbw-cart__empty {
+    margin: 30px 0;
+    font-weight: 700;
+    text-align: center;
+  }
+  .cbw-cart__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .cbw-cart__table th {
+    padding: 0 0 5px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: left;
+    text-transform: uppercase;
+  }
+  .cbw-cart__table td {
+    padding: 8px 0;
+    vertical-align: middle;
+  }
+  .cbw-cart__col-image {
+    width: 155px;
+    text-align: center;
+  }
+  .cbw-cart__image {
+    display: inline-block;
+    width: 51px;
+    height: auto;
+  }
+  .cbw .cbw-cart__name {
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw .cbw-cart__name:hover {
+    text-decoration: underline;
+  }
+  .cbw-cart__variant,
+  .cbw-cart__line-discount {
+    display: block;
+    font-size: 13px;
+  }
+  .cbw-cart__col-each {
+    width: 111px;
+    text-align: center;
+  }
+  .cbw-cart__col-qty {
+    width: 74px;
+    text-align: center;
+  }
+  .cbw-cart__table th.cbw-cart__col-each,
+  .cbw-cart__table th.cbw-cart__col-qty,
+  .cbw-cart__table th.cbw-cart__col-total {
+    text-align: center;
+  }
+  .cbw-cart__col-total {
+    width: 215px;
+    font-size: 16px;
+    text-align: center;
+  }
+  .cbw-cart__col-remove {
+    width: 93px;
+    text-align: center;
+  }
+  .cbw-cart__qty {
+    width: 50px;
+    height: 32px;
+    padding: 5px 8px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 14px;
+    color: var(--cbw-text);
+  }
+  .cbw .cbw-cart__remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 24px;
+    min-height: 24px;
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw-cart__remove-text {
+    display: none;
+  }
+  .cbw-cart__remove-icon,
+  .cbw-cart__apply-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cbw-red);
+  }
+  .cbw-cart__remove-icon .cbw-icon {
+    width: 6px;
+    height: 6px;
+    fill: #fff;
+  }
+  .cbw-cart__apply-icon {
+    background: transparent;
+  }
+  .cbw-cart__apply-icon .cbw-icon {
+    width: 12px;
+    height: 12px;
+    fill: var(--cbw-red);
+  }
+  .cbw-cart__actions {
+    display: grid;
+    grid-template-columns: 155px 1fr auto;
+    align-items: center;
+    gap: 10px 0;
+    margin-top: 15px;
+  }
+  .cbw-cart__link-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    min-height: 24px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--cbw-red);
+    font-family: var(--cbw-font);
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .cbw-cart__empty-link {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .cbw-cart__coupon {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 10px;
+  }
+  .cbw-cart__coupon-input {
+    width: 83px;
+    height: 35px;
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 16px;
+  }
+  .cbw-cart__coupon-message {
+    flex-basis: 100%;
+    margin: 0;
+    font-size: 14px;
+  }
+  .cbw-cart__coupon-message:empty {
+    display: none;
+  }
+  .cbw-cart__recalculate {
+    grid-column: 3;
+    margin-right: 93px;
+  }
+  .cbw-cart__summary {
+    margin-top: 30px;
+  }
+  .cbw-cart__shipping-title {
+    margin: 0 0 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .cbw-cart__shipping-title small {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+  }
+  .cbw-cart__field {
+    display: grid;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .cbw-cart__field label {
+    font-size: 14px;
+    font-weight: 700;
+  }
+  .cbw-cart__field select {
+    width: 100%;
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    background-color: #fff;
+    font-size: 16px;
+  }
+  .cbw-cart__zip {
+    width: 115px;
+    height: 35px;
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 16px;
+  }
+  .cbw-cart__field[hidden] {
+    display: none;
+  }
+  .cbw-cart__shipping .cbw-cart__pill {
+    margin-top: 5px;
+  }
+  .cbw-cart__rates {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .cbw-cart__rates ul {
+    margin: 0;
+    padding-left: 18px;
+  }
+  .cbw-cart__totals {
+    margin: 25px 0 0;
+  }
+  .cbw-cart__totals-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 5px 0;
+    font-weight: 700;
+  }
+  .cbw-cart__totals-row dd {
+    margin: 0;
+  }
+  .cbw-cart__totals-row--tax dd {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .cbw-cart__totals-row--total {
+    font-size: 14px;
+  }
+  .cbw-cart__checkout {
+    display: grid;
+    justify-items: end;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  .cbw .cbw-cart__checkout-button {
+    min-width: 210px;
+    padding: 0 16px;
+    line-height: 40px;
+  }
+  .cbw-cart__express {
+    width: 210px;
+  }
+
+  @media (max-width: 767px) {
+    .cbw-cart__table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+    }
+    .cbw-cart__table,
+    .cbw-cart__table tbody,
+    .cbw-cart__table tr,
+    .cbw-cart__table td {
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+    .cbw-cart__item {
+      padding: 20px 0;
+      font-size: 16px;
+    }
+    .cbw-cart__table td {
+      padding: 6px 0;
+    }
+    .cbw .cbw-cart__name {
+      color: var(--cbw-text);
+      font-size: 18px;
+    }
+    .cbw-cart__col-each::before,
+    .cbw-cart__col-total::before {
+      content: attr(data-label) ' ';
+    }
+    .cbw-cart__col-total {
+      font-size: 18px;
+    }
+    .cbw-cart__remove-text {
+      display: inline;
+    }
+    .cbw-cart__actions {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      gap: 25px;
+      text-align: center;
+    }
+    .cbw-cart__empty-link,
+    .cbw-cart__coupon,
+    .cbw-cart__recalculate {
+      grid-column: 1;
+      justify-self: center;
+      justify-content: center;
+      margin: 0;
+    }
+    .cbw-cart__checkout {
+      justify-items: stretch;
+    }
+    .cbw-cart__shipping .cbw-cart__pill {
+      display: block;
+      margin: 5px auto 0;
+    }
+    .cbw .cbw-cart__checkout-button {
+      width: 100%;
+      font-size: 18px;
+      line-height: 54px;
+    }
+    .cbw-cart__express {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .cbw-cart__summary {
+      width: 493px;
+      margin-left: auto;
+    }
+    .cbw-cart__field {
+      grid-template-columns: 185px 1fr;
+      align-items: center;
+      padding-left: 15px;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  const cbwInitCart = () => {
+    const root = document.querySelector('[data-cbw-cart]');
+    if (!root) return;
+    const routesRoot = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+
+    const coupon = root.querySelector('[data-cbw-coupon]');
+    if (coupon) {
+      const input = coupon.querySelector('[data-cbw-coupon-input]');
+      const message = coupon.querySelector('[data-cbw-coupon-message]');
+      const apply = async () => {
+        const code = input.value.trim();
+        if (!code) return;
+        message.textContent = root.dataset.applying || '';
+        const update = (discount) =>
+          fetch(`${routesRoot}cart/update.js`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({ discount }),
+          }).then((response) => response.json());
+        try {
+          const current = await fetch(`${routesRoot}cart.js`).then((response) => response.json());
+          const kept = (current.discount_codes || []).filter((item) => item.applicable).map((item) => item.code);
+          const data = await update([...kept, code].join(','));
+          const found = (data.discount_codes || []).find((item) => item.code.toLowerCase() === code.toLowerCase());
+          if (found && found.applicable) {
+            window.location.reload();
+            return;
+          }
+          await update(kept.join(','));
+          message.textContent = coupon.dataset.invalid;
+        } catch (error) {
+          message.textContent = coupon.dataset.error;
+        }
+      };
+      coupon.querySelector('[data-cbw-coupon-apply]').addEventListener('click', apply);
+      input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+          event.preventDefault();
+          apply();
+        }
+      });
+    }
+
+    const shipping = root.querySelector('[data-cbw-shipping]');
+    if (shipping) {
+      const country = shipping.querySelector('[data-cbw-ship-country]');
+      const province = shipping.querySelector('[data-cbw-ship-province]');
+      const provinceField = shipping.querySelector('[data-cbw-ship-province-field]');
+      const zip = shipping.querySelector('[data-cbw-ship-zip]');
+      const output = shipping.querySelector('[data-cbw-ship-rates]');
+      if (country.dataset.default) {
+        const match = [...country.options].find((option) => option.value === country.dataset.default);
+        if (match) country.value = match.value;
+      }
+      const fillProvinces = () => {
+        const option = country.options[country.selectedIndex];
+        let provinces = [];
+        try {
+          provinces = JSON.parse(option ? option.dataset.provinces || '[]' : '[]');
+        } catch (error) {}
+        province.replaceChildren(
+          ...[[shipping.dataset.selectState, '']].concat(provinces.map((p) => [p[1], p[0]])).map(([label, value]) => {
+            const item = document.createElement('option');
+            item.textContent = label;
+            item.value = value;
+            return item;
+          })
+        );
+        provinceField.hidden = provinces.length === 0;
+      };
+      country.addEventListener('change', fillProvinces);
+      fillProvinces();
+
+      shipping.querySelector('[data-cbw-ship-get]').addEventListener('click', async () => {
+        const params = new URLSearchParams({
+          'shipping_address[zip]': zip.value.trim(),
+          'shipping_address[country]': country.value,
+          'shipping_address[province]': province.value,
+        });
+        output.textContent = shipping.dataset.loading;
+        try {
+          const prepare = await fetch(`${routesRoot}cart/prepare_shipping_rates.json?${params}`, { method: 'POST' });
+          if (!prepare.ok) throw new Error(String(prepare.status));
+          let result = null;
+          for (let attempt = 0; attempt < 15 && !result; attempt += 1) {
+            await new Promise((resolve) => setTimeout(resolve, 700));
+            result = await fetch(`${routesRoot}cart/async_shipping_rates.json?${params}`).then((r) => r.json());
+          }
+          const rates = (result && result.shipping_rates) || [];
+          if (!rates.length) {
+            output.textContent = shipping.dataset.none;
+            return;
+          }
+          const list = document.createElement('ul');
+          rates.forEach((rate) => {
+            const item = document.createElement('li');
+            const price = Number(rate.price);
+            const formatted = new Intl.NumberFormat(document.documentElement.lang || undefined, {
+              style: 'currency',
+              currency: rate.currency || 'USD',
+            }).format(price);
+            item.textContent = `${rate.presentment_name || rate.name}: ${price === 0 ? shipping.dataset.free : formatted}`;
+            list.append(item);
+          });
+          output.replaceChildren(list);
+        } catch (error) {
+          output.textContent = shipping.dataset.error;
+        }
+      });
+    }
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cbwInitCart);
+  } else {
+    cbwInitCart();
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:cbw.cart.main_name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:cbw.cart.title",
+      "default": "Shopping Cart"
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "t:cbw.cart.shop_link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "t:cbw.cart.show_guarantee",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_shipping_estimator",
+      "label": "t:cbw.cart.show_shipping_estimator",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "default_country",
+      "label": "t:cbw.cart.default_country",
+      "default": "United States"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_express",
+      "label": "t:cbw.cart.show_express",
+      "default": true
+    }
+  ],
+  "enabled_on": {
+    "templates": ["cart"]
+  }
+}
+{% endschema %}

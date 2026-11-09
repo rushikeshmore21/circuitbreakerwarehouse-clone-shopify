@@ -3579,7 +3579,11 @@
       "name": "CBW cart header",
       "title": "Page title",
       "shop_link": "Shop for more items link",
-      "show_guarantee": "Show shopping guarantee bar"
+      "show_guarantee": "Show shopping guarantee bar",
+      "main_name": "CBW cart",
+      "show_shipping_estimator": "Show shipping calculator",
+      "default_country": "Default shipping country",
+      "show_express": "Show express checkout buttons (PayPal, Shop Pay)"
     },
     "not_found": {
       "name": "CBW page not found"

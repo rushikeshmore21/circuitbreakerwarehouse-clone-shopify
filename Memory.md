@@ -43,3 +43,6 @@ Last updated: 2026-11-10
 - Theme check: `shopify theme check --path . -o json`
 - Page audit: `node .skills/site-clone/scripts/page_audit.mjs docs/qa/pages.json both`
 - Screenshots: `node .skills/site-clone/scripts/screenshots.mjs docs/qa/shots-clone.json docs/qa/shots/clone`
+- Cart: custom `cbw-main-cart` section (Dawn cart sections unused); `settings.cart_type` is "page" to match live. Shipping estimate uses Ajax `cart/prepare_shipping_rates.json` + `cart/async_shipping_rates.json`; coupons use `cart/update.js` `{discount: "A,B"}` (comma-separated; "" clears), verified on the dev store 2026-11-10.
+- `sections/cbw-cart-header.liquid` is unused after the cart rebuild; deleting it was blocked by a tool safety check, so the owner can remove it.
+- Live cart was inspected once with owner approval (2026-11-10): one item added and removed; live cart confirmed empty afterwards.

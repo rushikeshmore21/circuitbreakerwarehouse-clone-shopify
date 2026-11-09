@@ -40,7 +40,9 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | 20 | Cart popup sat at the top of the page, off-screen once scrolled | Shoppers didn't see the add-to-cart confirmation | Popup lives inside the header and travels with the sticky header | Fixed |
 | 21 | Product Index pager lists every page number (82 links) | Long, hard to scan | Shopify's page list with ellipses ("1 2 3 ... 82"); 200 products per page as on live | Fixed |
 | 22 | Category Index is built by Volusion from categories and articles | n/a | Lists every collection plus a chosen menu (default main menu) A to Z in two columns | Fixed |
-| 23 | Cart and cart popup used Dawn's default look | Didn't match the brand | Red pill CHECK OUT, navy VIEW CART, brand font, square quantity box, navy totals, content aligned to the site container | Fixed |
+| 23 | Cart used Dawn's default layout | Didn't match the live cart | Owner approved one test add to the live cart (FHP16080, removed right after). Rebuilt the cart from it: ITEM DESCRIPTION / EACH / QTY / TOTAL table, red remove icon, Empty My Cart, coupon box with Apply, Recalculate, Calculate Shipping (country, state, zip, Get Shipping Options), Tax and Total, red PROCEED TO CHECKOUT pill, express buttons; stacked layout on phones as on live | Fixed |
+| 25 | Live Add To Cart reloads into the cart page | n/a | Same: theme cart type set to "page", so Add To Cart goes to the cart (the earlier popup is off) | Matched |
+| 26 | Coupon box kept invalid codes on the cart | A bad code could block a later valid one | Apply sends kept valid codes plus the new one to `cart/update.js`; a rejected code is dropped and an error message is announced | Fixed |
 | 24 | Dawn analytics page-view event had an empty template name on policy pages (console error) | Error in the console; event dropped | Layout passes `request.page_type` when there's no template name | Fixed |
 
 ## SEO and speed
@@ -59,6 +61,8 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | P4 | Live home grid shows a random product selection each load | Shopify pages are cached; grid shows the chosen collection in its sort order | Platform limit |
 | P6 | Become an Affiliate is a Volusion affiliate login screen | Shopify has no built-in affiliate program; the page uses the normal page template until an affiliate app is chosen | Platform limit |
 | P7 | Terms, Privacy, Return / Exchange are Volusion articles | Shopify policy pages (`/policies/...`), styled like the content pages; text comes from Settings > Policies | Platform difference |
+| P8 | Cart shows "Tax: $0.00" | Shopify calculates tax at checkout; the cart shows "Calculated at checkout" | Platform difference |
+| P9 | PayPal "As low as $x/mo" pay-later line and PayPal button | Express buttons come from Shopify (`content_for_additional_checkout_buttons`) and appear once PayPal or Shop Pay is enabled; no pay-later line | Platform difference |
 | P5 | Phone search placeholder reads "Search..." | Same placeholder "Search our store..." at every width | Open (minor) |
 
 ## Problems found during the build
