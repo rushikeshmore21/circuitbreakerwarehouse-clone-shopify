@@ -21,7 +21,7 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | # | What was wrong | Why it mattered | What we did | Status |
 |---|---|---|---|---|
 | 11 | Spec label typo "Amprage" and "Availability::" | Looked careless | "Amperage" and "Availability:" | Fixed |
-| 12 | "Larger Photo" opened a popup window | Blocked by popup blockers; not keyboard friendly | Native `<dialog>` with every product image; Escape and backdrop close it | Fixed |
+| 12 | "Larger Photo" used the Shadowbox jQuery lightbox | Extra script weight; plugin focus handling | Native `<dialog>` with every product image; Escape and backdrop close it, no plugin | Fixed |
 | 13 | Product microdata only | Weaker rich results | Shopify `structured_data` JSON-LD (Product/Offer) plus BreadcrumbList | Fixed |
 | 14 | Related products depended on a Volusion setting | n/a | Shopify recommendations; falls back to the product's first collection while the store has no recommendation data | Fixed |
 
