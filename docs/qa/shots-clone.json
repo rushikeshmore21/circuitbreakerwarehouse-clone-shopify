@@ -1,0 +1,172 @@
+[
+ {
+  "id": "home-desktop",
+  "url": "http://127.0.0.1:9292/",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "home-phone",
+  "url": "http://127.0.0.1:9292/",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "category-desktop",
+  "url": "http://127.0.0.1:9292/collections/all",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "category-phone",
+  "url": "http://127.0.0.1:9292/collections/all",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "product-desktop",
+  "url": "http://127.0.0.1:9292/products/square-d-sqd-ehb14015-circuit-breaker-refurbished",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "product-phone",
+  "url": "http://127.0.0.1:9292/products/square-d-sqd-ehb14015-circuit-breaker-refurbished",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "about-desktop",
+  "url": "http://127.0.0.1:9292/pages/about-us",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "about-phone",
+  "url": "http://127.0.0.1:9292/pages/about-us",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "contact-desktop",
+  "url": "http://127.0.0.1:9292/pages/contact",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "contact-phone",
+  "url": "http://127.0.0.1:9292/pages/contact",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "help-desktop",
+  "url": "http://127.0.0.1:9292/pages/help?view=help",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "help-phone",
+  "url": "http://127.0.0.1:9292/pages/help?view=help",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "cart-desktop",
+  "url": "http://127.0.0.1:9292/cart",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "cart-phone",
+  "url": "http://127.0.0.1:9292/cart",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "search-desktop",
+  "url": "http://127.0.0.1:9292/search?q=EHB&type=product&options%5Bprefix%5D=last",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "search-phone",
+  "url": "http://127.0.0.1:9292/search?q=EHB&type=product&options%5Bprefix%5D=last",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "search-none-desktop",
+  "url": "http://127.0.0.1:9292/search?q=zzzznothing&type=product&options%5Bprefix%5D=last",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "search-none-phone",
+  "url": "http://127.0.0.1:9292/search?q=zzzznothing&type=product&options%5Bprefix%5D=last",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "404-desktop",
+  "url": "http://127.0.0.1:9292/does-not-exist-xyz",
+  "device": "desktop",
+  "full": true,
+  "wait": 3500,
+  "quality": 60
+ },
+ {
+  "id": "404-phone",
+  "url": "http://127.0.0.1:9292/does-not-exist-xyz",
+  "device": "phone",
+  "full": true,
+  "wait": 3500,
+  "quality": 60,
+  "format": "jpeg"
+ }
+]

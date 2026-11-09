@@ -1,0 +1,14 @@
+[
+ {"id":"home","url":"http://127.0.0.1:9292/"},
+ {"id":"collection","url":"http://127.0.0.1:9292/collections/all"},
+ {"id":"collection-64","url":"http://127.0.0.1:9292/collections/all?view=64&sort_by=price-descending"},
+ {"id":"product-sale","url":"http://127.0.0.1:9292/products/square-d-sqd-ehb14015-circuit-breaker-refurbished"},
+ {"id":"product-regular","url":"http://127.0.0.1:9292/products/ite-siemens-ced63b040-circuit-breaker-new"},
+ {"id":"search","url":"http://127.0.0.1:9292/search?q=EHB&type=product&options%5Bprefix%5D=last"},
+ {"id":"search-none","url":"http://127.0.0.1:9292/search?q=zzzznothing&type=product&options%5Bprefix%5D=last"},
+ {"id":"page-about","url":"http://127.0.0.1:9292/pages/about-us"},
+ {"id":"page-contact","url":"http://127.0.0.1:9292/pages/contact"},
+ {"id":"page-help","url":"http://127.0.0.1:9292/pages/help?view=help"},
+ {"id":"cart-empty","url":"http://127.0.0.1:9292/cart"},
+ {"id":"404","url":"http://127.0.0.1:9292/does-not-exist-xyz","ignore":["404"]}
+]

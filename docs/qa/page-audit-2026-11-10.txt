@@ -1,0 +1,103 @@
+
+== home [desktop] 5 issue(s)
+  log-error (3): Access to script at 'http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy | Failed to load resource: net::ERR_FAILED http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js | Failed to load resource: the server responded with a status of 404 (Not Found) http://127.0.0.1:9292/favicon.ico
+  req-failed (1): http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js net::ERR_FAILED
+  http-404 (1): http://127.0.0.1:9292/favicon.ico
+
+== collection [desktop] 0 issue(s)
+
+== collection-64 [desktop] 0 issue(s)
+
+== product-sale [desktop] 0 issue(s)
+
+== product-regular [desktop] 0 issue(s)
+
+== search [desktop] 0 issue(s)
+
+== search-none [desktop] 0 issue(s)
+
+== page-about [desktop] 0 issue(s)
+
+== page-contact [desktop] 0 issue(s)
+
+== page-help [desktop] 0 issue(s)
+
+== cart-empty [desktop] 0 issue(s)
+
+== 404 [desktop] 0 issue(s)
+
+== home [phone] 18 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (16): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | a 65x19 "About Us" | a 138x19 "Become an Affiliate" | a 96x19 "Privacy Policy"
+
+== collection [phone] 19 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (17): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | button.cbw-visually-hidden 1x1 "Go to page" | a 65x19 "About Us" | a 138x19 "Become an Affiliate"
+
+== collection-64 [phone] 19 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens?view=64&sort_by=price-descending
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=64&sort_by=price-descending
+  tap-small (17): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | button.cbw-visually-hidden 1x1 "Go to page" | a 65x19 "About Us" | a 138x19 "Become an Affiliate"
+
+== product-sale [phone] 22 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (20): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | button.cbw-product__zoom 96x16 "Larger Photo" | a.cbw-product__wishlist 131x23 "+
+Add To Wishlist" | a 17x19 "All"
+
+== product-regular [phone] 22 issue(s)
+  http-502 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 502 (Bad Gateway) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (20): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | button.cbw-product__zoom 96x16 "Larger Photo" | a.cbw-product__wishlist 131x23 "+
+Add To Wishlist" | a 17x19 "All"
+
+== search [phone] 19 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens?q=EHB&type=product&options%5Bprefix%5D=last
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?q=EHB&type=product&options%5Bprefix%5D=last
+  tap-small (17): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | button.cbw-visually-hidden 1x1 "Go to page" | a 65x19 "About Us" | a 138x19 "Become an Affiliate"
+
+== search-none [phone] 18 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens?q=zzzznothing&type=product&options%5Bprefix%5D=last
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?q=zzzznothing&type=product&options%5Bprefix%5D=last
+  tap-small (16): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | a 65x19 "About Us" | a 138x19 "Become an Affiliate" | a 96x19 "Privacy Policy"
+
+== page-about [phone] 18 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (16): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | a 65x19 "About Us" | a 138x19 "Become an Affiliate" | a 96x19 "Privacy Policy"
+
+== page-contact [phone] 18 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (16): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | a 65x19 "About Us" | a 138x19 "Become an Affiliate" | a 96x19 "Privacy Policy"
+
+== page-help [phone] 18 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens?view=help
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=help
+  tap-small (16): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | a 65x19 "About Us" | a 138x19 "Become an Affiliate" | a 96x19 "Privacy Policy"
+
+== cart-empty [phone] 18 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+  tap-small (16): a#cart-icon-bubble.cbw-header__cart 46x23 "0
+0 items in cart" | button.cbw-header__menu-toggle 31x21 "Open menu" | a 65x19 "About Us" | a 138x19 "Become an Affiliate" | a 96x19 "Privacy Policy"
+
+== 404 [phone] 4 issue(s)
+  http-502 (1): http://127.0.0.1:9292/does-not-exist-xyz
+  log-error (1): Failed to load resource: the server responded with a status of 502 (Bad Gateway) http://127.0.0.1:9292/does-not-exist-xyz
+  h1-count (1): 0 visible h1
+  no-lang (1): 
+
+11 of 24 page checks clean

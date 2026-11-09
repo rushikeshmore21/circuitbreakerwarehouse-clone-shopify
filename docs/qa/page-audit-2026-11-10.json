@@ -1,0 +1,1007 @@
+[
+ {
+  "page": "home",
+  "device": "desktop",
+  "issues": [
+   [
+    "log-error",
+    "Access to script at 'http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy"
+   ],
+   [
+    "req-failed",
+    "http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js net::ERR_FAILED"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: net::ERR_FAILED http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js"
+   ],
+   [
+    "http-404",
+    "http://127.0.0.1:9292/favicon.ico"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 404 (Not Found) http://127.0.0.1:9292/favicon.ico"
+   ]
+  ]
+ },
+ {
+  "page": "collection",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "collection-64",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "product-sale",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "product-regular",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "search",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "search-none",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "page-about",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "page-contact",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "page-help",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "cart-empty",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "404",
+  "device": "desktop",
+  "issues": []
+ },
+ {
+  "page": "home",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "collection",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-visually-hidden 1x1 \"Go to page\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "collection-64",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?view=64&sort_by=price-descending"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=64&sort_by=price-descending"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-visually-hidden 1x1 \"Go to page\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "product-sale",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-product__zoom 96x16 \"Larger Photo\""
+   ],
+   [
+    "tap-small",
+    "a.cbw-product__wishlist 131x23 \"+\nAdd To Wishlist\""
+   ],
+   [
+    "tap-small",
+    "a 17x19 \"All\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-recent__clear 51x14 \"Clear All\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "product-regular",
+  "device": "phone",
+  "issues": [
+   [
+    "http-502",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 502 (Bad Gateway) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-product__zoom 96x16 \"Larger Photo\""
+   ],
+   [
+    "tap-small",
+    "a.cbw-product__wishlist 131x23 \"+\nAdd To Wishlist\""
+   ],
+   [
+    "tap-small",
+    "a 17x19 \"All\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-recent__clear 51x14 \"Clear All\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "search",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?q=EHB&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?q=EHB&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-visually-hidden 1x1 \"Go to page\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "search-none",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?q=zzzznothing&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?q=zzzznothing&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "page-about",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "page-contact",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "page-help",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?view=help"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=help"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "cart-empty",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a#cart-icon-bubble.cbw-header__cart 46x23 \"0\n0 items in cart\""
+   ],
+   [
+    "tap-small",
+    "button.cbw-header__menu-toggle 31x21 \"Open menu\""
+   ],
+   [
+    "tap-small",
+    "a 65x19 \"About Us\""
+   ],
+   [
+    "tap-small",
+    "a 138x19 \"Become an Affiliate\""
+   ],
+   [
+    "tap-small",
+    "a 96x19 \"Privacy Policy\""
+   ],
+   [
+    "tap-small",
+    "a 79x19 \"Contact Us\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Bookmark Us\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Company Info\""
+   ],
+   [
+    "tap-small",
+    "a 81x19 \"Advertising\""
+   ],
+   [
+    "tap-small",
+    "a 97x19 \"Product Index\""
+   ],
+   [
+    "tap-small",
+    "a 107x19 \"Category Index\""
+   ],
+   [
+    "tap-small",
+    "a 32x19 \"Help\""
+   ],
+   [
+    "tap-small",
+    "a 91x19 \"Terms of Use\""
+   ],
+   [
+    "tap-small",
+    "a 128x19 \"Return / Exchange\""
+   ],
+   [
+    "tap-small",
+    "a 102x19 \"Facebook\n(opens in a new tab)\""
+   ],
+   [
+    "tap-small",
+    "a 93x19 \"Google+\n(opens in a new tab)\""
+   ]
+  ]
+ },
+ {
+  "page": "404",
+  "device": "phone",
+  "issues": [
+   [
+    "http-502",
+    "http://127.0.0.1:9292/does-not-exist-xyz"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 502 (Bad Gateway) http://127.0.0.1:9292/does-not-exist-xyz"
+   ],
+   [
+    "h1-count",
+    "0 visible h1"
+   ],
+   [
+    "no-lang",
+    ""
+   ]
+  ]
+ }
+]

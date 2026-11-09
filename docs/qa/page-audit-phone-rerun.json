@@ -1,0 +1,210 @@
+[
+ {
+  "page": "home",
+  "device": "phone",
+  "issues": [
+   [
+    "log-error",
+    "Access to script at 'http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy"
+   ],
+   [
+    "req-failed",
+    "http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js net::ERR_FAILED"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: net::ERR_FAILED http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js"
+   ],
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "http-404",
+    "http://127.0.0.1:9292/favicon.ico"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 404 (Not Found) http://127.0.0.1:9292/favicon.ico"
+   ]
+  ]
+ },
+ {
+  "page": "collection",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "button.cbw-visually-hidden 1x1 \"Go to page\""
+   ]
+  ]
+ },
+ {
+  "page": "collection-64",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?view=64&sort_by=price-descending"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=64&sort_by=price-descending"
+   ],
+   [
+    "tap-small",
+    "button.cbw-visually-hidden 1x1 \"Go to page\""
+   ]
+  ]
+ },
+ {
+  "page": "product-sale",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a 17x19 \"All\""
+   ]
+  ]
+ },
+ {
+  "page": "product-regular",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "tap-small",
+    "a 17x19 \"All\""
+   ]
+  ]
+ },
+ {
+  "page": "search",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?q=EHB&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?q=EHB&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "tap-small",
+    "button.cbw-visually-hidden 1x1 \"Go to page\""
+   ]
+  ]
+ },
+ {
+  "page": "search-none",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?q=zzzznothing&type=product&options%5Bprefix%5D=last"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?q=zzzznothing&type=product&options%5Bprefix%5D=last"
+   ]
+  ]
+ },
+ {
+  "page": "page-about",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ]
+  ]
+ },
+ {
+  "page": "page-contact",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ]
+  ]
+ },
+ {
+  "page": "page-help",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens?view=help"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=help"
+   ]
+  ]
+ },
+ {
+  "page": "cart-empty",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ]
+  ]
+ },
+ {
+  "page": "404",
+  "device": "phone",
+  "issues": [
+   [
+    "http-400",
+    "http://127.0.0.1:9292/sf_private_access_tokens"
+   ],
+   [
+    "log-error",
+    "Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens"
+   ]
+  ]
+ }
+]
