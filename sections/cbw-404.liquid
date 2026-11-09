@@ -1,0 +1,45 @@
+<div class="cbw-container cbw-404">
+  <h1 class="cbw-404__title">{{ 'cbw.not_found.title' | t }}</h1>
+  <p>{{ 'cbw.not_found.text' | t }}</p>
+  <form class="cbw-404__search" action="{{ routes.search_url }}" method="get" role="search">
+    <label class="cbw-visually-hidden" for="Cbw404Search">{{ 'cbw.header.search_label' | t }}</label>
+    <input id="Cbw404Search" type="search" name="q" placeholder="{{ 'cbw.header.search_placeholder' | t }}">
+    <input type="hidden" name="type" value="product">
+    <input type="hidden" name="options[prefix]" value="last">
+    <button class="cbw-btn cbw-btn--navy" type="submit">{{ 'cbw.header.search_submit' | t }}</button>
+  </form>
+  <a class="cbw-404__home" href="{{ routes.root_url }}">{{ 'cbw.not_found.home' | t }}</a>
+</div>
+
+{% stylesheet %}
+  .cbw-404 {
+    padding-top: 25px;
+    padding-bottom: 60px;
+  }
+  .cbw .cbw-404__title {
+    margin: 0 0 20px;
+    font-size: 30px;
+    line-height: 36px;
+  }
+  .cbw-404__search {
+    display: flex;
+    gap: 10px;
+    max-width: 480px;
+    margin: 20px 0;
+  }
+  .cbw-404__search input[type='search'] {
+    flex: 1;
+    height: 42px;
+    padding: 0 10px;
+    border: 1px solid #c3c3c3;
+    border-radius: 0;
+    font-size: 14px;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.not_found.name",
+  "settings": []
+}
+{% endschema %}

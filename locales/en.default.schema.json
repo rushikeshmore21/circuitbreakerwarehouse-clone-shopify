@@ -3553,6 +3553,36 @@
       "review_link_text": "Review link text",
       "review_link": "Review link",
       "show_recent": "Show recent items"
+    },
+    "page": {
+      "name": "CBW page"
+    },
+    "link_columns": {
+      "name": "CBW help link columns",
+      "heading": "Large heading",
+      "intro": "Intro text",
+      "group": "Link group",
+      "group_title": "Group title",
+      "group_menu": "Group menu",
+      "column": "Column",
+      "column_left": "Left",
+      "column_right": "Right"
+    },
+    "contact": {
+      "name": "CBW contact",
+      "image": "Image",
+      "image_info": "Leave empty to use the bundled photo",
+      "heading": "Heading",
+      "email": "Email address shown"
+    },
+    "cart": {
+      "name": "CBW cart header",
+      "title": "Page title",
+      "shop_link": "Shop for more items link",
+      "show_guarantee": "Show shopping guarantee bar"
+    },
+    "not_found": {
+      "name": "CBW page not found"
     }
   }
 }

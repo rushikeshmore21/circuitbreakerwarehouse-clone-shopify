@@ -1,0 +1,135 @@
+<div class="cbw-container cbw-cart-header">
+  <p class="cbw-cart-header__title">{{ section.settings.title | escape }}</p>
+  <a class="cbw-cart-header__shop" href="{{ section.settings.shop_link | default: routes.all_products_collection_url }}">
+    {{- 'cbw.cart.shop_more' | t -}}
+  </a>
+  {%- if section.settings.show_guarantee -%}
+    <div class="cbw-cart-header__guarantee">
+      <span class="cbw-cart-header__norton">
+        <img src="{{ 'cbw-buysafe-seal.png' | asset_url }}" alt="{{ 'cbw.cart.guarantee_alt' | t }}" width="100" height="54" loading="lazy">
+      </span>
+      <ul class="cbw-cart-header__benefits">
+        <li>{%- render 'cbw-icon', name: 'shield' -%}{{ 'cbw.cart.id_theft' | t }}</li>
+        <li>{%- render 'cbw-icon', name: 'check-mark' -%}{{ 'cbw.cart.purchase_guarantee' | t }}</li>
+        <li>{%- render 'cbw-icon', name: 'money' -%}{{ 'cbw.cart.lowest_price' | t }}</li>
+      </ul>
+    </div>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .cbw-cart-header {
+    padding-top: 25px;
+  }
+  .cbw-cart-header__title {
+    margin: 0 0 50px;
+    font-size: 30px;
+    line-height: 36px;
+    text-align: center;
+  }
+  .cbw .cbw-cart-header__shop {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: var(--cbw-navy);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .cbw .cbw-cart-header__shop:hover {
+    background: var(--cbw-red);
+    color: #fff;
+  }
+  .cbw-cart-header__guarantee {
+    display: flex;
+    width: fit-content;
+    flex-wrap: wrap;
+    align-items: center;
+    max-width: 100%;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+  }
+  .cbw-cart-header__norton {
+    display: block;
+    width: 94px;
+    height: 28px;
+    overflow: hidden;
+  }
+  .cbw-cart-header__norton img {
+    display: block;
+    width: 94px;
+    height: auto;
+    margin-top: -3px;
+  }
+  .cbw-cart-header__benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 10px;
+    margin: 0;
+    padding: 0 8px;
+    list-style: none;
+  }
+  .cbw-cart-header__benefits li {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+  }
+  .cbw-cart-header__benefits .cbw-icon {
+    width: 11px;
+    height: 11px;
+    fill: currentColor;
+  }
+  .cbw .cart__empty-text {
+    margin: 20px 0;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+  }
+  .cbw .cart__warnings .button,
+  .cbw .title-wrapper-with-link .underlined-link {
+    display: none;
+  }
+  .cbw .title-wrapper-with-link .title--primary {
+    font-size: 41px;
+  }
+  .cbw cart-items.is-empty .title-wrapper-with-link {
+    display: flex;
+  }
+  .cbw .cart__login-title,
+  .cbw .cart__login-paragraph {
+    display: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.cart.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "t:cbw.cart.title",
+      "default": "Shopping Cart"
+    },
+    {
+      "type": "url",
+      "id": "shop_link",
+      "label": "t:cbw.cart.shop_link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_guarantee",
+      "label": "t:cbw.cart.show_guarantee",
+      "default": true
+    }
+  ],
+  "enabled_on": {
+    "templates": ["cart"]
+  }
+}
+{% endschema %}

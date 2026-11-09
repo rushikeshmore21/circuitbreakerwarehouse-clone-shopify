@@ -1,5 +1,13 @@
 {
   "sections": {
+    "header": {
+      "type": "cbw-cart-header",
+      "settings": {
+        "title": "Shopping Cart",
+        "shop_link": "",
+        "show_guarantee": true
+      }
+    },
     "cart-items": {
       "type": "main-cart-items",
       "settings": {
@@ -18,13 +26,11 @@
       "blocks": {
         "subtotal": {
           "type": "subtotal",
-          "settings": {
-          }
+          "settings": {}
         },
         "buttons": {
           "type": "buttons",
-          "settings": {
-          }
+          "settings": {}
         }
       },
       "block_order": [
@@ -34,6 +40,7 @@
     }
   },
   "order": [
+    "header",
     "cart-items",
     "cart-footer"
   ]

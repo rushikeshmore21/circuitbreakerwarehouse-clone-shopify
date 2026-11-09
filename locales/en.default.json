@@ -283,14 +283,14 @@
       }
     },
     "cart": {
-      "title": "Your cart",
+      "title": "Your Cart",
       "caption": "Cart items",
       "remove_title": "Remove {{ title }}",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",
       "checkout": "Check out",
-      "empty": "Your cart is empty",
+      "empty": "There are no items in your shopping cart.",
       "product_disclosure": "Product disclosure",
       "product_disclosures": "Product disclosures",
       "cart_error": "There was an error while updating your cart. Please try again.",
@@ -619,6 +619,23 @@
       "breadcrumb": "Search for \"{{ terms }}\"",
       "no_results": "No products found for \"{{ terms }}\". Check the spelling or try a shorter part number.",
       "prompt": "Enter a product name or part number in the search box above."
+    },
+    "contact": {
+      "or": "OR",
+      "email_to": "E-mail To:",
+      "submit": "Submit"
+    },
+    "cart": {
+      "shop_more": "Shop for more items",
+      "guarantee_alt": "Norton Shopping Guarantee",
+      "id_theft": "ID Theft Protection",
+      "purchase_guarantee": "Purchase Guarantee",
+      "lowest_price": "Lowest Price Guarantee"
+    },
+    "not_found": {
+      "title": "The page cannot be found",
+      "text": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Try searching for a part number:",
+      "home": "Back to the home page"
     }
   }
 }

@@ -1,0 +1,132 @@
+<div class="cbw-container cbw-link-columns">
+  {%- if section.settings.heading != blank -%}
+    <p class="cbw-link-columns__heading" aria-hidden="true">{{ section.settings.heading | escape }}</p>
+  {%- endif -%}
+  {%- if section.settings.intro != blank -%}
+    <p class="cbw-link-columns__intro">{{ section.settings.intro | escape }}</p>
+  {%- endif -%}
+  <div class="cbw-link-columns__grid">
+    {%- assign columns = 'left,right' | split: ',' -%}
+    {%- for column in columns -%}
+      <div class="cbw-link-columns__column">
+        {%- for block in section.blocks -%}
+          {%- unless block.settings.column == column -%}
+            {%- continue -%}
+          {%- endunless -%}
+          <div class="cbw-link-columns__group" {{ block.shopify_attributes }}>
+            <h2 class="cbw-link-columns__title">{{ block.settings.title | escape }}</h2>
+            {%- if block.settings.menu != blank -%}
+              <ul class="cbw-link-columns__list">
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+                {%- endfor -%}
+              </ul>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .cbw-link-columns {
+    padding-bottom: 40px;
+  }
+  .cbw-link-columns__heading {
+    margin: 0 0 15px;
+    font-size: 48px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .cbw-link-columns__intro {
+    margin: 0;
+    font-weight: 700;
+  }
+  .cbw-link-columns__grid {
+    display: grid;
+    gap: 0 0;
+  }
+  .cbw .cbw-link-columns__title {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4286;
+  }
+  .cbw-link-columns__list {
+    margin: 0;
+    padding: 0 0 0 10px;
+    list-style: none;
+  }
+  .cbw-link-columns__list li::before {
+    content: '\25AA\00a0';
+  }
+  .cbw .cbw-link-columns__list a {
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw .cbw-link-columns__list a:hover {
+    text-decoration: underline;
+  }
+  @media (min-width: 768px) {
+    .cbw-link-columns__grid {
+      grid-template-columns: 1fr 1fr;
+      margin: 0 57px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.link_columns.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:cbw.link_columns.heading",
+      "default": "Help"
+    },
+    {
+      "type": "text",
+      "id": "intro",
+      "label": "t:cbw.link_columns.intro",
+      "default": "Find quick answers to your questions below..."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "group",
+      "name": "t:cbw.link_columns.group",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "t:cbw.link_columns.group_title",
+          "default": "Order Status"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "t:cbw.link_columns.group_menu"
+        },
+        {
+          "type": "select",
+          "id": "column",
+          "label": "t:cbw.link_columns.column",
+          "default": "left",
+          "options": [
+            { "value": "left", "label": "t:cbw.link_columns.column_left" },
+            { "value": "right", "label": "t:cbw.link_columns.column_right" }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:cbw.link_columns.name"
+    }
+  ]
+}
+{% endschema %}

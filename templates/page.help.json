@@ -1,0 +1,95 @@
+{
+  "sections": {
+    "main": {
+      "type": "cbw-main-page",
+      "settings": {}
+    },
+    "help": {
+      "type": "cbw-link-columns",
+      "blocks": {
+        "group-1": {
+          "type": "group",
+          "settings": {
+            "title": "Order Status",
+            "menu": "",
+            "column": "left"
+          }
+        },
+        "group-2": {
+          "type": "group",
+          "settings": {
+            "title": "My Account",
+            "menu": "",
+            "column": "left"
+          }
+        },
+        "group-3": {
+          "type": "group",
+          "settings": {
+            "title": "Shipping and Returns",
+            "menu": "",
+            "column": "left"
+          }
+        },
+        "group-4": {
+          "type": "group",
+          "settings": {
+            "title": "International Shipping",
+            "menu": "",
+            "column": "left"
+          }
+        },
+        "group-5": {
+          "type": "group",
+          "settings": {
+            "title": "Guarantees",
+            "menu": "",
+            "column": "right"
+          }
+        },
+        "group-6": {
+          "type": "group",
+          "settings": {
+            "title": "Pricing and Billing",
+            "menu": "",
+            "column": "right"
+          }
+        },
+        "group-7": {
+          "type": "group",
+          "settings": {
+            "title": "Buyer's Guide",
+            "menu": "",
+            "column": "right"
+          }
+        },
+        "group-8": {
+          "type": "group",
+          "settings": {
+            "title": "Additional Support",
+            "menu": "",
+            "column": "right"
+          }
+        }
+      },
+      "block_order": [
+        "group-1",
+        "group-2",
+        "group-3",
+        "group-4",
+        "group-5",
+        "group-6",
+        "group-7",
+        "group-8"
+      ],
+      "settings": {
+        "heading": "Help",
+        "intro": "Find quick answers to your questions below..."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "help"
+  ]
+}
