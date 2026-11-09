@@ -11,6 +11,8 @@
   @param {string} sort_by - The active sort value
   @param {string} sort_values - Comma-separated sort values to offer, in display order
   @param {number} page_size - The active page size
+  @param {string} [sizes] - Comma-separated per-page choices. Defaults to '32,64,128,192'
+  @param {number} [default_size] - The page size of the default template (no ?view). Defaults to 32
   @param {string} [terms] - Search terms to keep (search page only)
   @param {string} [position] - 'top' (full toolbar) or 'bottom' (NEXT/PREV only). Defaults to 'top'
 
@@ -20,9 +22,10 @@
 
 {%- liquid
   assign sorts = sort_values | split: ','
-  assign sizes = '32,64,128,192' | split: ','
+  assign size_list = sizes | default: '32,64,128,192' | split: ','
+  assign base_size = default_size | default: 32
   assign view = ''
-  if page_size != 32
+  if page_size != base_size
     assign view = page_size
   endif
   assign uid = position | default: 'top'
@@ -47,9 +50,9 @@
       <button class="cbw-toolbar__go" type="submit">{{ 'cbw.listing.go' | t }}</button>
       <label class="cbw-visually-hidden" for="CbwPerPage">{{ 'cbw.listing.per_page_label' | t }}</label>
       <select class="cbw-toolbar__select cbw-toolbar__per-page" id="CbwPerPage" name="view" data-cbw-autosubmit>
-        {%- for size in sizes -%}
+        {%- for size in size_list -%}
           {%- assign size_number = size | plus: 0 -%}
-          <option value="{% if size_number != 32 %}{{ size }}{% endif %}" {% if size_number == page_size %}selected{% endif %}>
+          <option value="{% if size_number != base_size %}{{ size }}{% endif %}" {% if size_number == page_size %}selected{% endif %}>
             {{- 'cbw.listing.per_page' | t: count: size -}}
           </option>
         {%- endfor -%}

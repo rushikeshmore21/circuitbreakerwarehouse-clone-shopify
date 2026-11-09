@@ -1,0 +1,73 @@
+{% doc %}
+  Renders the 4-column listing grid used by collection and search pages.
+  Non-product search results (pages, articles) are skipped.
+
+  @param {product[]} items - Products, or search results
+  @param {boolean} [show_availability] - Show "Subject to availability" under prices
+
+  @example
+  {% render 'cbw-listing-grid', items: collection.products, show_availability: true %}
+{% enddoc %}
+
+<ul class="cbw-listing__grid" role="list">
+  {%- for item in items -%}
+    {%- if item.object_type == 'product' or item.object_type == blank -%}
+      {%- liquid
+        assign lazy = true
+        if forloop.index <= 4
+          assign lazy = false
+        endif
+      -%}
+      <li class="cbw-listing__item">
+        {%- render 'cbw-product-card', product: item, align: 'center', show_availability: show_availability, lazy: lazy -%}
+      </li>
+    {%- endif -%}
+  {%- endfor -%}
+</ul>
+
+{% stylesheet %}
+  .cbw-listing__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0 -15px;
+    padding: 0;
+    list-style: none;
+  }
+  .cbw-listing__item .cbw-card {
+    margin: 11px auto;
+    padding: 30px 5px;
+  }
+  .cbw-listing__item .cbw-card__image {
+    align-items: flex-start;
+    height: 200px;
+    margin-bottom: 5px;
+  }
+  .cbw-listing__item .cbw-card__image img {
+    max-width: 100%;
+    max-height: 137px;
+  }
+  .cbw-listing__item .cbw-card__title {
+    margin-bottom: 33px;
+  }
+  .cbw-listing__item .cbw-price__save {
+    font-size: 15px;
+  }
+  @media (min-width: 768px) {
+    .cbw-listing__grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      column-gap: 4%;
+      margin: 0;
+    }
+  }
+  @media (min-width: 992px) {
+    .cbw-listing__grid {
+      grid-template-columns: repeat(4, 197px);
+      justify-content: space-between;
+      column-gap: 0;
+      margin: 0 -4px;
+    }
+    .cbw-listing__item .cbw-card {
+      padding: 30px;
+    }
+  }
+{% endstylesheet %}

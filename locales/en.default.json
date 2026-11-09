@@ -598,6 +598,11 @@
       "created_descending": "Newest",
       "created_ascending": "Oldest",
       "relevance": "Relevance"
+    },
+    "search": {
+      "breadcrumb": "Search for \"{{ terms }}\"",
+      "no_results": "No products found for \"{{ terms }}\". Check the spelling or try a shorter part number.",
+      "prompt": "Enter a product name or part number in the search box above."
     }
   }
 }

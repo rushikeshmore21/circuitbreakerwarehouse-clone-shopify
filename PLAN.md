@@ -5,12 +5,10 @@ Sources: `docs/site-scan.md`, `docs/feature-inventory.md`, live screenshots in `
 ## 0. Blocked on owner
 | Need | Why |
 |---|---|
-| Contact form: Shopify native form or the existing Wufoo embed | Decides where messages go |
-| Trust seals: Volusion SSL seals, "Ecommerce Software by Volusion", buySAFE/Norton seal | They certify the old platform/account; shown on Shopify they'd be untrue unless the account moves |
-| "Leave a Message" tab behavior | It's a third-party widget in an iframe; vendor unknown |
-| Filled cart reference | Seeing it means adding an item to the live server cart (a write) |
-| Wishlist and reviews | Volusion built-ins; Shopify has neither natively (apps only) |
-| Product data for spec lines | Specs live only in product descriptions today; template reads metafields `custom.type`, `custom.poles`, `custom.amperage`, `custom.voltage`, `custom.condition` once you add them |
+| Filled cart reference (optional) | Seeing it on live means a write to the live server cart. Default: Dawn cart restyled in the live look; match a screenshot if the client sends one |
+| Product spec metafields | Template reads `custom.type`, `custom.poles`, `custom.amperage`, `custom.voltage`, `custom.condition` (hidden when empty) |
+
+Decided 2026-11-10 (see `PROJECT.md` R4.1-R4.5): native contact form; all seals as static images with hide toggles; message tab opens Contact page; wishlist/review as frontend-only elements; Shopify-hosted account pages.
 
 ## 1. Architecture
 - Keep Dawn's working parts: product form + cart JS, cart notification/drawer, predictive search, facets JS, `global.js`, Shopify forms. Replace the visible markup with new `cbw-*` sections and snippets that match the live site.

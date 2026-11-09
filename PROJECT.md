@@ -18,6 +18,11 @@ Mode: exact copy of the frontend; code built to Shopify theme standards (section
 | 3.20/3.22 | Third-party scripts | Clone every visual widget (buySAFE seal, language flags, etc.); leave out tracking and analytics scripts (GTM, Clarity) | no | 2026-11-10 |
 | 3.9 | Redirects | Not required for now | no | 2026-11-10 |
 | - | Project docs | In repo, excluded from theme uploads via `.shopifyignore`; local git commits only, never push | no | 2026-11-10 |
+| R4.1 | Contact form | Shopify native contact form | no | 2026-11-10 |
+| R4.2 | Trust seals (Volusion SSL x2, "Ecommerce Software by Volusion", buySAFE/Norton) | Show all as static images; each one has a theme-editor toggle to hide it | no | 2026-11-10 |
+| R4.3 | "Leave a Message" tab | Same look; opens the Contact page | no | 2026-11-10 |
+| R4.4 | Wishlist and reviews | Frontend-only elements matching live, no apps for now | no | 2026-11-10 |
+| R4.5 | Account pages | Use Shopify's hosted customer account pages; no visual match needed | no | 2026-11-10 |
 | 2.6 | Browser | Built-in browser pane | yes | 2026-11-10 |
 | 2.7 | Scan rate | 1 request per second, sampled pages, GET only | yes | 2026-11-10 |
 

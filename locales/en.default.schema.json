@@ -3517,6 +3517,11 @@
       "name": "CBW collection",
       "products_per_page": "Products per page (default view)",
       "show_description": "Show collection description"
+    },
+    "search": {
+      "name": "CBW search results",
+      "title": "Page heading",
+      "results_per_page": "Results per page (default view)"
     }
   }
 }

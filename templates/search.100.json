@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "main": {
+      "type": "cbw-main-search",
+      "settings": {
+        "title": "Search results",
+        "results_per_page": 50
+      }
+    }
+  },
+  "order": ["main"]
+}

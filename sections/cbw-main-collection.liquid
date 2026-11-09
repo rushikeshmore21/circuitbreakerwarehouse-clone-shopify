@@ -25,19 +25,7 @@
             sort_values: 'price-ascending,price-descending,best-selling,title-ascending,created-descending,created-ascending',
             page_size: page_size
           -%}
-          <ul class="cbw-listing__grid" role="list">
-            {%- for product in collection.products -%}
-              {%- liquid
-                assign lazy = true
-                if forloop.index <= 4
-                  assign lazy = false
-                endif
-              -%}
-              <li class="cbw-listing__item">
-                {%- render 'cbw-product-card', product: product, align: 'center', show_availability: true, lazy: lazy -%}
-              </li>
-            {%- endfor -%}
-          </ul>
+          {%- render 'cbw-listing-grid', items: collection.products, show_availability: true -%}
           {%- render 'cbw-listing-toolbar',
             paginate: paginate,
             action: collection.url,
@@ -53,68 +41,6 @@
     </div>
   </div>
 </div>
-
-{% stylesheet %}
-  .cbw-listing {
-    padding-top: 25px;
-    padding-bottom: 25px;
-  }
-  .cbw .cbw-listing__title {
-    margin: 15px 0 0;
-    font-size: 30px;
-    line-height: 36px;
-  }
-  .cbw-listing__description {
-    margin-top: 10px;
-  }
-  .cbw-listing__grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    margin: 0 -15px;
-    padding: 0;
-    list-style: none;
-  }
-  .cbw-listing__item .cbw-card {
-    margin: 11px auto;
-    padding: 30px 5px;
-  }
-  .cbw-listing__item .cbw-card__image {
-    align-items: flex-start;
-    height: 200px;
-    margin-bottom: 5px;
-  }
-  .cbw-listing__item .cbw-card__image img {
-    max-width: 100%;
-    max-height: 137px;
-  }
-  .cbw-listing__item .cbw-card__title {
-    margin-bottom: 33px;
-  }
-  .cbw-listing__item .cbw-price__save {
-    font-size: 15px;
-  }
-  .cbw-listing__empty {
-    margin: 30px 0;
-  }
-  @media (min-width: 768px) {
-    .cbw-listing__grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      column-gap: 4%;
-      margin: 0;
-    }
-  }
-  @media (min-width: 992px) {
-    .cbw-listing__grid {
-      grid-template-columns: repeat(4, 197px);
-      justify-content: space-between;
-      column-gap: 0;
-      margin: 0 -4px;
-    }
-    .cbw-listing__item .cbw-card {
-      padding: 30px;
-    }
-  }
-{% endstylesheet %}
 
 {% schema %}
 {
