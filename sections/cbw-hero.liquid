@@ -1,0 +1,71 @@
+{%- liquid
+  assign alt = section.settings.alt | default: shop.name
+-%}
+
+<div class="cbw-hero">
+  {%- if section.settings.link != blank -%}
+    <a class="cbw-hero__link" href="{{ section.settings.link }}">
+  {%- endif -%}
+  {%- if section.settings.image != blank -%}
+    {{
+      section.settings.image
+      | image_url: width: 1920
+      | image_tag: widths: '640, 960, 1440, 1920', sizes: '100vw', fetchpriority: 'high', loading: 'eager', alt: alt, class: 'cbw-hero__image'
+    }}
+  {%- else -%}
+    <img
+      class="cbw-hero__image"
+      src="{{ 'cbw-hero-1440.jpg' | asset_url }}"
+      srcset="{{ 'cbw-hero-640.jpg' | asset_url }} 640w, {{ 'cbw-hero-960.jpg' | asset_url }} 960w, {{ 'cbw-hero-1440.jpg' | asset_url }} 1440w, {{ 'cbw-hero-1920.jpg' | asset_url }} 1920w"
+      sizes="100vw"
+      width="2584"
+      height="608"
+      fetchpriority="high"
+      alt="{{ alt | escape }}"
+    >
+  {%- endif -%}
+  {%- if section.settings.link != blank -%}
+    </a>
+  {%- endif -%}
+</div>
+
+{% stylesheet %}
+  .cbw-hero__link {
+    display: block;
+  }
+  .cbw-hero__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.hero.name",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:cbw.hero.image",
+      "info": "t:cbw.hero.image_info"
+    },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "t:cbw.hero.alt",
+      "default": "New & reconditioned circuit breakers: free shipping, outstanding customer service, competitive prices, secure shopping. Call +1 (310) 793-4000."
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "t:cbw.hero.link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:cbw.hero.name"
+    }
+  ]
+}
+{% endschema %}

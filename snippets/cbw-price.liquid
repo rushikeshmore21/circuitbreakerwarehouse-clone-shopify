@@ -1,0 +1,42 @@
+{% doc %}
+  Renders the live-site price lines: "Our Price", "Sale Price" (green label) and "You Save".
+  When the variant has a compare-at price above its price, the compare-at price is "Our Price"
+  and the price is the "Sale Price".
+
+  @param {variant} variant - The variant whose prices are shown
+  @param {boolean} [hide_our_price_on_sale] - Show only the sale line when on sale (related products)
+
+  @example
+  {% render 'cbw-price', variant: product.selected_or_first_available_variant %}
+{% enddoc %}
+
+{%- liquid
+  assign on_sale = false
+  if variant.compare_at_price > variant.price
+    assign on_sale = true
+    assign saving = variant.compare_at_price | minus: variant.price | money
+  endif
+-%}
+
+<div class="cbw-price">
+  {%- if on_sale -%}
+    {%- unless hide_our_price_on_sale -%}
+      <span class="cbw-price__line cbw-price__regular">
+        <span class="cbw-price__label">{{ 'cbw.price.our_price' | t }}</span>:
+        <span class="cbw-price__value">{{ variant.compare_at_price | money }}</span>
+      </span>
+    {%- endunless -%}
+    <span class="cbw-price__line cbw-price__sale">
+      <span class="cbw-price__label">{{ 'cbw.price.sale_price' | t }}</span>:
+      <span class="cbw-price__value">{{ variant.price | money }}</span>
+    </span>
+    {%- unless hide_our_price_on_sale -%}
+      <span class="cbw-price__line cbw-price__save">{{ 'cbw.price.you_save' | t: amount: saving }}</span>
+    {%- endunless -%}
+  {%- else -%}
+    <span class="cbw-price__line cbw-price__regular">
+      <span class="cbw-price__label">{{ 'cbw.price.our_price' | t }}</span>:
+      <span class="cbw-price__value">{{ variant.price | money }}</span>
+    </span>
+  {%- endif -%}
+</div>

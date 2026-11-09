@@ -1,0 +1,61 @@
+{%- if section.settings.line_1 != blank or section.settings.line_2 != blank -%}
+  <div class="cbw-callout">
+    <p class="cbw-callout__text">
+      {{- section.settings.line_1 | escape -}}
+      {%- if section.settings.line_1 != blank and section.settings.line_2 != blank -%}<br>{%- endif -%}
+      {%- if section.settings.phone_link != blank -%}
+        <a class="cbw-callout__link" href="tel:{{ section.settings.phone_link | escape }}">{{ section.settings.line_2 | escape }}</a>
+      {%- else -%}
+        {{- section.settings.line_2 | escape -}}
+      {%- endif -%}
+    </p>
+  </div>
+{%- endif -%}
+
+{% stylesheet %}
+  .cbw-callout {
+    padding: 0 15px 40px;
+    text-align: center;
+  }
+  .cbw-callout__text,
+  .cbw .cbw-callout__link {
+    margin: 0;
+    color: #ff0000;
+    font-family: 'Arial Black', Arial, sans-serif;
+    font-size: 18pt;
+    font-weight: 700;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.callout.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "line_1",
+      "label": "t:cbw.callout.line_1",
+      "default": "Outage or Emergency?"
+    },
+    {
+      "type": "text",
+      "id": "line_2",
+      "label": "t:cbw.callout.line_2",
+      "default": "Call 424-888-CBW8"
+    },
+    {
+      "type": "text",
+      "id": "phone_link",
+      "label": "t:cbw.callout.phone_link",
+      "info": "t:cbw.callout.phone_link_info"
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:cbw.callout.name"
+    }
+  ]
+}
+{% endschema %}

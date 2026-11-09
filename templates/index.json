@@ -1,75 +1,162 @@
 {
   "sections": {
-    "image_banner": {
-      "type": "image-banner",
+    "hero": {
+      "type": "cbw-hero",
+      "settings": {
+        "alt": "New & reconditioned circuit breakers: free shipping, outstanding customer service, competitive prices, secure shopping. Call +1 (310) 793-4000.",
+        "link": ""
+      }
+    },
+    "featured": {
+      "type": "cbw-featured-products",
+      "settings": {
+        "heading": "Circuit Breaker Warehouse: New & Reconditioned Circuit Breakers",
+        "collection": "all",
+        "products_to_show": 16
+      }
+    },
+    "confidence": {
+      "type": "cbw-confidence",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "guarantee-1": {
+          "type": "guarantee",
           "settings": {
-            "heading": "Browse our latest products",
-            "heading_size": "h0"
+            "icon": "shield",
+            "text": "ID theft protection"
           }
         },
-        "button": {
-          "type": "buttons",
+        "guarantee-2": {
+          "type": "guarantee",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": true,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
+            "icon": "check-mark",
+            "text": "purchase guarantee"
+          }
+        },
+        "guarantee-3": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "money",
+            "text": "lowest price guarantee"
+          }
+        },
+        "guarantee-4": {
+          "type": "guarantee",
+          "settings": {
+            "icon": "award",
+            "text": "100% satisfaction guarantee"
           }
         }
       },
       "block_order": [
-        "heading",
-        "button"
+        "guarantee-1",
+        "guarantee-2",
+        "guarantee-3",
+        "guarantee-4"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
-        "show_text_box": false,
-        "image_behavior": "none",
-        "desktop_content_alignment": "center",
-        "color_scheme": "scheme-3",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
-        "show_text_below": false
+        "heading": "Shop with Confidence",
+        "button_1_label": "Read More",
+        "button_1_link": "/pages/about-us",
+        "button_2_label": "Contact Us",
+        "button_2_link": "mailto:sales@circuitbreakerwarehouse.com?subject=Customer Contact for Circuit Breaker Warehouse"
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "brands": {
+      "type": "cbw-brands",
+      "blocks": {
+        "brand-ge": {
+          "type": "brand",
+          "settings": {
+            "name": "GE",
+            "logo": "ge",
+            "link": "/collections/general-electric-circuit-breakers"
+          }
+        },
+        "brand-siemens": {
+          "type": "brand",
+          "settings": {
+            "name": "Siemens",
+            "logo": "siemens",
+            "link": "/collections/siemens-circuit-breakers"
+          }
+        },
+        "brand-zinsco": {
+          "type": "brand",
+          "settings": {
+            "name": "Zinsco",
+            "logo": "zinsco",
+            "link": "/collections/zinsco-circuit-breakers"
+          }
+        },
+        "brand-fpe": {
+          "type": "brand",
+          "settings": {
+            "name": "Federal Pacific",
+            "logo": "fpe",
+            "link": "/collections/federal-pacific-circuit-breakers"
+          }
+        },
+        "brand-cutler-hammer": {
+          "type": "brand",
+          "settings": {
+            "name": "Cutler Hammer",
+            "logo": "cutler-hammer",
+            "link": "/collections/cutler-hammer-circuit-breakers"
+          }
+        },
+        "brand-ite": {
+          "type": "brand",
+          "settings": {
+            "name": "ITE",
+            "logo": "ite",
+            "link": "/collections/ite-circuit-breakers"
+          }
+        },
+        "brand-westinghouse": {
+          "type": "brand",
+          "settings": {
+            "name": "Westinghouse",
+            "logo": "westinghouse",
+            "link": "/collections/westinghouse-circuit-breakers"
+          }
+        },
+        "brand-eaton": {
+          "type": "brand",
+          "settings": {
+            "name": "Eaton",
+            "logo": "eaton",
+            "link": "/collections/cutler-hammer-circuit-breakers"
+          }
+        }
+      },
+      "block_order": [
+        "brand-ge",
+        "brand-siemens",
+        "brand-zinsco",
+        "brand-fpe",
+        "brand-cutler-hammer",
+        "brand-ite",
+        "brand-westinghouse",
+        "brand-eaton"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "color_scheme": "scheme-1",
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "padding_top": 44,
-        "padding_bottom": 36
+        "toggle_label": "Shop Popular Brands"
+      }
+    },
+    "callout": {
+      "type": "cbw-callout",
+      "settings": {
+        "line_1": "Outage or Emergency?",
+        "line_2": "Call 424-888-CBW8",
+        "phone_link": ""
       }
     }
   },
   "order": [
-    "image_banner",
-    "featured_collection"
+    "hero",
+    "featured",
+    "confidence",
+    "brands",
+    "callout"
   ]
 }

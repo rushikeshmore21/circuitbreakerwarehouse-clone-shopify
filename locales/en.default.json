@@ -563,6 +563,16 @@
       "join_now": "Join now",
       "ssl_alt": "Secure site: verify SSL certificate (opens in a new tab)",
       "badge_alt": "Volusion secure site: click to verify (opens in a new tab)"
+    },
+    "price": {
+      "our_price": "Our Price",
+      "sale_price": "Sale Price",
+      "you_save": "You Save {{ amount }}!"
+    },
+    "product": {
+      "subject_to_availability": "Subject to availability",
+      "free_shipping": "Free Shipping",
+      "placeholder_title": "Product title"
     }
   }
 }

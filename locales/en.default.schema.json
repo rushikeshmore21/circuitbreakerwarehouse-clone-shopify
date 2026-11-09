@@ -3464,6 +3464,54 @@
       "sidebar_show_ssl_seal": "Show SSL seal",
       "sidebar_show_badge": "Show secure site badge",
       "sidebar_seal_url": "Seal link"
+    },
+    "hero": {
+      "name": "CBW hero banner",
+      "image": "Banner image",
+      "image_info": "Leave empty to use the bundled banner",
+      "alt": "Image description",
+      "link": "Link"
+    },
+    "featured": {
+      "name": "CBW featured products",
+      "heading": "Page heading",
+      "heading_info": "Hidden visually; read by search engines and screen readers",
+      "collection": "Collection",
+      "products_to_show": "Products to show"
+    },
+    "confidence": {
+      "name": "CBW shop with confidence",
+      "heading": "Heading",
+      "text": "Text",
+      "button_1_label": "First button label",
+      "button_1_link": "First button link",
+      "button_2_label": "Second button label",
+      "button_2_link": "Second button link",
+      "guarantee": "Guarantee",
+      "icon": "Icon",
+      "icon_shield": "Shield",
+      "icon_check": "Check mark",
+      "icon_money": "Money",
+      "icon_award": "Award",
+      "guarantee_text": "Text"
+    },
+    "brands": {
+      "name": "CBW brand logos",
+      "toggle_label": "Phone toggle label",
+      "brand": "Brand",
+      "brand_name": "Brand name",
+      "image": "Logo image",
+      "bundled_logo": "Bundled logo",
+      "bundled_logo_info": "Used when no logo image is chosen",
+      "logo_none": "None",
+      "link": "Link"
+    },
+    "callout": {
+      "name": "CBW emergency callout",
+      "line_1": "First line",
+      "line_2": "Second line",
+      "phone_link": "Phone number to dial",
+      "phone_link_info": "Optional. Makes the second line a phone link"
     }
   }
 }

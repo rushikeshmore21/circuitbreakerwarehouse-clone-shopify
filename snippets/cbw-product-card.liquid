@@ -1,0 +1,103 @@
+{% doc %}
+  Renders a product card in the live-site style: image, title, price lines and the free-shipping icon.
+
+  @param {product} product - The product to render
+  @param {string} [align] - Text alignment: 'left' (home) or 'center' (listings). Defaults to 'left'
+  @param {boolean} [show_availability] - Show the "Subject to availability" line (listings)
+  @param {boolean} [lazy] - Lazy-load the image. Defaults to true
+
+  @example
+  {% render 'cbw-product-card', product: product, align: 'center', show_availability: true %}
+{% enddoc %}
+
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign card_align = align | default: 'left'
+  assign image_alt = product.featured_image.alt | default: product.title
+  assign loading = 'lazy'
+  if lazy == false
+    assign loading = 'eager'
+  endif
+-%}
+
+<div class="cbw-card cbw-card--{{ card_align }}">
+  <a class="cbw-card__image" href="{{ product.url }}" tabindex="-1" aria-hidden="true">
+    {%- if product.featured_image != blank -%}
+      {{
+        product.featured_image
+        | image_url: width: 300
+        | image_tag: loading: loading, widths: '150, 300', sizes: '150px', alt: image_alt
+      }}
+    {%- else -%}
+      {{ 'product-1' | placeholder_svg_tag: 'cbw-card__placeholder' }}
+    {%- endif -%}
+  </a>
+  <a class="cbw-card__title" href="{{ product.url }}">{{ product.title | escape }}</a>
+  {%- render 'cbw-price', variant: variant -%}
+  {%- if show_availability -%}
+    <p class="cbw-card__availability">{{ 'cbw.product.subject_to_availability' | t }}</p>
+  {%- endif -%}
+  <img
+    class="cbw-card__shipping"
+    src="{{ 'cbw-free-shipping-small.png' | asset_url }}"
+    alt="{{ 'cbw.product.free_shipping' | t }}"
+    width="31"
+    height="25"
+    loading="lazy"
+  >
+</div>
+
+{% stylesheet %}
+  .cbw-card {
+    padding: 15px 5px;
+    font-size: 16px;
+  }
+  .cbw-card--center {
+    text-align: center;
+  }
+  .cbw-card__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  .cbw-card__image img,
+  .cbw-card__placeholder {
+    display: block;
+    max-width: 150px;
+    max-height: 150px;
+    width: auto;
+    height: auto;
+  }
+  .cbw-card__placeholder {
+    width: 150px;
+    height: 150px;
+  }
+  .cbw .cbw-card__title {
+    display: block;
+    color: var(--cbw-text);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-decoration: none;
+  }
+  .cbw .cbw-card__title:hover {
+    color: var(--cbw-red);
+  }
+  .cbw-card .cbw-price__regular .cbw-price__value {
+    font-weight: 400;
+  }
+  .cbw-card__availability {
+    margin: 0;
+  }
+  .cbw-card__shipping {
+    display: block;
+    width: 31px;
+    height: 25px;
+    margin-top: 0;
+  }
+  .cbw-card--center .cbw-card__shipping {
+    display: none;
+  }
+{% endstylesheet %}
