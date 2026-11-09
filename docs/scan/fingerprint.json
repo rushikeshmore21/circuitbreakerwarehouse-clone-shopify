@@ -1,0 +1,210 @@
+{
+ "site": "https://www.circuitbreakerwarehouse.com",
+ "home_status": 200,
+ "home_redirects": [],
+ "home_bytes": 122683,
+ "platform_guess": [
+  "Volusion"
+ ],
+ "platform_scores": {
+  "Volusion": 3
+ },
+ "generator_meta": "",
+ "headers": {
+  "cf-ray": "a57efbfbda6e3f5b-BOM",
+  "server": "cloudflare",
+  "strict-transport-security": "max-age=15552000",
+  "x-powered-by": "Volusion",
+  "set-cookie": "__cf_bm=cZiajkITj8Ri1.0UhcivkxIzxB3bkrs9Uf4s4Hci_2I-1794250029.4212804-1.0.1.1-HwKgZT09LPV5YF9fYtknbuiJo9bIFVRewP0_AXMRZv8Jxpn1Yf0B5hgKQ9tF515iP_lrjoazB6cYRNUP6P65sJU8kVyPJ.nMzdd9rw4ELnkFCNZUvgBseZzH_LL6lR9Z; HttpOnly; SameSite=None; Partitioned; Secure; Path=/; Domain=www.circuitbreakerwarehouse.com; Expires=Mon, 09 Nov 2026 19:17:10 GMT"
+ },
+ "third_party_hosts": [
+  [
+   "www.volusion.com",
+   4
+  ],
+  [
+   "www.googletagmanager.com",
+   2
+  ],
+  [
+   "code.jquery.com",
+   1
+  ],
+  [
+   "www.paypal.com",
+   1
+  ],
+  [
+   "cdn4.volusion.store",
+   1
+  ],
+  [
+   "www.activatejavascript.org",
+   1
+  ],
+  [
+   "www.facebook.com",
+   1
+  ],
+  [
+   "twitter.com",
+   1
+  ],
+  [
+   "storage.googleapis.com",
+   1
+  ],
+  [
+   "static.cloudflareinsights.com",
+   1
+  ]
+ ],
+ "robots_txt": [
+  "User-agent: *",
+  "Content-Signal: search=yes,ai-train=no,use=reference",
+  "Allow: /",
+  "User-agent: Amazonbot",
+  "Disallow: /",
+  "User-agent: Applebot-Extended",
+  "Disallow: /",
+  "User-agent: Bytespider",
+  "Disallow: /",
+  "User-agent: CCBot",
+  "Disallow: /",
+  "User-agent: ClaudeBot",
+  "Disallow: /",
+  "User-agent: Diffbot",
+  "Disallow: /",
+  "User-agent: Google-Extended",
+  "Disallow: /",
+  "User-agent: GPTBot",
+  "Disallow: /",
+  "User-agent: omgili",
+  "Disallow: /",
+  "User-agent: anthropic-ai",
+  "Disallow: /",
+  "User-agent: Claude-Web",
+  "Disallow: /",
+  "User-agent: cohere-ai",
+  "Disallow: /",
+  "User-agent: MistralAI-Training",
+  "Disallow: /",
+  "User-agent: meta-externalagent",
+  "Disallow: /",
+  "User-agent: GoogleOther",
+  "Disallow: /",
+  "User-agent: Baiduspider",
+  "Disallow: /",
+  "User-agent: PetalBot",
+  "Disallow: /",
+  "User-agent: AwarioSmartBot",
+  "User-agent: AwarioRssBot",
+  "Disallow: /",
+  "User-agent: Google-CloudVertexBot",
+  "Disallow: /",
+  "User-agent: QualifiedBot",
+  "Disallow: /",
+  "User-agent: Cotoyogi",
+  "Disallow: /",
+  "User-agent: ICC-Crawler",
+  "Disallow: /",
+  "User-agent: atlassian-bot",
+  "Disallow: /",
+  "User-agent: FishBot",
+  "Disallow: /",
+  "User-agent: BorderxBot",
+  "Disallow: /",
+  "User-agent: NavuBot",
+  "Disallow: /",
+  "User-agent: SemrushBot-SWA",
+  "Disallow: /",
+  "User-agent: WARDBot",
+  "Disallow: /",
+  "User-agent: magpie-crawler",
+  "Disallow: /",
+  "User-agent: KimiBot",
+  "Disallow: /",
+  "User-agent: CitibotSiteCrawler",
+  "Disallow: /",
+  "User-agent: *",
+  "Disallow: /AccountSettings.asp",
+  "Disallow: /accountsettings.asp",
+  "Disallow: /Affiliate_thankyou.asp",
+  "Disallow: /affiliate_thankyou.asp",
+  "Disallow: /AjaxCart.asp",
+  "Disallow: /ajaxcart.asp",
+  "Disallow: /catalog_subscribe.asp",
+  "Disallow: /cgi-bin/",
+  "Disallow: /checkout/",
+  "Disallow: /Email_Me_When_Back_In_Stock.asp",
+  "Disallow: /email_me_when_back_in_stock.asp",
+  "Disallow: /EmailaFriend.asp",
+  "Disallow: /emailafriend.asp"
+ ],
+ "sitemap": {
+  "sitemaps_read": [
+   "https://www.circuitbreakerwarehouse.com/sitemap.xml"
+  ],
+  "url_count": 16249,
+  "patterns": [
+   {
+    "pattern": "/{x}-p/{x}.htm",
+    "count": 10954,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/American-NC015-p/nc015.htm",
+     "https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC020-p/nc020.htm",
+     "https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0215-p/nc0215.htm"
+    ]
+   },
+   {
+    "pattern": "/{x}-p/{x}-n.htm",
+    "count": 5267,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NC030-p/nc030-n.htm",
+     "https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NA3P60-NE-p/na3p60-n.htm",
+     "https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC20-p/nc20-n.htm"
+    ]
+   },
+   {
+    "pattern": "/category-s/{x}.htm",
+    "count": 21,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/category-s/46.htm",
+     "https://www.circuitbreakerwarehouse.com/category-s/47.htm",
+     "https://www.circuitbreakerwarehouse.com/category-s/48.htm"
+    ]
+   },
+   {
+    "pattern": "/{x}.asp?ID={v}",
+    "count": 3,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=242",
+     "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=243",
+     "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=252"
+    ]
+   },
+   {
+    "pattern": "/{x}.asp",
+    "count": 2,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/help.asp",
+     "https://www.circuitbreakerwarehouse.com/myaccount.asp"
+    ]
+   },
+   {
+    "pattern": "/",
+    "count": 1,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/"
+    ]
+   },
+   {
+    "pattern": "/{x}-s/{x}.htm",
+    "count": 1,
+    "examples": [
+     "https://www.circuitbreakerwarehouse.com/American-Circuit-Breakers-s/45.htm"
+    ]
+   }
+  ]
+ }
+}

@@ -1,0 +1,242 @@
+[
+ {
+  "id": "home-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "home-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "category-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/category-s/66.htm",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "category-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/category-s/66.htm",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "category-parent-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/category-s/34.htm",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "category-parent-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/category-s/34.htm",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "product-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Square-D-FHP16080-p/fhp16080.htm",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "product-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/Square-D-FHP16080-p/fhp16080.htm",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "product-n-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Cutler-Hammer-CH330ST-p/ch330st-n.htm",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "product-n-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/Cutler-Hammer-CH330ST-p/ch330st-n.htm",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "about-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=242",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "about-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=242",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "contact-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=243",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "contact-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=243",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "faq-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=252",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "faq-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.asp?ID=252",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "shipping-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/articles.php?ID=57",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "shipping-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/articles.php?ID=57",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "help-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/help.asp",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "help-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/help.asp",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "login-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/login.asp",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "login-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/login.asp",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "cart-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/shoppingcart.asp",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "cart-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/shoppingcart.asp",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "search-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/SearchResults.asp?Search=QO120",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "search-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/SearchResults.asp?Search=QO120",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "search-none-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/SearchResults.asp?Search=zzzznothing",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "search-none-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/SearchResults.asp?Search=zzzznothing",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "404-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/does-not-exist-xyz",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ },
+ {
+  "id": "404-phone",
+  "url": "https://www.circuitbreakerwarehouse.com/does-not-exist-xyz",
+  "device": "phone",
+  "full": true,
+  "wait": 3000,
+  "quality": 60
+ }
+]

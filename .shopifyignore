@@ -3,4 +3,14 @@
 node_modules/*
 package.json
 README.md
-yarn.lock
+yarn.lock.skills/*
+docs/*
+migration/*
+PROJECT.md
+Memory.md
+PLAN.md
+Security.md
+Optimization.md
+agent.md
+AGENTS.md
+CLAUDE.md

@@ -1,0 +1,10 @@
+     21  /category-s/{x}.htm   e.g. https://www.circuitbreakerwarehouse.com/category-s/46.htm
+      5  /{x}-p/{x}.htm   e.g. https://www.circuitbreakerwarehouse.com/American-NC015-p/nc015.htm
+      4  /{x}.asp   e.g. https://www.circuitbreakerwarehouse.com/help.asp
+      3  /{x}.asp?ID={v}   e.g. https://www.circuitbreakerwarehouse.com/Articles.asp?ID=242
+      3  /{x}-p/{x}-n.htm   e.g. https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NC030-p/nc030-n.htm
+      2  /{x}.asp?Search={v}   e.g. https://www.circuitbreakerwarehouse.com/SearchResults.asp?Search=QO120
+      1  /   e.g. https://www.circuitbreakerwarehouse.com/
+      1  /{x}-s/{x}.htm   e.g. https://www.circuitbreakerwarehouse.com/American-Circuit-Breakers-s/45.htm
+      1  /{x}   e.g. https://www.circuitbreakerwarehouse.com/does-not-exist-xyz
+      1  /{x}.php?ID={v}   e.g. https://www.circuitbreakerwarehouse.com/articles.php?ID=57
