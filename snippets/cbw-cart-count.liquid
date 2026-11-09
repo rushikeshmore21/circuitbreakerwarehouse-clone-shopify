@@ -1,0 +1,12 @@
+{% doc %}
+  Renders the cart button contents: cart icon, "Cart:" label and item count.
+  Used by the header and by the cart-icon-bubble section that Dawn's cart scripts re-render after add to cart.
+
+  @example
+  {% render 'cbw-cart-count' %}
+{% enddoc %}
+
+{%- render 'cbw-icon', name: 'cart', class: 'cbw-cart-count__icon' -%}
+<span class="cbw-cart-count__label" aria-hidden="true">{{ 'cbw.header.cart_label' | t }}</span>
+<span class="cbw-cart-count__number" aria-hidden="true">{{ cart.item_count }}</span>
+<span class="cbw-visually-hidden">{{ 'cbw.header.cart_count' | t: count: cart.item_count }}</span>

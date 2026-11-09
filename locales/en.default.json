@@ -274,7 +274,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
@@ -527,6 +526,43 @@
       "max_characters": "{{ max_chars }} characters max",
       "send_on": "YYYY-MM-DD",
       "send_on_label": "Send on (optional)"
+    }
+  },
+  "cbw": {
+    "general": {
+      "new_window": "(opens in a new tab)"
+    },
+    "header": {
+      "cart_label": "Cart:",
+      "cart_count": {
+        "one": "{{ count }} item in cart",
+        "other": "{{ count }} items in cart"
+      },
+      "flags_label": "Free shipping information",
+      "search_label": "Search our store",
+      "search_placeholder": "Search our store...",
+      "search_submit": "Search",
+      "call_phone": "Call {{ phone }}",
+      "menu_open": "Open menu",
+      "menu_close": "Close menu",
+      "menu_label": "Shop our categories",
+      "nav_label": "Main menu"
+    },
+    "footer": {
+      "copyright": "© Copyright {{ year }} {{ shop }}. All Rights Reserved.",
+      "payment_methods": "We accept Visa, American Express, Discover, MasterCard and PayPal",
+      "ssl_label": "Secure site: verify SSL certificate (opens in a new tab)"
+    },
+    "floating": {
+      "seal_label": "Norton Shopping Guarantee (opens in a new tab)",
+      "back_to_top": "Back to top"
+    },
+    "sidebar": {
+      "cards_alt": "We accept Visa, MasterCard, American Express and Discover",
+      "email_label": "Email address",
+      "join_now": "Join now",
+      "ssl_alt": "Secure site: verify SSL certificate (opens in a new tab)",
+      "badge_alt": "Volusion secure site: click to verify (opens in a new tab)"
     }
   }
 }

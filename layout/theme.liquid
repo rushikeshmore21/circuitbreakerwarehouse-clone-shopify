@@ -72,6 +72,48 @@
     %}
 
     {% style %}
+      @font-face {
+        font-family: 'cooper_hewitt';
+        src: url('{{ 'cooperhewitt-medium.woff2' | asset_url }}') format('woff2');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'cooper_hewitt';
+        src: url('{{ 'cooperhewitt-mediumitalic.woff2' | asset_url }}') format('woff2');
+        font-weight: 500;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'cooper_hewitt';
+        src: url('{{ 'cooperhewitt-semibold.woff2' | asset_url }}') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'cooper_hewitt';
+        src: url('{{ 'cooperhewitt-semibolditalic.woff2' | asset_url }}') format('woff2');
+        font-weight: 600;
+        font-style: italic;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'cooper_hewitt';
+        src: url('{{ 'cooperhewitt-bold.woff2' | asset_url }}') format('woff2');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'cooper_hewitt';
+        src: url('{{ 'cooperhewitt-bolditalic.woff2' | asset_url }}') format('woff2');
+        font-weight: 700;
+        font-style: italic;
+        font-display: swap;
+      }
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
@@ -279,6 +321,8 @@
     {% endstyle %}
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
+    {{ 'cooperhewitt-medium.woff2' | asset_url | preload_tag: as: 'font', type: 'font/woff2', crossorigin: true }}
+    {{ 'cbw-base.css' | asset_url | stylesheet_tag }}
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
 
     {%- if settings.cart_type == 'drawer' -%}
@@ -322,7 +366,7 @@
   {% render 'wsg-custom' %}
 </head>
 
-  <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
+  <body class="cbw gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ 'accessibility.skip_to_text' | t }}
     </a>

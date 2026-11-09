@@ -1,0 +1,167 @@
+:root {
+  --cbw-font: 'cooper_hewitt', sans-serif;
+  --cbw-text: #484848;
+  --cbw-navy: #080375;
+  --cbw-red: #d42400;
+  --cbw-blue: #2185c2;
+  --cbw-price-blue: #00009f;
+  --cbw-sale-bg: #00ff01;
+  --cbw-sale-text: #0000ff;
+  --cbw-save: #ff0000;
+  --cbw-grey-bar: #f1f1f1;
+  --cbw-footer-bg: #e3e3e3;
+  --cbw-footer-text: #5c5c5c;
+  --cbw-border: #d7d7d7;
+  --cbw-container: 1170px;
+}
+
+body.cbw {
+  font-family: var(--cbw-font);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4286;
+  letter-spacing: normal;
+  color: var(--cbw-text);
+  background-color: #fff;
+}
+
+.cbw h1,
+.cbw h2,
+.cbw h3,
+.cbw h4,
+.cbw h5,
+.cbw h6,
+.cbw .h0,
+.cbw .h1,
+.cbw .h2 {
+  font-family: var(--cbw-font);
+  letter-spacing: normal;
+  font-weight: 500;
+  color: var(--cbw-text);
+}
+
+.cbw a {
+  color: var(--cbw-red);
+}
+
+.cbw button,
+.cbw input,
+.cbw select,
+.cbw textarea {
+  font-family: var(--cbw-font);
+  letter-spacing: normal;
+}
+
+.cbw :focus-visible {
+  outline: 2px solid var(--cbw-navy);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+.cbw-container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 15px;
+}
+@media (min-width: 768px) {
+  .cbw-container { width: 750px; }
+}
+@media (min-width: 992px) {
+  .cbw-container { width: 970px; }
+}
+@media (min-width: 1200px) {
+  .cbw-container { width: var(--cbw-container); }
+}
+
+.cbw-layout {
+  display: block;
+}
+@media (min-width: 992px) {
+  .cbw-layout--sidebar {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    margin-inline: -15px;
+  }
+  .cbw-layout--sidebar > * {
+    padding-inline: 15px;
+    min-width: 0;
+  }
+}
+
+.cbw-btn {
+  display: inline-block;
+  border: 1px solid var(--cbw-red);
+  border-radius: 30px;
+  background: var(--cbw-red);
+  color: #fff;
+  font-family: var(--cbw-font);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 52px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+.cbw .cbw-btn,
+.cbw .cbw-btn:hover {
+  color: #fff;
+}
+.cbw-btn:hover {
+  background: var(--cbw-navy);
+  border-color: var(--cbw-navy);
+}
+.cbw-btn--navy {
+  background: var(--cbw-navy);
+  border-color: var(--cbw-navy);
+  border-radius: 0;
+  font-weight: 600;
+  line-height: 40px;
+  padding: 0 20px;
+}
+.cbw-btn--navy:hover {
+  background: var(--cbw-red);
+  border-color: var(--cbw-red);
+}
+.cbw-btn--small {
+  font-size: 12px;
+  line-height: 36px;
+  padding: 0 15px;
+}
+
+.cbw-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.cbw-price__line {
+  display: block;
+}
+.cbw-price__label {
+  font-weight: 700;
+  color: var(--cbw-price-blue);
+}
+.cbw-price__sale .cbw-price__label {
+  background-color: var(--cbw-sale-bg);
+  color: var(--cbw-sale-text);
+}
+.cbw-price__sale {
+  font-weight: 700;
+}
+.cbw-price__save {
+  color: var(--cbw-save);
+  font-size: 14px;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.cbw .shopify-section {
+  max-width: none;
+}

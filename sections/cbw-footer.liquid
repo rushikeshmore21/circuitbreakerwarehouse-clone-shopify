@@ -1,0 +1,353 @@
+{%- liquid
+  assign current_year = 'now' | date: '%Y'
+  assign social_blocks = section.blocks | where: 'type', 'social'
+-%}
+
+<footer class="cbw-footer">
+  <div class="cbw-footer__top">
+    <div class="cbw-container cbw-footer__grid">
+      <div class="cbw-footer__col cbw-footer__col--links">
+        {%- if section.settings.links_title != blank -%}
+          <h2 class="cbw-footer__title">{{ section.settings.links_title | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.menu != blank -%}
+          <ul class="cbw-footer__links">
+            {%- for link in section.settings.menu.links -%}
+              <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <div class="cbw-footer__col cbw-footer__col--social">
+        {%- if section.settings.social_title != blank -%}
+          <h2 class="cbw-footer__title">{{ section.settings.social_title | escape }}</h2>
+        {%- endif -%}
+        {%- if social_blocks.size > 0 -%}
+          <ul class="cbw-footer__social">
+            {%- for block in social_blocks -%}
+              <li {{ block.shopify_attributes }}>
+                <a href="{{ block.settings.url | default: '#' }}" target="_blank" rel="noopener">
+                  {%- render 'cbw-icon', name: block.settings.icon, class: 'cbw-footer__social-icon' -%}
+                  {{ block.settings.label | escape }}
+                  <span class="cbw-visually-hidden">{{ 'cbw.general.new_window' | t }}</span>
+                </a>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+      </div>
+
+      <div class="cbw-footer__col cbw-footer__col--disclaimer">
+        <div class="cbw-footer__disclaimer">
+          {%- if section.settings.disclaimer_title != blank -%}
+            <h2 class="cbw-footer__title">{{ section.settings.disclaimer_title | escape }}</h2>
+          {%- endif -%}
+          <div class="cbw-footer__disclaimer-text">{{ section.settings.disclaimer }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cbw-footer__bottom">
+    <div class="cbw-container cbw-footer__bottom-inner">
+      <p class="cbw-footer__copyright">
+        {{ 'cbw.footer.copyright' | t: year: current_year, shop: shop.name }}
+        {%- if section.settings.show_platform_credit and section.settings.platform_credit != blank %}
+          <a href="{{ section.settings.platform_credit_url | default: '#' }}" target="_blank" rel="noopener">
+            {{- section.settings.platform_credit | escape -}}
+          </a>
+        {%- endif -%}
+      </p>
+      <div class="cbw-footer__marks">
+        {%- if section.settings.show_payment_icons -%}
+          <span class="cbw-footer__cards" role="img" aria-label="{{ 'cbw.footer.payment_methods' | t }}">
+            {%- render 'cbw-icon', name: 'visa' -%}
+            {%- render 'cbw-icon', name: 'amex' -%}
+            {%- render 'cbw-icon', name: 'discover' -%}
+            {%- render 'cbw-icon', name: 'mc' -%}
+            {%- render 'cbw-icon', name: 'paypal' -%}
+          </span>
+        {%- endif -%}
+        {%- if section.settings.show_ssl_seal -%}
+          <a
+            class="cbw-footer__ssl"
+            href="{{ section.settings.ssl_url | default: '#' }}"
+            target="_blank"
+            rel="noopener"
+            aria-label="{{ 'cbw.footer.ssl_label' | t }}"
+          >
+            {%- render 'cbw-icon', name: 'ssl' -%}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</footer>
+
+{% stylesheet %}
+  .cbw-footer {
+    background-color: var(--cbw-footer-bg);
+    color: var(--cbw-footer-text);
+    text-align: center;
+  }
+  .cbw .cbw-footer a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .cbw .cbw-footer a:hover,
+  .cbw .cbw-footer a:focus {
+    color: var(--cbw-navy);
+  }
+  .cbw-footer__top {
+    border-bottom: 1px solid #c5c5c5;
+    padding-top: 59px;
+  }
+  .cbw-footer__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .cbw-footer__col--links,
+  .cbw-footer__col--social {
+    max-width: 320px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  .cbw .cbw-footer__title {
+    margin: 0 0 19px;
+    color: #626262;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.4286;
+    text-transform: uppercase;
+  }
+  .cbw-footer__links,
+  .cbw-footer__social {
+    margin: 0 0 42px;
+    padding: 0;
+    list-style: none;
+  }
+  .cbw-footer__links li {
+    line-height: 2;
+  }
+  .cbw-footer__social li {
+    line-height: 2.5;
+  }
+  .cbw-footer__social-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+    fill: var(--cbw-navy);
+    vertical-align: middle;
+  }
+  .cbw-footer__col--disclaimer {
+    margin-inline: -15px;
+    background: #f5f5f5;
+    padding: 25px 15px;
+    text-align: left;
+  }
+  .cbw-footer__disclaimer-text p {
+    margin: 0 0 10px;
+  }
+  .cbw-footer__disclaimer-text p:last-child {
+    margin-bottom: 0;
+  }
+  .cbw-footer__bottom {
+    padding: 35px 0 23px;
+    color: #595959;
+  }
+  .cbw-footer__copyright {
+    margin: 0;
+    line-height: 36px;
+  }
+  .cbw-footer__marks {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 20px 33px;
+    padding-block: 20px 0;
+  }
+  .cbw-footer__cards {
+    display: inline-flex;
+    align-items: center;
+    gap: 33px;
+  }
+  .cbw-footer__cards .cbw-icon {
+    fill: currentColor;
+  }
+  .cbw-footer__cards .cbw-icon--visa { width: 34px; height: 11px; }
+  .cbw-footer__cards .cbw-icon--amex { width: 42px; height: 10px; }
+  .cbw-footer__cards .cbw-icon--discover { width: 59px; height: 10px; }
+  .cbw-footer__cards .cbw-icon--mc { width: 60px; height: 10px; }
+  .cbw-footer__cards .cbw-icon--paypal { width: 48px; height: 13px; }
+  .cbw-footer__ssl {
+    display: inline-flex;
+  }
+  .cbw-footer__ssl .cbw-icon {
+    width: 93px;
+    height: 36px;
+    fill: currentColor;
+  }
+
+  @media (min-width: 768px) {
+    .cbw-footer__links {
+      columns: 2;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .cbw-footer {
+      text-align: left;
+    }
+    .cbw-footer__top {
+      padding-top: 0;
+      padding-bottom: 46px;
+    }
+    .cbw-footer__grid {
+      grid-template-columns: 4fr 2fr 6fr;
+      margin-inline: -15px;
+    }
+    .cbw-footer__col {
+      padding-inline: 15px;
+    }
+    .cbw-footer__col--links,
+    .cbw-footer__col--social {
+      max-width: none;
+      margin: 0;
+      padding-top: 50px;
+    }
+    .cbw-footer__col--disclaimer {
+      margin: 0;
+      padding: 0 15px 25px;
+      background: transparent;
+    }
+    .cbw-footer__disclaimer {
+      float: right;
+      width: 85%;
+      padding: 50px 40px 50px;
+      background: #f5f5f5;
+    }
+    .cbw-footer__bottom {
+      padding-bottom: 34px;
+    }
+    .cbw-footer__bottom-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cbw-footer__marks {
+      padding: 0;
+      justify-content: flex-end;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.footer.name",
+  "enabled_on": {
+    "groups": ["footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "links_title",
+      "label": "t:cbw.footer.links_title",
+      "default": "Helpful Links"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:cbw.footer.menu",
+      "default": "footer"
+    },
+    {
+      "type": "text",
+      "id": "social_title",
+      "label": "t:cbw.footer.social_title",
+      "default": "Stay Connected"
+    },
+    {
+      "type": "text",
+      "id": "disclaimer_title",
+      "label": "t:cbw.footer.disclaimer_title",
+      "default": "Disclaimer"
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "t:cbw.footer.disclaimer",
+      "default": "<p>Free shipping does not apply to \"<strong>AK</strong> \"and \"<strong>HI </strong>\" states.<br /><br /><strong>Shipping cut-off time is 12:00 (Noon) Pacific Time</strong>.</p><p>All prices are [in-stock] pricing. Orders will be processed within 1 business day of clear payment. Shipping subject to product availability.</p><p>Open Mon-Fri 8:00 AM - 4:00 PM Pacific Time.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:cbw.footer.bottom_header"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "t:cbw.footer.show_payment_icons",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_platform_credit",
+      "label": "t:cbw.footer.show_platform_credit",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "platform_credit",
+      "label": "t:cbw.footer.platform_credit",
+      "default": "Ecommerce Software by Volusion"
+    },
+    {
+      "type": "url",
+      "id": "platform_credit_url",
+      "label": "t:cbw.footer.platform_credit_url"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ssl_seal",
+      "label": "t:cbw.footer.show_ssl_seal",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "ssl_url",
+      "label": "t:cbw.footer.ssl_url"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "social",
+      "name": "t:cbw.footer.social_block",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "t:cbw.footer.social_icon",
+          "default": "facebook",
+          "options": [
+            { "value": "facebook", "label": "t:cbw.footer.icon_facebook" },
+            { "value": "gplus", "label": "t:cbw.footer.icon_gplus" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:cbw.footer.social_label",
+          "default": "Facebook"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "t:cbw.footer.social_url"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

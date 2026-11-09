@@ -1,1 +1,27 @@
-{"name":"t:sections.header.name","type":"header","sections":{"announcement-bar":{"type":"announcement-bar","blocks":{"announcement-bar-0":{"type":"announcement","settings":{"text":"Welcome to our store","link":""}}},"block_order":["announcement-bar-0"],"settings":{"auto_rotate":false,"change_slides_speed":5,"color_scheme":"scheme-1","show_line_separator":true,"show_social":false,"enable_country_selector":false,"enable_language_selector":false}},"header":{"type":"header","settings":{"logo_position":"middle-left","mobile_logo_position":"center","menu":"main-menu","menu_type_desktop":"dropdown","sticky_header_type":"on-scroll-up","show_line_separator":true,"color_scheme":"scheme-1","menu_color_scheme":"scheme-1","enable_country_selector":true,"enable_language_selector":true,"margin_bottom":0,"padding_top":20,"padding_bottom":20}}},"order":["announcement-bar","header"]}
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "top-bar": {
+      "type": "cbw-top-bar",
+      "settings": {
+        "text": "16K+ New, Refurbished & Hard-to-Find Breaker Part Numbers",
+        "link": ""
+      }
+    },
+    "header": {
+      "type": "cbw-header",
+      "settings": {
+        "promo_highlight": "Free Shipping",
+        "promo_text": "on All Orders!",
+        "promo_link": "/pages/free-shipping",
+        "call_label": "Call Today!",
+        "phone": "(888) 367-7700",
+        "show_flags": true,
+        "flags_link": "/pages/free-shipping",
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["top-bar", "header"]
+}

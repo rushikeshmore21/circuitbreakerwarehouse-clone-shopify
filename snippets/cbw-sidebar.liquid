@@ -1,0 +1,191 @@
+{% doc %}
+  Renders the left sidebar used on home, collection, search and product pages:
+  manufacturers menu, accepted cards image, mailing list signup and security seals.
+  All content comes from the "Sidebar" group in theme settings.
+
+  @example
+  {% render 'cbw-sidebar' %}
+{% enddoc %}
+
+<aside class="cbw-sidebar" aria-label="{{ settings.cbw_sidebar_title | escape }}">
+  {%- if settings.cbw_sidebar_menu != blank -%}
+    <nav class="cbw-sidebar__nav" aria-labelledby="CbwSidebarTitle">
+      <h2 class="cbw-sidebar__title" id="CbwSidebarTitle">{{ settings.cbw_sidebar_title | escape }}</h2>
+      <ul class="cbw-sidebar__list">
+        {%- for link in settings.cbw_sidebar_menu.links -%}
+          <li>
+            <a
+              class="cbw-sidebar__link"
+              href="{{ link.url }}"
+              {% if link.current %}
+                aria-current="page"
+              {% endif %}
+            >
+              {{- link.title | escape -}}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+  {%- endif -%}
+
+  <div class="cbw-sidebar__promotions">
+    {%- if settings.cbw_sidebar_show_cards -%}
+      <img
+        class="cbw-sidebar__cards"
+        src="{{ 'cbw-cc-logos.gif' | asset_url }}"
+        alt="{{ 'cbw.sidebar.cards_alt' | t }}"
+        width="125"
+        height="19"
+        loading="lazy"
+      >
+    {%- endif -%}
+
+    {%- if settings.cbw_sidebar_show_newsletter -%}
+      {%- form 'customer', id: 'CbwSidebarNewsletter', class: 'cbw-sidebar__newsletter' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <h2 class="cbw-sidebar__newsletter-title">{{ settings.cbw_sidebar_newsletter_title | escape }}</h2>
+        {%- if form.posted_successfully? -%}
+          <p class="cbw-sidebar__newsletter-message" role="status">{{ 'newsletter.success' | t }}</p>
+        {%- endif -%}
+        {%- if form.errors -%}
+          <p class="cbw-sidebar__newsletter-message" id="CbwSidebarNewsletterError" role="alert">
+            {{ form.errors.translated_fields.email | capitalize }}
+            {{ form.errors.messages.email }}
+          </p>
+        {%- endif -%}
+        <label class="cbw-visually-hidden" for="CbwSidebarNewsletterEmail">{{ 'cbw.sidebar.email_label' | t }}</label>
+        <input
+          class="cbw-sidebar__newsletter-input"
+          id="CbwSidebarNewsletterEmail"
+          type="email"
+          name="contact[email]"
+          maxlength="50"
+          autocomplete="email"
+          placeholder="{{ 'cbw.sidebar.email_label' | t }}"
+          required
+          {% if form.errors %}
+            aria-invalid="true"
+            aria-describedby="CbwSidebarNewsletterError"
+          {% endif %}
+        >
+        <button class="cbw-btn cbw-btn--navy cbw-sidebar__newsletter-submit" type="submit">
+          {{- 'cbw.sidebar.join_now' | t -}}
+        </button>
+      {%- endform -%}
+    {%- endif -%}
+
+    {%- if settings.cbw_sidebar_show_ssl_seal -%}
+      <a href="{{ settings.cbw_sidebar_seal_url | default: '#' }}" target="_blank" rel="noopener">
+        <img
+          src="{{ 'cbw-seal-volusion-ssl.png' | asset_url }}"
+          alt="{{ 'cbw.sidebar.ssl_alt' | t }}"
+          width="100"
+          height="113"
+          loading="lazy"
+        >
+      </a>
+    {%- endif -%}
+    {%- if settings.cbw_sidebar_show_badge -%}
+      <a href="{{ settings.cbw_sidebar_seal_url | default: '#' }}" target="_blank" rel="noopener">
+        <img
+          src="{{ 'cbw-seal-volusion-badge.png' | asset_url }}"
+          alt="{{ 'cbw.sidebar.badge_alt' | t }}"
+          width="137"
+          height="58"
+          loading="lazy"
+        >
+      </a>
+    {%- endif -%}
+  </div>
+</aside>
+
+{% stylesheet %}
+  .cbw-sidebar {
+    display: none;
+  }
+  @media (min-width: 992px) {
+    .cbw-sidebar {
+      display: block;
+      padding-top: 45px;
+      padding-bottom: 25px;
+    }
+  }
+  .cbw-sidebar__nav {
+    border: 1px solid var(--cbw-border);
+    background: #fff;
+  }
+  .cbw .cbw-sidebar__title {
+    margin: 0;
+    padding: 16px 19px;
+    background: var(--cbw-blue);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.4286;
+    text-transform: uppercase;
+  }
+  .cbw-sidebar__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbw .cbw-sidebar__link {
+    display: block;
+    padding: 8px 10px;
+    color: var(--cbw-text);
+    font-size: 12px;
+    line-height: 1.4286;
+    text-decoration: none;
+  }
+  .cbw .cbw-sidebar__link:hover,
+  .cbw .cbw-sidebar__link[aria-current='page'] {
+    color: var(--cbw-red);
+  }
+  .cbw-sidebar__promotions {
+    padding-top: 15px;
+    text-align: center;
+  }
+  .cbw-sidebar__promotions > * {
+    display: block;
+    margin: 10px auto;
+    max-width: 100%;
+  }
+  .cbw-sidebar__promotions a {
+    display: block;
+    width: fit-content;
+  }
+  .cbw-sidebar__promotions img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+  .cbw .cbw-sidebar__newsletter-title {
+    margin: 0 0 11px;
+    font-size: 20px;
+    line-height: 22px;
+  }
+  .cbw-sidebar__newsletter-input {
+    display: block;
+    width: 220px;
+    max-width: 100%;
+    height: 42px;
+    margin: 0 auto 10px;
+    padding: 6px 10px;
+    border: 1px solid #8a8a8a;
+    border-radius: 0;
+    font-size: 14px;
+    color: var(--cbw-text);
+  }
+  .cbw-sidebar__newsletter-input::placeholder {
+    color: #000;
+    opacity: 1;
+  }
+  .cbw-sidebar__newsletter-submit {
+    font-size: 16px;
+  }
+  .cbw-sidebar__newsletter-message {
+    margin: 0 0 10px;
+    font-size: 14px;
+  }
+{% endstylesheet %}

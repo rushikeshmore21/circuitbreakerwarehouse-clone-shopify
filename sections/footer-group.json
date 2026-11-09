@@ -1,1 +1,52 @@
-{"name":"t:sections.footer.name","type":"footer","sections":{"footer":{"type":"footer","settings":{"color_scheme":"scheme-1","newsletter_enable":true,"newsletter_heading":"Subscribe to our emails","enable_follow_on_shop":true,"show_social":true,"enable_country_selector":true,"enable_language_selector":true,"payment_enable":true,"show_policy":true,"margin_top":0,"padding_top":36,"padding_bottom":36}}},"order":["footer"]}
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "cbw-footer",
+      "blocks": {
+        "social-facebook": {
+          "type": "social",
+          "settings": {
+            "icon": "facebook",
+            "label": "Facebook",
+            "url": "https://www.facebook.com/CircuitBreakerWarehouse"
+          }
+        },
+        "social-gplus": {
+          "type": "social",
+          "settings": {
+            "icon": "gplus",
+            "label": "Google+",
+            "url": ""
+          }
+        }
+      },
+      "block_order": ["social-facebook", "social-gplus"],
+      "settings": {
+        "links_title": "Helpful Links",
+        "menu": "footer",
+        "social_title": "Stay Connected",
+        "disclaimer_title": "Disclaimer",
+        "show_payment_icons": true,
+        "show_platform_credit": true,
+        "platform_credit": "Ecommerce Software by Volusion",
+        "platform_credit_url": "http://www.volusion.com",
+        "show_ssl_seal": true,
+        "ssl_url": "https://www.volusion.com/ssl.php?url=www.circuitbreakerwarehouse.com"
+      }
+    },
+    "floating": {
+      "type": "cbw-floating",
+      "settings": {
+        "show_seal": true,
+        "seal_url": "",
+        "show_message_tab": true,
+        "message_text": "Leave a Message / E_MAIL: Support@CircuitBreakerWarehouse.com",
+        "message_link": "/pages/contact",
+        "show_back_to_top": true
+      }
+    }
+  },
+  "order": ["footer", "floating"]
+}

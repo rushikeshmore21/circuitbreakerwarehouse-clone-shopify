@@ -1,0 +1,571 @@
+{%- liquid
+  assign phone_tel = section.settings.phone | remove: ' ' | remove: '(' | remove: ')' | remove: '-'
+  assign drawer_menu = settings.cbw_sidebar_menu
+-%}
+
+{{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
+
+<header class="cbw-header">
+  <div class="cbw-header__utility">
+    <div class="cbw-container cbw-header__utility-inner">
+      <div class="cbw-header__utility-left">
+        {%- if section.settings.promo_highlight != blank or section.settings.promo_text != blank -%}
+          <a class="cbw-header__promo" href="{{ section.settings.promo_link | default: '#' }}">
+            <span class="cbw-header__promo-strong">{{ section.settings.promo_highlight | escape }}</span>
+            {{ section.settings.promo_text | escape }}
+          </a>
+        {%- endif -%}
+        {%- if section.settings.phone != blank -%}
+          <span class="cbw-header__call">
+            {{ section.settings.call_label | escape }}
+            <a class="cbw-header__call-link" href="tel:{{ phone_tel }}">{{ section.settings.phone | escape }}</a>
+          </span>
+        {%- endif -%}
+      </div>
+      {%- if section.settings.show_flags -%}
+        <a
+          class="cbw-header__flags"
+          href="{{ section.settings.flags_link | default: '#' }}"
+          aria-label="{{ 'cbw.header.flags_label' | t }}"
+        >
+          {%- render 'cbw-icon', name: 'australia' -%}
+          {%- render 'cbw-icon', name: 'germany' -%}
+          {%- render 'cbw-icon', name: 'japan' -%}
+          {%- render 'cbw-icon', name: 'uk' -%}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="cbw-container cbw-header__main">
+    <a class="cbw-header__logo" href="{{ routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        {{
+          section.settings.logo
+          | image_url: width: 732
+          | image_tag: alt: shop.name, class: 'cbw-header__logo-img', widths: '366, 552, 732', sizes: '(min-width: 992px) 366px, 276px', fetchpriority: 'high'
+        }}
+      {%- else -%}
+        <img
+          class="cbw-header__logo-img"
+          src="{{ 'cbw-logo.png' | asset_url }}"
+          alt="{{ shop.name | escape }}"
+          width="600"
+          height="203"
+          fetchpriority="high"
+        >
+      {%- endif -%}
+    </a>
+
+    <div class="cbw-header__tools">
+      <form class="cbw-search" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="cbw-visually-hidden" for="CbwSearch-{{ section.id }}">{{ 'cbw.header.search_label' | t }}</label>
+        <input
+          class="cbw-search__input"
+          id="CbwSearch-{{ section.id }}"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'cbw.header.search_placeholder' | t }}"
+          autocomplete="off"
+        >
+        <input type="hidden" name="type" value="product">
+        <input type="hidden" name="options[prefix]" value="last">
+        <button class="cbw-search__submit" type="submit" aria-label="{{ 'cbw.header.search_submit' | t }}">
+          {%- render 'cbw-icon', name: 'search', class: 'cbw-search__icon' -%}
+        </button>
+      </form>
+
+      {%- if section.settings.phone != blank -%}
+        <a
+          class="cbw-header__phone"
+          href="tel:{{ phone_tel }}"
+          aria-label="{{ 'cbw.header.call_phone' | t: phone: section.settings.phone }}"
+        >
+          {%- render 'cbw-icon', name: 'phone' -%}
+        </a>
+      {%- endif -%}
+
+      <a class="cbw-header__cart" id="cart-icon-bubble" href="{{ routes.cart_url }}">
+        {%- render 'cbw-cart-count' -%}
+      </a>
+
+      <button
+        class="cbw-header__menu-toggle"
+        type="button"
+        aria-controls="CbwDrawer-{{ section.id }}"
+        aria-expanded="false"
+        aria-label="{{ 'cbw.header.menu_open' | t }}"
+        data-cbw-drawer-open
+      >
+        {%- render 'cbw-icon', name: 'menu' -%}
+      </button>
+    </div>
+  </div>
+
+  {%- if section.settings.menu != blank -%}
+    <nav class="cbw-nav" aria-label="{{ 'cbw.header.nav_label' | t }}">
+      <div class="cbw-container">
+        <ul class="cbw-nav__list">
+          {%- for link in section.settings.menu.links -%}
+            <li class="cbw-nav__item">
+              <a
+                class="cbw-nav__link"
+                href="{{ link.url }}"
+                {% if link.current %}
+                  aria-current="page"
+                {% endif %}
+              >
+                {{- link.title | escape -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </nav>
+  {%- endif -%}
+
+  <dialog class="cbw-drawer" id="CbwDrawer-{{ section.id }}" aria-label="{{ 'cbw.header.menu_label' | t }}">
+    <div class="cbw-drawer__close-row">
+      <button class="cbw-drawer__close" type="button" aria-label="{{ 'cbw.header.menu_close' | t }}" data-cbw-drawer-close>
+        {%- render 'cbw-icon', name: 'close' -%}
+      </button>
+    </div>
+    {%- if section.settings.menu != blank -%}
+      <ul class="cbw-drawer__main">
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            <a class="cbw-drawer__main-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+    {%- if drawer_menu != blank -%}
+      <p class="cbw-drawer__title">{{ settings.cbw_sidebar_title | escape }}</p>
+      <ul class="cbw-drawer__sub">
+        {%- for link in drawer_menu.links -%}
+          <li>
+            <a class="cbw-drawer__sub-link" href="{{ link.url }}">{{ link.title | escape }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </dialog>
+</header>
+
+{%- if settings.cart_type == 'notification' -%}
+  {%- render 'cart-notification' -%}
+{%- endif -%}
+
+{% stylesheet %}
+  .cbw-header {
+    position: relative;
+    background: #fff;
+  }
+  .cbw-header__utility {
+    display: none;
+  }
+  .cbw-header__main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .cbw-header__logo {
+    display: block;
+    align-self: center;
+    margin-top: -20px;
+  }
+  .cbw-header__logo-img {
+    display: block;
+    width: 276px;
+    max-width: 100%;
+    height: auto;
+  }
+  .cbw-header__tools {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 77px;
+    margin-inline: -15px;
+    padding-inline: 15px;
+    border-top: 1px solid #ebebeb;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .cbw-search {
+    position: relative;
+    flex: 0 1 40%;
+    height: 50px;
+    background: #fff;
+  }
+  .cbw-search__input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0 56px 0 10px;
+    border: 1px solid #c3c3c3;
+    border-radius: 0;
+    background: transparent;
+    font-size: 14px;
+    color: var(--cbw-text);
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .cbw-search__input::placeholder {
+    color: #000;
+    opacity: 1;
+  }
+  .cbw-search__input::-webkit-search-cancel-button {
+    display: none;
+  }
+  .cbw-search__submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .cbw-search__icon {
+    width: 21px;
+    height: 21px;
+    fill: var(--cbw-red);
+    vertical-align: middle;
+  }
+  .cbw-search__submit:hover .cbw-search__icon {
+    fill: var(--cbw-navy);
+  }
+  .cbw-header__phone {
+    display: inline-flex;
+  }
+  .cbw-header__phone .cbw-icon {
+    width: 29px;
+    height: 31px;
+    fill: var(--cbw-navy);
+  }
+  .cbw .cbw-header__cart {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--cbw-red);
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .cbw-cart-count__icon {
+    width: 28px;
+    height: 23px;
+    fill: currentColor;
+  }
+  .cbw-cart-count__label {
+    display: none;
+  }
+  .cbw-header__menu-toggle {
+    display: inline-flex;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .cbw-header__menu-toggle .cbw-icon {
+    width: 31px;
+    height: 21px;
+    fill: var(--cbw-navy);
+  }
+  .cbw-nav {
+    display: none;
+  }
+
+  .cbw-drawer {
+    position: fixed;
+    inset: 0 0 0 auto;
+    width: 300px;
+    max-width: 100%;
+    height: 100%;
+    max-height: none;
+    margin: 0;
+    padding: 0 0 30px;
+    border: 0;
+    border-left: 1px solid #b7b7b7;
+    background: #fff;
+    overflow-y: auto;
+    color: var(--cbw-text);
+  }
+  .cbw-drawer::backdrop {
+    background: rgba(0, 0, 0, 0.3);
+  }
+  .cbw-drawer__close-row {
+    height: 60px;
+    padding: 0 15px;
+    text-align: right;
+  }
+  .cbw-drawer__close {
+    height: 60px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .cbw-drawer__close .cbw-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--cbw-red);
+  }
+  .cbw-drawer__main,
+  .cbw-drawer__sub {
+    margin: 0;
+    padding: 0 0 0 15px;
+    list-style: none;
+  }
+  .cbw .cbw-drawer__main-link {
+    display: block;
+    padding: 2px 0;
+    color: var(--cbw-text);
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .cbw-drawer__title {
+    margin: 0;
+    padding: 35px 15px;
+    color: var(--cbw-navy);
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .cbw .cbw-drawer__sub-link {
+    display: block;
+    padding: 8px 10px;
+    color: var(--cbw-text);
+    font-size: 12px;
+    line-height: 24px;
+    text-decoration: none;
+  }
+  .cbw .cbw-drawer a:hover {
+    color: var(--cbw-red);
+  }
+
+  @media (min-width: 992px) {
+    .cbw-header__utility {
+      display: block;
+      height: 40px;
+      line-height: 40px;
+      background: var(--cbw-grey-bar);
+    }
+    .cbw-header__utility-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 40px;
+    }
+    .cbw .cbw-header__promo {
+      color: var(--cbw-text);
+      text-decoration: none;
+    }
+    .cbw-header__promo-strong {
+      font-weight: 600;
+      color: var(--cbw-navy);
+      text-transform: uppercase;
+    }
+    .cbw-header__call {
+      margin-left: 40px;
+    }
+    .cbw .cbw-header__call-link {
+      font-weight: 600;
+      color: var(--cbw-navy);
+      text-decoration: none;
+    }
+    .cbw-header__flags {
+      display: flex;
+      gap: 3.33px;
+      height: 40px;
+      padding-top: 1px;
+      align-items: flex-start;
+    }
+    .cbw-header__flags .cbw-icon {
+      width: 34px;
+      height: 34px;
+    }
+    .cbw-header__main {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      height: 130px;
+      margin-top: 2px;
+    }
+    .cbw-header__logo {
+      align-self: flex-start;
+      margin-top: -10px;
+    }
+    .cbw-header__logo-img {
+      width: 366px;
+    }
+    .cbw-header__tools {
+      justify-content: flex-end;
+      gap: 20px;
+      height: auto;
+      margin: 6px 0 0;
+      padding: 0;
+      border: 0;
+    }
+    .cbw-search {
+      flex: 0 0 291px;
+    }
+    .cbw-header__phone,
+    .cbw-header__menu-toggle {
+      display: none;
+    }
+    .cbw .cbw-header__cart {
+      gap: 0;
+      height: 50px;
+      padding: 0 26.5px;
+      background: var(--cbw-red);
+      color: #fff;
+      line-height: 50px;
+      text-transform: uppercase;
+    }
+    .cbw-cart-count__icon {
+      margin-right: 5px;
+    }
+    .cbw-cart-count__label {
+      display: inline;
+    }
+    .cbw-nav {
+      display: block;
+      height: 50px;
+      background: var(--cbw-blue);
+    }
+    .cbw-nav__list {
+      display: table;
+      width: 100%;
+      height: 50px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .cbw-nav__item {
+      display: table-cell;
+      width: 1%;
+      white-space: nowrap;
+      border-right: 1px solid #02bb02;
+    }
+    .cbw-nav__item:first-child {
+      border-left: 1px solid #02bb02;
+    }
+    .cbw .cbw-nav__link {
+      display: block;
+      color: #fff;
+      font-weight: 600;
+      line-height: 50px;
+      text-align: center;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .cbw .cbw-nav__link:hover,
+    .cbw .cbw-nav__link[aria-current='page'] {
+      background: var(--cbw-red);
+      color: #fff;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('click', (event) => {
+    const opener = event.target.closest('[data-cbw-drawer-open]');
+    if (opener) {
+      const drawer = document.getElementById(opener.getAttribute('aria-controls'));
+      if (!drawer) return;
+      drawer.showModal();
+      opener.setAttribute('aria-expanded', 'true');
+      drawer.addEventListener(
+        'close',
+        () => {
+          opener.setAttribute('aria-expanded', 'false');
+          opener.focus();
+        },
+        { once: true }
+      );
+      return;
+    }
+    if (event.target.closest('[data-cbw-drawer-close]')) {
+      event.target.closest('dialog').close();
+      return;
+    }
+    if (event.target.matches('dialog.cbw-drawer')) {
+      event.target.close();
+    }
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:cbw.header.name",
+  "class": "cbw-header-section",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:cbw.header.utility_header"
+    },
+    {
+      "type": "text",
+      "id": "promo_highlight",
+      "label": "t:cbw.header.promo_highlight",
+      "default": "Free Shipping"
+    },
+    {
+      "type": "text",
+      "id": "promo_text",
+      "label": "t:cbw.header.promo_text",
+      "default": "on All Orders!"
+    },
+    {
+      "type": "url",
+      "id": "promo_link",
+      "label": "t:cbw.header.promo_link"
+    },
+    {
+      "type": "text",
+      "id": "call_label",
+      "label": "t:cbw.header.call_label",
+      "default": "Call Today!"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "t:cbw.header.phone",
+      "default": "(888) 367-7700"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_flags",
+      "label": "t:cbw.header.show_flags",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "flags_link",
+      "label": "t:cbw.header.flags_link"
+    },
+    {
+      "type": "header",
+      "content": "t:cbw.header.main_header"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "t:cbw.header.logo",
+      "info": "t:cbw.header.logo_info"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "t:cbw.header.menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

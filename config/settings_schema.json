@@ -1466,5 +1466,57 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "t:cbw.settings.sidebar",
+    "settings": [
+      {
+        "type": "text",
+        "id": "cbw_sidebar_title",
+        "label": "t:cbw.settings.sidebar_title",
+        "default": "Manufacturers"
+      },
+      {
+        "type": "link_list",
+        "id": "cbw_sidebar_menu",
+        "label": "t:cbw.settings.sidebar_menu",
+        "info": "t:cbw.settings.sidebar_menu_info"
+      },
+      {
+        "type": "checkbox",
+        "id": "cbw_sidebar_show_cards",
+        "label": "t:cbw.settings.sidebar_show_cards",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cbw_sidebar_show_newsletter",
+        "label": "t:cbw.settings.sidebar_show_newsletter",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "cbw_sidebar_newsletter_title",
+        "label": "t:cbw.settings.sidebar_newsletter_title",
+        "default": "Join our mailing list!"
+      },
+      {
+        "type": "checkbox",
+        "id": "cbw_sidebar_show_ssl_seal",
+        "label": "t:cbw.settings.sidebar_show_ssl_seal",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "cbw_sidebar_show_badge",
+        "label": "t:cbw.settings.sidebar_show_badge",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "cbw_sidebar_seal_url",
+        "label": "t:cbw.settings.sidebar_seal_url"
+      }
+    ]
   }
 ]
