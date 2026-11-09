@@ -1,0 +1,27 @@
+{
+	"name": "shopify-marketing-template",
+	"version": "1.0.0",
+	"description": "template for a Shopify project",
+	"main": "index.js",
+	"scripts": {
+		"login:shopify": "echo \"Logging you out of Shopify CLI\" && shopify logout && dotenv -- cross-var shopify login --store=%SHOPIFY_URL%",
+		"dl:theme": "shopify theme pull -n",
+		"dev": "shopify theme serve",
+		"clean": "git clean -df"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/coalitiontech/shopify-marketing-template.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/coalitiontech/shopify-marketing-template/issues"
+	},
+	"homepage": "https://github.com/coalitiontech/shopify-marketing-template#readme",
+	"devDependencies": {
+		"cross-var": "^1.1.0",
+		"dotenv-cli": "^5.0.0"
+	}
+}
