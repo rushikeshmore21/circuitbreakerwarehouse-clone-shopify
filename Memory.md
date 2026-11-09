@@ -32,9 +32,9 @@ Last updated: 2026-11-10
 - zsh globs `?` in unquoted URLs: quote URLs in shell commands.
 
 ## Owner to-do (admin data the theme expects)
-- Menu with handle `manufacturers` (sidebar + phone drawer), linking the 16 manufacturer collections.
+- Sidebar + phone drawer read the `collection-sidebar` menu (owner created it 2026-11-10); its links still point to `#` until collections exist.
 - Manufacturer collections; home brand logos link to `/collections/{general-electric|siemens|zinsco|federal-pacific|cutler-hammer|ite|westinghouse}-circuit-breakers`.
-- Fix `main-menu` link targets; create pages `faq`, `free-shipping`; assign template `page.contact` to Contact and `page.help` to Help; menus for each Help group.
+- Assign templates in admin: `contact-us` -> `page.contact`, `help` -> `page.help`, `product-index` -> `page.product-index`, `category-index` -> `page.category-index`; menus for each Help group; page `free-shipping`; Privacy Policy footer link is `#`.
 - Store name is "Test" (shows in copyright and breadcrumb).
 - Product metafields `custom.type`, `custom.poles`, `custom.amperage`, `custom.voltage` (and optional `custom.condition`).
 - Collection default sort (live default: price low to high); favicon.

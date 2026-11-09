@@ -636,6 +636,12 @@
       "title": "The page cannot be found",
       "text": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Try searching for a part number:",
       "home": "Back to the home page"
+    },
+    "index": {
+      "pages_label": "Product index pages",
+      "page": "Page:",
+      "code": "Part number",
+      "product": "Product"
     }
   }
 }

@@ -6,7 +6,7 @@
 {{ 'component-cart-notification.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart-notification.js' | asset_url }}" defer="defer"></script>
 
-<header class="cbw-header">
+<header class="cbw-header" data-cbw-sticky-header>
   <div class="cbw-header__utility">
     <div class="cbw-container cbw-header__utility-inner">
       <div class="cbw-header__utility-left">
@@ -152,16 +152,69 @@
       </ul>
     {%- endif -%}
   </dialog>
-</header>
 
-{%- if settings.cart_type == 'notification' -%}
-  {%- render 'cart-notification', color_scheme: 'scheme-1' -%}
-{%- endif -%}
+  {%- if settings.cart_type == 'notification' -%}
+    {%- render 'cart-notification', color_scheme: 'scheme-1' -%}
+  {%- endif -%}
+</header>
 
 {% stylesheet %}
   .cbw-header {
     position: relative;
     background: #fff;
+  }
+  .cbw-header .cart-notification-wrapper {
+    z-index: 3;
+  }
+  .cbw .cart-notification {
+    border: 1px solid #ccc;
+    background: #fff;
+    font-family: var(--cbw-font);
+  }
+  .cbw .cart-notification__heading {
+    color: var(--cbw-navy);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .cbw .cart-notification .cart-notification-product__name {
+    color: var(--cbw-text);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+  .cbw .cart-notification .button {
+    min-height: 42px;
+    border-radius: 30px;
+    font-family: var(--cbw-font);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  .cbw .cart-notification .button::before,
+  .cbw .cart-notification .button::after {
+    display: none;
+  }
+  .cbw .cart-notification .button--primary {
+    border: 1px solid var(--cbw-red);
+    background: var(--cbw-red);
+    color: #fff;
+  }
+  .cbw .cart-notification .button--secondary {
+    border: 1px solid var(--cbw-navy);
+    background: var(--cbw-navy);
+    color: #fff;
+  }
+  .cbw .cart-notification .button:hover {
+    border-color: var(--cbw-red);
+    background: #fff;
+    color: var(--cbw-red);
+  }
+  .cbw .cart-notification__links .link {
+    color: var(--cbw-red);
+    font-size: 14px;
+    letter-spacing: 0;
   }
   .cbw-header__utility {
     display: none;
@@ -396,6 +449,37 @@
       justify-content: space-between;
       height: 130px;
       margin-top: 2px;
+      overflow: hidden;
+      transition: height 0.2s ease-in-out;
+    }
+    .cbw-header__logo,
+    .cbw .cbw-header__cart {
+      transition: opacity 0.2s ease-in-out;
+    }
+    .cbw-header.is-sticky {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 20;
+    }
+    .cbw-header.is-sticky .cbw-header__main {
+      height: 0;
+    }
+    .cbw-header.is-sticky .cbw-header__logo,
+    .cbw .cbw-header.is-sticky .cbw-header__cart {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .cbw-header.is-sticky .cbw-search {
+      position: absolute;
+      top: 1px;
+      right: calc((100% - var(--cbw-container-width)) / 2 + 181px);
+      width: 291px;
+      height: 40px;
+    }
+    .cbw-header.is-sticky .cbw-search__submit {
+      height: 40px;
     }
     .cbw-header__logo {
       align-self: flex-start;
@@ -474,6 +558,43 @@
 {% endstylesheet %}
 
 {% javascript %}
+  const cbwInitStickyHeader = () => {
+    const header = document.querySelector('[data-cbw-sticky-header]');
+    if (!header) return;
+    const holder = header.parentElement;
+    const desktop = window.matchMedia('(min-width: 992px)');
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      if (!desktop.matches) {
+        header.classList.remove('is-sticky');
+        holder.style.height = '';
+        return;
+      }
+      const sticky = window.scrollY >= holder.offsetTop;
+      if (sticky && !header.classList.contains('is-sticky')) {
+        holder.style.height = `${header.offsetHeight}px`;
+        header.classList.add('is-sticky');
+      } else if (!sticky && header.classList.contains('is-sticky')) {
+        header.classList.remove('is-sticky');
+        holder.style.height = '';
+      }
+    };
+    const request = () => {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', request, { passive: true });
+    desktop.addEventListener('change', request);
+    update();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cbwInitStickyHeader);
+  } else {
+    cbwInitStickyHeader();
+  }
+
   document.addEventListener('click', (event) => {
     const opener = event.target.closest('[data-cbw-drawer-open]');
     if (opener) {

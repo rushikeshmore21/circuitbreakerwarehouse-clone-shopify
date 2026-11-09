@@ -104,6 +104,102 @@
   .cbw .cart__login-paragraph {
     display: none;
   }
+  .cbw .cart-items th,
+  .cbw .cart-items__heading--wide,
+  .cbw .caption-with-letter-spacing {
+    color: var(--cbw-text);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  .cbw .cart-items thead th {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .cbw .cart-item__name {
+    color: var(--cbw-text);
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0;
+    text-decoration: none;
+  }
+  .cbw .cart-item__name:hover {
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw .cart-item .product-option,
+  .cbw .cart-item .price {
+    color: var(--cbw-text);
+    font-size: 16px;
+    letter-spacing: 0;
+  }
+  .cbw .cart-item__totals .price {
+    color: var(--cbw-navy);
+    font-weight: 700;
+  }
+  .cbw .cart-items .quantity {
+    width: 120px;
+    min-height: 42px;
+    border-radius: 0;
+  }
+  .cbw .cart-items .quantity::after {
+    border-radius: 0;
+    box-shadow: 0 0 0 1px #ccc;
+  }
+  .cbw .cart-items .quantity__input {
+    color: var(--cbw-text);
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .cbw .cart-items .quantity__button {
+    color: var(--cbw-navy);
+  }
+  .cbw cart-remove-button .button {
+    color: var(--cbw-red);
+  }
+  .cbw .totals__total {
+    color: var(--cbw-text);
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .cbw .totals__total-value {
+    color: var(--cbw-navy);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+  .cbw .tax-note {
+    color: var(--cbw-text);
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  .cbw .cart__checkout-button {
+    min-height: 42px;
+    border: 1px solid var(--cbw-red);
+    border-radius: 30px;
+    background: var(--cbw-red);
+    color: #fff;
+    font-family: var(--cbw-font);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: uppercase;
+  }
+  .cbw .cart__checkout-button::before,
+  .cbw .cart__checkout-button::after {
+    display: none;
+  }
+  .cbw .cart__checkout-button:hover {
+    border-color: var(--cbw-navy);
+    background: var(--cbw-navy);
+  }
+  .cbw cart-items .page-width,
+  .cbw .cart__footer .page-width {
+    max-width: var(--cbw-container-width);
+    padding: 0 15px;
+  }
 {% endstylesheet %}
 
 {% schema %}

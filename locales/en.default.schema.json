@@ -3583,6 +3583,18 @@
     },
     "not_found": {
       "name": "CBW page not found"
+    },
+    "index": {
+      "product_name": "CBW product index",
+      "category_name": "CBW category index",
+      "collection": "Collection to list",
+      "collection_info": "Leave empty to list every product",
+      "per_page": "Products per page",
+      "heading": "Heading",
+      "extra_links": "Extra links",
+      "extra_links_info": "Menu links listed alphabetically with the collections",
+      "exclude": "Collections to hide",
+      "exclude_info": "Comma-separated collection handles"
     }
   }
 }

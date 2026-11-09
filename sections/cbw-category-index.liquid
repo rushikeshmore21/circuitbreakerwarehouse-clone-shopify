@@ -1,0 +1,104 @@
+{%- liquid
+  assign separator = '|||'
+  assign entries = ''
+  assign excluded = section.settings.exclude | remove: ' ' | split: ','
+  for index_collection in collections
+    if excluded contains index_collection.handle
+      continue
+    endif
+    assign entry = index_collection.title | append: separator | append: index_collection.url
+    assign entries = entries | append: entry | append: '~~~'
+  endfor
+  for link in section.settings.extra_links.links
+    assign entry = link.title | append: separator | append: link.url
+    assign entries = entries | append: entry | append: '~~~'
+  endfor
+  assign sorted_entries = entries | split: '~~~' | sort_natural
+  assign half = sorted_entries.size | plus: 1 | divided_by: 2
+-%}
+
+<div class="cbw-container cbw-index">
+  <h1 class="cbw-page__title">{{ page.title | escape }}</h1>
+  {%- if page.content != blank -%}
+    <div class="cbw-page__content">{{ page.content }}</div>
+  {%- endif -%}
+  {%- if section.settings.heading != blank -%}
+    <h2 class="cbw-category-index__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+  <div class="cbw-category-index__columns">
+    <ul class="cbw-category-index__list">
+      {%- for entry in sorted_entries limit: half -%}
+        {%- assign parts = entry | split: separator -%}
+        <li><a href="{{ parts[1] }}">{{ parts[0] | escape }}</a></li>
+      {%- endfor -%}
+    </ul>
+    <ul class="cbw-category-index__list">
+      {%- for entry in sorted_entries offset: half -%}
+        {%- assign parts = entry | split: separator -%}
+        <li><a href="{{ parts[1] }}">{{ parts[0] | escape }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% stylesheet %}
+  .cbw .cbw-category-index__heading {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.4286;
+  }
+  .cbw-category-index__columns {
+    display: grid;
+    padding-left: 57px;
+  }
+  .cbw-category-index__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .cbw .cbw-category-index__list a {
+    display: inline-block;
+    min-height: 24px;
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw .cbw-category-index__list a:hover {
+    text-decoration: underline;
+  }
+  @media (min-width: 768px) {
+    .cbw-category-index__columns {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.index.category_name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:cbw.index.heading",
+      "default": "Category Index"
+    },
+    {
+      "type": "link_list",
+      "id": "extra_links",
+      "label": "t:cbw.index.extra_links",
+      "info": "t:cbw.index.extra_links_info"
+    },
+    {
+      "type": "text",
+      "id": "exclude",
+      "label": "t:cbw.index.exclude",
+      "info": "t:cbw.index.exclude_info",
+      "default": "all,frontpage"
+    }
+  ],
+  "enabled_on": {
+    "templates": ["page"]
+  }
+}
+{% endschema %}

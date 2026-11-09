@@ -382,7 +382,7 @@
       class="content-for-layout focus-none"
       role="main"
       tabindex="-1"
-      data-template="{{ template.name }}"
+      data-template="{{ template.name | default: request.page_type }}"
     >
       {{ content_for_layout }}
     </main>

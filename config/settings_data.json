@@ -189,7 +189,7 @@
       }
     },
     "cbw_sidebar_title": "Manufacturers",
-    "cbw_sidebar_menu": "manufacturers",
+    "cbw_sidebar_menu": "collection-sidebar",
     "cbw_sidebar_show_cards": true,
     "cbw_sidebar_show_newsletter": true,
     "cbw_sidebar_newsletter_title": "Join our mailing list!",

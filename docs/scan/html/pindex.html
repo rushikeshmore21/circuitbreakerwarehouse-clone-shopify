@@ -1,0 +1,2640 @@
+ <!DOCTYPE html>
+<!--[if lte IE 9]><html class="no-js lt-ie10" lang="en"><![endif]-->
+<!--[if gt IE 9]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <meta name="globalsign-domain-verification" content="JuFRaDnaOKgv29O79AIUKCQJARZrRRY6QvTvcrFCjo" /> 
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<title>Product Index</title>
+<meta name="robots" content="index, follow" />
+<meta name="GOOGLEBOT" content="INDEX, FOLLOW" />
+<link rel="canonical" href="https://www.circuitbreakerwarehouse.com/pindex.php" />
+
+<link type="text/css" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/themes/base/jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="/a/c/default.css" rel="stylesheet" />
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript" src="/a/j/jquery-migrate-merged.js"></script>
+<script type="text/javascript">
+    jQuery.curCSS = function(element, prop, val) {
+        return jQuery(element).css(prop, val);
+    };
+</script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.4/jquery-ui.min.js"></script>
+
+
+<script type="text/javascript">
+    var Config_VCompare_MaxProducts = "3";
+    var PageText_783 = "Compare";
+    var PageText_784 = "Change Selections";
+    var PageText_785 = "You've attempted to select more than {0} items. Click {1} to continue with your initial {0} items or {2} to change your selections.";
+    var PageText_819 = "Product Comparison";
+    var PageText_822 = "Compare";
+    var PageText_840 = "Create Password";
+    var PageText_841 = "Retype Password";
+    var PageText_842 = "Added to cart";
+    var PageText_843 = "Subtotal";
+    var PageText_844 = "items in cart";
+</script>
+<script type="text/javascript" src="/a/j/volusion.js?b0af74ff53fb876baedfea2cccf0b0fb62cc4379"></script>
+<script type="text/javascript">
+    (function ($) {
+        volusion.ready(function () {
+            if (volusion.cart.isObservingCount()) {
+                var ts = new Date().getTime();
+                $.getJSON('/AjaxCart.php?Action=itemCount&cachebust=' + ts, function (data) {
+                    var quantityTotal = 0;
+                    $.each(data.Products, function (key, val) {
+                        if (val.IsProduct === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        } else if (val.IsAccessory === 'Y') {
+                            quantityTotal += parseInt(val.Quantity);
+                        }
+                    });
+                    quantityTotal = quantityTotal || '0';
+                    volusion.cart.itemCount(quantityTotal);
+                });
+            }
+        });
+    } (jQuery));
+</script>
+<link type="text/css" rel="stylesheet" href="/a/contentbuilder/assets/default/content.css"/>
+<script type="text/javascript" src="/a/j/paypal-rest-default-buttons.js"></script>
+
+
+<link type="text/css" rel="stylesheet" href="/a/c/soft_add.css"/>
+<script type="text/javascript">
+    var global_Config_EnableDisplayOptionProducts = 'False';
+    var global_Config_ForceSecureShoppingCartPage = false;
+    var global_PageText_OtherItemsAdded = '(All other items have been added to the cart)';
+    var Config_EnableSoftAddToCart = false;
+</script>
+
+
+<script type="text/javascript" src="/a/j/javascripts.js?6_5_b0af74ff53fb876baedfea2cccf0b0fb62cc4379"></script>
+
+
+<script type="text/javascript">
+    var Config_Search_Auto_Complete = false;
+</script>
+
+<script type="text/javascript">
+/* New Checkout JS */
+
+if (!String.prototype.includes) {
+    String.prototype.includes = function() {
+        'use strict';
+        return String.prototype.indexOf.apply(this, arguments) !== -1;
+    };
+}
+
+if (!Array.prototype.includes) {
+  Object.defineProperty(Array.prototype, "includes", {
+    enumerable: false,
+    value: function(obj) {
+        var newArr = this.filter(function(el) {
+          return el == obj;
+        });
+        return newArr.length > 0;
+      }
+  });
+}
+
+var whichCheckoutToGoTo = "new"
+function setWhichCheckoutToGoTo(choice) {
+    whichCheckoutToGoTo = choice
+}
+
+function goToCheckout() {
+    var IsAGift = $('#IsAGift').val();
+    if (whichCheckoutToGoTo === "new") {
+        proceedToNewCheckout(IsAGift)
+    } else {
+        proceedToOldCheckout()
+    }
+}
+
+function proceedToOldCheckout() {
+  window.location.href = "/one-page-checkout.php";
+}
+
+function proceedToNewCheckout(IsAGift) {
+    if (IsAGift == "Y") {
+        window.location.href = "/GiftOptions.php";
+    } else {
+        window.location.href = "/checkout/?text=656565&bg=FFFFFF&font=Lato%2C+ui-sans-serif%2C+system-ui%2C+-apple-system%2C+BlinkMacSystemFont%2C+Segoe+UI%2C+Roboto%2C+Helvetica+Neue%2C+Arial";
+    }
+}
+
+function linkCheckoutButtonsToNewCheckout() {
+    /* Replace links to one-page-checkout.php to instead open new checkout modal */
+    var anchors = document.getElementsByTagName("a");
+    for (var i = 0; i < anchors.length; i++) {
+        if (anchors[i].href.includes("/one-page-checkout.php") || anchors[i].href.includes("/one-page-checkout.php")) {
+            anchors[i].href = "javascript:void(0);"
+            anchors[i].setAttribute("onclick","goToCheckout()")
+        }
+    }
+    /* Also look for the patterns we see for proceed to checkout buttons on shoppingcart.php */
+    var inputs = document.getElementsByTagName("input");
+    for (var i = 0; i < inputs.length; i++) {
+        if (inputs[i].name.includes("btn_checkout_guest")) {
+            inputs[i].setAttribute("onclick","goToCheckout()")
+        }
+    }
+
+    if (document.Proceed_To_Checkout_Form) {
+        document.Proceed_To_Checkout_Form.action = "javascript:void(0);"
+    }
+}
+document.addEventListener("DOMContentLoaded", linkCheckoutButtonsToNewCheckout); /* this one runs super fast right away on page load */
+window.addEventListener("load", linkCheckoutButtonsToNewCheckout); /* this one is important to run after credo template does its replacements */
+</script>
+<style type="text/css">
+/* New Checkout CSS */
+
+.new-secure-checkout-modal {
+  background: linear-gradient(45deg, rgba(0, 0, 0, 0.5), rgba(54, 54, 54, 0.5));
+  backdrop-filter: blur(3px);
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  text-align: center;
+}
+
+.new-secure-checkout-modal-content {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  background: none;
+}
+
+.new-secure-checkout-iframe {
+  height:calc(100vh - 4px);
+  width:calc(100vw - 4px);
+  box-sizing: border-box;
+}
+</style>
+
+
+    <script src="https://www.paypal.com/sdk/js?client-id=AeDWFs5RFH33pB3skuP1M57jTWgMHSuKFMxJtkMddpYsR7SSEBanfqI1RN7LlRaQ_Jmjxb8-L_1dbIJW&merchant-id=TNLAJBYFC24RC&currency=USD&commit=false&intent=capture&disable-funding=card&components=buttons,messages,hosted-fields&enable-funding=paylater"></script>
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta id="v65-layout-mode" data-cart="storedot" data-checkout="storedot" data-use-simplified-checkout="true">
+    <!-- LOGO UPLOAD TOOL *** SET HEIGHT & WIDTH *** -->
+    <meta id="v65-logo-dimensions" data-width="200" data-height="80">
+    <!-- Product photos come from Volusion's CDN; open that connection early. -->
+    <link rel="preconnect" href="https://cdn4.volusion.store">
+    <!-- TEMPLATE --><link href="/v/vspfiles/templates/capelec/css/template.css?v-cache=1794252967" rel="stylesheet">
+    <!-- PAGE SPEED: owl.carousel.css was never actually loaded (the <link> above was missing its closing ">"), and
+         owl.theme.default.css, animate.css and fpslide.css only served the old homepage slider, so they are no longer requested.
+         The picturefill polyfill is gone too: every current browser supports <picture> natively. -->
+    <style>
+        /* Homepage banner: full-bleed like #content_area, capped at 1440px. The img width/height attributes reserve its space. */
+        .home-banner { margin: 0 -15px; }
+        .home-banner img { display: block; width: 100%; max-width: 1440px; height: auto; margin: 0 auto; }
+        /* The homepage article moves .sidebar into #sidebar-holder on DOM-ready. Keep it out of the layout until then,
+           otherwise the whole page jumps sideways when it moves (large layout shift on desktop). */
+        .home .container--content > .row > .sidebar { display: none; }
+        .home.no-sidebar-holder .container--content > .row > .sidebar { display: block; }
+        /* The search button sits on top of the right end of the search box; keep long text from running under it.
+           (!important because template.css sets .search__input { padding: 0 !important }.) */
+        .search__form .search__input { padding-right: 56px !important; text-overflow: ellipsis; }
+    </style>
+    <!-- DESIGN TOOLKIT -->
+    <script src="/v/vspfiles/templates/capelec/js/min/design-toolkit_min.js"></script>
+    <!--[if lt IE 9]>
+      <script src="/v/vspfiles/templates/capelec/js/html5shiv.js"></script>
+    <![endif]-->
+
+<!-- PAGE SPEED: Universal Analytics (UA-23257192-1) was shut down by Google and no longer records anything, so
+     analytics.js is no longer downloaded. GA4 (G-WLR1SJFX1S) and Google Ads below are unchanged. The stub only keeps any
+     leftover ga(...) calls from throwing errors. -->
+<script>window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments); }; ga.l = +new Date();</script>
+<!-- Global Site Tag (gtag.js) - Google AdWords: 969136485 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-969136485"></script>
+<script>
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+        gtag('config', 'G-WLR1SJFX1S')
+	gtag('config', 'AW-969136485', { 'send_page_view': false, 'allow_enhanced_conversions':true  });
+</script>
+<meta name="google-site-verification" content="e8y8seiXOVJ6A2yMpIjwbI1os2F6xxFSwa1WhXlyBdA">
+<!-- ========== Lucky Orange Code ======================
+    CODE DATE: 08-2018
+========================================= -->
+<script type='text/javascript'>
+window.__lo_site_id = 122183;
+
+	// PAGE SPEED: start Lucky Orange once the page has finished loading, so it doesn't compete with the page itself.
+	(function() {
+		function loadLuckyOrange() {
+			var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+			wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+		}
+		if (document.readyState === 'complete') { loadLuckyOrange(); } else { window.addEventListener('load', loadLuckyOrange); }
+	  })();
+	</script>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NXZLRVJ6');</script>
+<!-- End Google Tag Manager -->
+
+</head>
+<!-- ========== capelec ======================
+    DESIGNER: JR
+    DEVELOPER: BH
+    CODE DATE: 2016-09
+========================================= -->
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZLRVJ6"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    <span style="display:none;" id="svgIncludes"></span>
+    <!-- SVG LOADING: start fetching the icon sprite right away instead of waiting for DOM-ready -->
+    <script>$("#svgIncludes").load("/v/vspfiles/templates/capelec/images/svgdefs.svg");</script>
+    <noscript id="no-js-notice">
+      To take full advantage of this site, please enable your browser's JavaScript feature. <a href="http://www.activatejavascript.org/" target="_blank" rel="nofollow">Learn how</a>
+    </noscript>
+<style>
+.ct-aio-bar{
+    text-align: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+</style>
+<div class="ct-aio-bar"><span>16K+ New, Refurbished & Hard-to-Find Breaker Part Numbers</span></div>
+    <article class="vol-container">
+        <section class="vol-inner">
+                <div class="menu push-menu hidden-md hidden-lg" data-menu-type="slide-right">
+                    <div class="push-menu__close-btn close-menu">
+                        <svg class="icon"><use xlink:href="#svg-close"></use></svg>
+                    </div>
+                </div><!-- /slide menu left -->
+            <div class="page-wrap">
+                <header class="header" data-ui-block="header-1">
+                    <div class="header__section hidden-xs hidden-sm">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <section class="microblock promo">
+                                        <p class="promo__text">    
+                                            <a class="promo__link shipping" href="/articles.php?ID=57">
+                                                <!-- <svg class="promo__icon icon"><use xlink:href="#svg-shipping"></use></svg> -->
+                                                <span class="flavor">Free Shipping </span>on All Orders! 
+                                            </a>
+                                        </p>
+                                    </section>                    <section class="microblock contact-info">
+                                        <div class="microblock__body">
+                                            <span class="hidden-xs hidden-sm">Call Today!</span> <a href="tel:+18883677700" aria-label="Call (888) 367-7700"><span>(888) 367-7700</span><svg aria-hidden="true"><use xlink:href="#svg-phone"></use></svg></a>
+                                        </div>
+                                    </section>                </div>
+                                <div class="col-md-7 text-right">
+                                    <div id="flags" class="microblock">
+                                        <a href="/articles.php?ID=57" title="Shipping" rel="nofollow">
+                                            <svg><use xlink:href="#svg-australia"></use></svg>
+                                            <svg><use xlink:href="#svg-germany"></use></svg>
+                                            <svg><use xlink:href="#svg-japan"></use></svg>
+                                            <svg><use xlink:href="#svg-uk"></use></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header__section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-5">
+                                    <a class="microblock logo" href="/">
+                                        <img class="logo__img img-responsive" src="/v/vspfiles/templates/capelec/images/template/header_bg.png" alt="Circuit Breaker Warehouse" width="600" height="203">
+                                    </a>                </div>
+                                <div class="col-xs-12 col-md-7 microblock-group text-md-right text-lg-right">
+                                    <div class="microblock search">
+                                        <form class="search__form" action="/searchresults.php" method="get" name="SearchBoxForm">
+                                            <label class="search__label sr-only" for="search">
+                                                Search site:
+                                            </label>
+                                            <input class="search__input" id="search" placeholder="Search our store..." type="text" name="Search" value="">
+                                            <button type="submit" name="Submit" class="search__submit" aria-label="Search">
+                                                <svg class="search__icon" aria-hidden="true"><use xlink:href="#svg-search"></use></svg>
+                                            </button>
+                                        </form> 
+                                    </div>                    <section class="microblock contact-info">
+                                        <div class="microblock__body">
+                                            <span class="hidden-xs hidden-sm">Call Today!</span> <a href="tel:+18883677700" aria-label="Call 888-367-7700"><span>888-367-7700</span><svg aria-hidden="true"><use xlink:href="#svg-phone"></use></svg></a>
+                                        </div>
+                                    </section>                    <div class="microblock cart">
+                                        <a href="/shoppingcart.php" class="microblock__body">
+                                            <svg class="cart__icon"><use xlink:href="#svg-cart"></use></svg>
+                                            <span class="cart__count" data-v-observable="cart-count">                                            </span>
+                                        </a>
+                                    </div>                    <div class="microblock menu-toggle hidden-md hidden-lg">
+                                        <a class="menu-toggle__link" href="javascript:void(0);" id="nav-toggle" data-menu-type="slide-right" aria-label="Shop Our Categories">
+                                            <svg class="menu-toggle__icon" aria-hidden="true"><use xlink:href="#svg-menu"></use></svg>
+                                            <span class="menu-toggle__text hidden-xs">Shop Our Categories</span>
+                                        </a>
+                                    </div>                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hidden-xs hidden-sm header__section">
+                        <div class="container">
+                            <nav class="main-menu">
+                                <div id="display_menu_8" class="menu"><script type="text/javascript">var breadCrumb="||";</script>
+<link rel='stylesheet' type='text/css' href='/a/c/vnav.css'>
+<script src='/a/j/vnav.js?1'></script>
+<ul class='vnav vnav--horizontal vnav--level1'>
+<li class='vnav__item'><a href="https://www.circuitbreakerwarehouse.com/Articles.php?ID=242" class='vnav__link'>About Us</a>
+</li>
+<li class='vnav__item'><a href="https://www.circuitbreakerwarehouse.com/Articles.php?ID=243" class='vnav__link'>Contact Us</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/Articles.php?ID=252' class='vnav__link' >F.A.Q.</a>
+</li>
+<li class='vnav__item'><a href="https://www.circuitbreakerwarehouse.com/help.php" class='vnav__link'>Help</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/myaccount.php' class='vnav__link' >My Account</a>
+</li>
+</ul>
+</div>
+                            </nav>
+                        </div>
+                    </div>
+                </header>
+                <div class="container container--content">
+                    <aside class="vol-list-grid text-right vol-hide">
+                        <section class="vol-list-grid-toggle vol-grid" data-grid-type="grid">
+                          <div class="vol-icon vol-icon-grid">
+                            <div class="vol-icon-bar"></div>
+                            <div class="vol-icon-bar"></div>
+                            <div class="vol-icon-bar"></div>
+                          </div>
+                        </section>
+                        <section class="vol-list-grid-toggle vol-list" data-grid-type="list">
+                          <div class="vol-icon vol-icon-list">
+                            <div class="vol-icon-bar"></div>
+                            <div class="vol-icon-bar"></div>
+                            <div class="vol-icon-bar"></div>
+                            <div class="vol-icon-bar"></div>
+                          </div>
+                        </section>
+                    </aside>                    
+                    <div class="row">
+                            <div class="sidebar col-md-3 hidden-xs hidden-sm" role="complementary">
+                                <div class="left-nav">
+                                    <!-- ========== MENU 1 ========== -->
+                                    <div id="Menu1_Title" class="menu-title">Manufacturers</div>
+                                    <nav id="display_menu_1" class="menu"><ul class='vnav vnav--vertical vnav--level1'>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/American-Circuit-Breakers-s/45.htm' class='vnav__link' >American Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/46.htm' class='vnav__link' >Bryant Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/47.htm' class='vnav__link' >Challenger Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/48.htm' class='vnav__link' >Crouse Hinds Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/49.htm' class='vnav__link' >Cutler Hammer Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/50.htm' class='vnav__link' >Federal Pacific Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/53.htm' class='vnav__link' >General Electric Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/54.htm' class='vnav__link' >ITE  Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/68.htm' class='vnav__link' >Milbank Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/55.htm' class='vnav__link' >Murray Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/66.htm' class='vnav__link' >Siemens Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/56.htm' class='vnav__link' >Square D Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/57.htm' class='vnav__link' >Thomas & Betts Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/58.htm' class='vnav__link' >Wadsworth Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/59.htm' class='vnav__link' >Westinghouse Circuit Breakers</a>
+</li>
+<li class='vnav__item'><a href='https://www.circuitbreakerwarehouse.com/category-s/60.htm' class='vnav__link' >Zinsco Circuit Breakers</a>
+</li>
+</ul>
+</nav>
+                                </div>
+                                <!-- ACCESSIBILITY: this box used to be id="display_promotions_999", which Volusion fills with its own markup
+                                     (no alt text, unlabelled email field). The same content is written here instead, so it is fixed in the HTML itself. -->
+                                <div class="promotions">
+                                    <img src="/v/vspfiles/templates/capelec/images/logos/cc_logo1.gif" alt="We accept Visa, MasterCard, American Express and Discover" width="125" height="19">
+                                    <form class="mailing-list" name="MailingList" method="post" action="/MailingList_subscribe.php">
+                                        <h4>Join our mailing list!</h4>
+                                        <label class="sr-only" for="mailing-list-email">Email address</label>
+                                        <input class="mailing-list__input" id="mailing-list-email" type="email" name="emailaddress" maxlength="50" autocomplete="email" placeholder="Email address" required>
+                                        <input class="mailing-list__submit" type="submit" name="Submit" value="Join Now">
+                                    </form>
+                                    <a href="https://www.volusion.com/ssl.php?url=www.circuitbreakerwarehouse.com" target="_blank" rel="noopener">
+                                        <img src="/a/i/seal_volusion1.png" alt="Secure site: verify SSL certificate (opens in a new tab)" width="100" height="113">
+                                    </a>
+                                    <a href="https://www.volusion.com/ssl.php?url=www.circuitbreakerwarehouse.com" target="_blank" rel="noopener">
+                                        <img src="/a/i/seal_volusion2.png" alt="Volusion secure site: click to verify (opens in a new tab)" width="137" height="58">
+                                    </a>
+                                </div>
+                            </div>
+                        <section class="col-xs-12 col-md-9" role="main">
+                                                        <div id="content_area" class="clearfix"><table width="100%" cellpadding="5" cellspacing="5" border="0">
+  <tr>
+	<td>
+	<div id="div_articleid_78">
+<font size=4><b>Product Index</b></font>
+</div><!-- .vcb-article -->
+<textarea style="display:none;" id="articleBody_78" readonly="true"></textarea>
+	</td>
+  </tr>
+  <tr>
+	<td>
+	<table cellspacing="2" cellpadding="2" border="0">
+	 <tr>
+	  <td colspan="2">Page:
+							<font style="font-weight:bold">1</font>
+								<a href="?Page=2" style="text-decoration: underline">2</a>
+								<a href="?Page=3" style="text-decoration: underline">3</a>
+								<a href="?Page=4" style="text-decoration: underline">4</a>
+								<a href="?Page=5" style="text-decoration: underline">5</a>
+								<a href="?Page=6" style="text-decoration: underline">6</a>
+								<a href="?Page=7" style="text-decoration: underline">7</a>
+								<a href="?Page=8" style="text-decoration: underline">8</a>
+								<a href="?Page=9" style="text-decoration: underline">9</a>
+								<a href="?Page=10" style="text-decoration: underline">10</a>
+								<a href="?Page=11" style="text-decoration: underline">11</a>
+								<a href="?Page=12" style="text-decoration: underline">12</a>
+								<a href="?Page=13" style="text-decoration: underline">13</a>
+								<a href="?Page=14" style="text-decoration: underline">14</a>
+								<a href="?Page=15" style="text-decoration: underline">15</a>
+								<a href="?Page=16" style="text-decoration: underline">16</a>
+								<a href="?Page=17" style="text-decoration: underline">17</a>
+								<a href="?Page=18" style="text-decoration: underline">18</a>
+								<a href="?Page=19" style="text-decoration: underline">19</a>
+								<a href="?Page=20" style="text-decoration: underline">20</a>
+								<a href="?Page=21" style="text-decoration: underline">21</a>
+								<a href="?Page=22" style="text-decoration: underline">22</a>
+								<a href="?Page=23" style="text-decoration: underline">23</a>
+								<a href="?Page=24" style="text-decoration: underline">24</a>
+								<a href="?Page=25" style="text-decoration: underline">25</a>
+								<a href="?Page=26" style="text-decoration: underline">26</a>
+								<a href="?Page=27" style="text-decoration: underline">27</a>
+								<a href="?Page=28" style="text-decoration: underline">28</a>
+								<a href="?Page=29" style="text-decoration: underline">29</a>
+								<a href="?Page=30" style="text-decoration: underline">30</a>
+								<a href="?Page=31" style="text-decoration: underline">31</a>
+								<a href="?Page=32" style="text-decoration: underline">32</a>
+								<a href="?Page=33" style="text-decoration: underline">33</a>
+								<a href="?Page=34" style="text-decoration: underline">34</a>
+								<a href="?Page=35" style="text-decoration: underline">35</a>
+								<a href="?Page=36" style="text-decoration: underline">36</a>
+								<a href="?Page=37" style="text-decoration: underline">37</a>
+								<a href="?Page=38" style="text-decoration: underline">38</a>
+								<a href="?Page=39" style="text-decoration: underline">39</a>
+								<a href="?Page=40" style="text-decoration: underline">40</a>
+								<a href="?Page=41" style="text-decoration: underline">41</a>
+								<a href="?Page=42" style="text-decoration: underline">42</a>
+								<a href="?Page=43" style="text-decoration: underline">43</a>
+								<a href="?Page=44" style="text-decoration: underline">44</a>
+								<a href="?Page=45" style="text-decoration: underline">45</a>
+								<a href="?Page=46" style="text-decoration: underline">46</a>
+								<a href="?Page=47" style="text-decoration: underline">47</a>
+								<a href="?Page=48" style="text-decoration: underline">48</a>
+								<a href="?Page=49" style="text-decoration: underline">49</a>
+								<a href="?Page=50" style="text-decoration: underline">50</a>
+								<a href="?Page=51" style="text-decoration: underline">51</a>
+								<a href="?Page=52" style="text-decoration: underline">52</a>
+								<a href="?Page=53" style="text-decoration: underline">53</a>
+								<a href="?Page=54" style="text-decoration: underline">54</a>
+								<a href="?Page=55" style="text-decoration: underline">55</a>
+								<a href="?Page=56" style="text-decoration: underline">56</a>
+								<a href="?Page=57" style="text-decoration: underline">57</a>
+								<a href="?Page=58" style="text-decoration: underline">58</a>
+								<a href="?Page=59" style="text-decoration: underline">59</a>
+								<a href="?Page=60" style="text-decoration: underline">60</a>
+								<a href="?Page=61" style="text-decoration: underline">61</a>
+								<a href="?Page=62" style="text-decoration: underline">62</a>
+								<a href="?Page=63" style="text-decoration: underline">63</a>
+								<a href="?Page=64" style="text-decoration: underline">64</a>
+								<a href="?Page=65" style="text-decoration: underline">65</a>
+								<a href="?Page=66" style="text-decoration: underline">66</a>
+								<a href="?Page=67" style="text-decoration: underline">67</a>
+								<a href="?Page=68" style="text-decoration: underline">68</a>
+								<a href="?Page=69" style="text-decoration: underline">69</a>
+								<a href="?Page=70" style="text-decoration: underline">70</a>
+								<a href="?Page=71" style="text-decoration: underline">71</a>
+								<a href="?Page=72" style="text-decoration: underline">72</a>
+								<a href="?Page=73" style="text-decoration: underline">73</a>
+								<a href="?Page=74" style="text-decoration: underline">74</a>
+								<a href="?Page=75" style="text-decoration: underline">75</a>
+								<a href="?Page=76" style="text-decoration: underline">76</a>
+								<a href="?Page=77" style="text-decoration: underline">77</a>
+								<a href="?Page=78" style="text-decoration: underline">78</a>
+								<a href="?Page=79" style="text-decoration: underline">79</a>
+								<a href="?Page=80" style="text-decoration: underline">80</a>
+								<a href="?Page=81" style="text-decoration: underline">81</a>
+								<a href="?Page=82" style="text-decoration: underline">82</a>
+					  </td>
+	 </tr>
+	</table>
+	<br>
+	<table cellspacing="0" cellpadding="1" border="0">
+	        <tr>
+          <td>NC015</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC015-p/nc015.htm" title="American - Federal Pacific NC015 Circuit Breaker Refurbished, NC015">American - Federal Pacific NC015 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC020</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC020-p/nc020.htm" title="American - Federal Pacific NC020 Circuit Breaker Refurbished, NC020">American - Federal Pacific NC020 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0215</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0215-p/nc0215.htm" title="American - Federal Pacific NC0215 Circuit Breaker Refurbished, NC0215">American - Federal Pacific NC0215 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0220</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0220-p/nc0220.htm" title="American - Federal Pacific NC0220 Circuit Breaker Refurbished, NC0220">American - Federal Pacific NC0220 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0225-p/nc0225.htm" title="American - Federal Pacific NC0225 Circuit Breaker Refurbished, NC0225">American - Federal Pacific NC0225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0230</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0230-p/nc0230.htm" title="American - Federal Pacific NC0230 Circuit Breaker Refurbished, NC0230">American - Federal Pacific NC0230 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0235</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0235-p/nc0235.htm" title="American - Federal Pacific NC0235 Circuit Breaker Refurbished, NC0235">American - Federal Pacific NC0235 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0240</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0240-p/nc0240.htm" title="American - Federal Pacific NC0240 Circuit Breaker Refurbished, NC0240">American - Federal Pacific NC0240 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0245</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0245-p/nc0245.htm" title="American - Federal Pacific NC0245 Circuit Breaker Refurbished, NC0245">American - Federal Pacific NC0245 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC025</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC025-p/nc025.htm" title="American - Federal Pacific NC025 Circuit Breaker Refurbished, NC025">American - Federal Pacific NC025 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC0250</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC0250-p/nc0250.htm" title="American - Federal Pacific NC0250 Circuit Breaker Refurbished, NC0250">American - Federal Pacific NC0250 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC030-N</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NC030-p/nc030-n.htm" title="American - Federal Pacific NC030 Circuit Breaker New, NC030-N">American - Federal Pacific NC030 Circuit Breaker New</a></td>
+        </tr>
+        <tr>
+          <td>NC030</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC030-p/nc030.htm" title="American - Federal Pacific NC030 Circuit Breaker Refurbished, NC030">American - Federal Pacific NC030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC035</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC035-p/nc035.htm" title="American - Federal Pacific NC035 Circuit Breaker Refurbished, NC035">American - Federal Pacific NC035 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC040</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC040-p/nc040.htm" title="American - Federal Pacific NC040 Circuit Breaker Refurbished, NC040">American - Federal Pacific NC040 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC045</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC045-p/nc045.htm" title="American - Federal Pacific NC045 Circuit Breaker Refurbished, NC045">American - Federal Pacific NC045 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC050</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC050-p/nc050.htm" title="American - Federal Pacific NC050 Circuit Breaker Refurbished, NC050">American - Federal Pacific NC050 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC35</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC35-p/nc35.htm" title="American - Federal Pacific NC35 Circuit Breaker Refurbished, NC35">American - Federal Pacific NC35 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC40</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC40-p/nc40.htm" title="American - Federal Pacific NC40 Circuit Breaker Refurbished, NC40">American - Federal Pacific NC40 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC50</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC50-p/nc50.htm" title="American - Federal Pacific NC50 Circuit Breaker Refurbished, NC50">American - Federal Pacific NC50 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434125</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434125-p/xjl434125.htm" title="American - Federal Pacific XJL434125 Circuit Breaker Refurbished, XJL434125">American - Federal Pacific XJL434125 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434150</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434150-p/xjl434150.htm" title="American - Federal Pacific XJL434150 Circuit Breaker Refurbished, XJL434150">American - Federal Pacific XJL434150 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434175</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434175-p/xjl434175.htm" title="American - Federal Pacific XJL434175 Circuit Breaker Refurbished, XJL434175">American - Federal Pacific XJL434175 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434200</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434200-p/xjl434200.htm" title="American - Federal Pacific XJL434200 Circuit Breaker Refurbished, XJL434200">American - Federal Pacific XJL434200 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434225-p/xjl434225.htm" title="American - Federal Pacific XJL434225 Circuit Breaker Refurbished, XJL434225">American - Federal Pacific XJL434225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434250</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434250-p/xjl434250.htm" title="American - Federal Pacific XJL434250 Circuit Breaker Refurbished, XJL434250">American - Federal Pacific XJL434250 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434300</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434300-p/xjl434300.htm" title="American - Federal Pacific XJL434300 Circuit Breaker Refurbished, XJL434300">American - Federal Pacific XJL434300 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434350</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434350-p/xjl434350.htm" title="American - Federal Pacific XJL434350 Circuit Breaker Refurbished, XJL434350">American - Federal Pacific XJL434350 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XJL434400</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XJL434400-p/xjl434400.htm" title="American - Federal Pacific XJL434400 Circuit Breaker Refurbished, XJL434400">American - Federal Pacific XJL434400 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633150</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633150-p/xm633150.htm" title="American - Federal Pacific XM633150 Circuit Breaker Refurbished, XM633150">American - Federal Pacific XM633150 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633175</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633175-p/xm633175.htm" title="American - Federal Pacific XM633175 Circuit Breaker Refurbished, XM633175">American - Federal Pacific XM633175 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633200</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633200-p/xm633200.htm" title="American - Federal Pacific XM633200 Circuit Breaker Refurbished, XM633200">American - Federal Pacific XM633200 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633225-p/xm633225.htm" title="American - Federal Pacific XM633225 Circuit Breaker Refurbished, XM633225">American - Federal Pacific XM633225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633250</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633250-p/xm633250.htm" title="American - Federal Pacific XM633250 Circuit Breaker Refurbished, XM633250">American - Federal Pacific XM633250 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633300</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633300-p/xm633300.htm" title="American - Federal Pacific XM633300 Circuit Breaker Refurbished, XM633300">American - Federal Pacific XM633300 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633350</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633350-p/xm633350.htm" title="American - Federal Pacific XM633350 Circuit Breaker Refurbished, XM633350">American - Federal Pacific XM633350 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633400</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633400-p/xm633400.htm" title="American - Federal Pacific XM633400 Circuit Breaker Refurbished, XM633400">American - Federal Pacific XM633400 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633450</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633450-p/xm633450.htm" title="American - Federal Pacific XM633450 Circuit Breaker Refurbished, XM633450">American - Federal Pacific XM633450 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633500</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633500-p/xm633500.htm" title="American - Federal Pacific XM633500 Circuit Breaker Refurbished, XM633500">American - Federal Pacific XM633500 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633600</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633600-p/xm633600.htm" title="American - Federal Pacific XM633600 Circuit Breaker Refurbished, XM633600">American - Federal Pacific XM633600 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633700</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633700-p/xm633700.htm" title="American - Federal Pacific XM633700 Circuit Breaker Refurbished, XM633700">American - Federal Pacific XM633700 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>XM633800</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-XM633800-p/xm633800.htm" title="American - Federal Pacific XM633800 Circuit Breaker Refurbished, XM633800">American - Federal Pacific XM633800 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631015</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NF631015-p/nf631015.htm" title="American -Federal Pacific NF631015 Circuit Breaker Refurbished, NF631015">American -Federal Pacific NF631015 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631020</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631020-p/nf631020.htm" title="American -Federal Pacific NF631020 Circuit Breaker Refurbished, NF631020">American -Federal Pacific NF631020 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631020R</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631020R-p/nf631020r.htm" title="American -Federal Pacific NF631020R Circuit Breaker Refurbished, NF631020R">American -Federal Pacific NF631020R Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631025</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631025-p/nf631025.htm" title="American -Federal Pacific NF631025 Circuit Breaker Refurbished, NF631025">American -Federal Pacific NF631025 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631030</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631030-p/nf631030.htm" title="American -Federal Pacific NF631030 Circuit Breaker Refurbished, NF631030">American -Federal Pacific NF631030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631030R</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631030R-p/nf631030r.htm" title="American -Federal Pacific NF631030R Circuit Breaker Refurbished, NF631030R">American -Federal Pacific NF631030R Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631040</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631040-p/nf631040.htm" title="American -Federal Pacific NF631040 Circuit Breaker Refurbished, NF631040">American -Federal Pacific NF631040 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631040R</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631040R-p/nf631040r.htm" title="American -Federal Pacific NF631040R Circuit Breaker Refurbished, NF631040R">American -Federal Pacific NF631040R Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631050</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631050-p/nf631050.htm" title="American -Federal Pacific NF631050 Circuit Breaker Refurbished, NF631050">American -Federal Pacific NF631050 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631060</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631060-p/nf631060.htm" title="American -Federal Pacific NF631060 Circuit Breaker Refurbished, NF631060">American -Federal Pacific NF631060 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF63107</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631070-p/nf63107.htm" title="American -Federal Pacific NF631070 Circuit Breaker Refurbished, NF63107">American -Federal Pacific NF631070 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631070</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631070-p/nf631070.htm" title="American -Federal Pacific NF631070 Circuit Breaker Refurbished, NF631070">American -Federal Pacific NF631070 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631080</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631080-p/nf631080.htm" title="American -Federal Pacific NF631080 Circuit Breaker Refurbished, NF631080">American -Federal Pacific NF631080 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631090</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631090-p/nf631090.htm" title="American -Federal Pacific NF631090 Circuit Breaker Refurbished, NF631090">American -Federal Pacific NF631090 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NF631100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NF631100-p/nf631100.htm" title="American -Federal Pacific NF631100 Circuit Breaker Refurbished, NF631100">American -Federal Pacific NF631100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NEJ233150</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-HEF425030-p/nej233150.htm" title="American HEF425030 Circuit Breaker Refurbished, NEJ233150">American HEF425030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NES2115</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-HEF425030-p/nes2115.htm" title="American HEF425030 Circuit Breaker Refurbished, NES2115">American HEF425030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA245</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA245-p/na245.htm" title="American NA245 Circuit Breaker Refurbished, NA245">American NA245 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P35</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P35-p/na3p35.htm" title="American NA3P35 Circuit Breaker Refurbished, NA3P35">American NA3P35 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NEF423030</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NEF423030-p/nef423030.htm" title="American NEF423030 Circuit Breaker Refurbished, NEF423030">American NEF423030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NEF635100NA</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NEF635100NA-p/nef635100na.htm" title="American NEF635100NA Circuit Breaker Refurbished, NEF635100NA">American NEF635100NA Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P100-p/na2p100.htm" title="American-Federal Pacific NA2P100 Circuit Breaker Refurbished, NA2P100">American-Federal Pacific NA2P100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P100H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P100H-p/na2p100h.htm" title="American-Federal Pacific NA2P100H Circuit Breaker Refurbished, NA2P100H">American-Federal Pacific NA2P100H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P125</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P125-p/na2p125.htm" title="American-Federal Pacific NA2P125 Circuit Breaker Refurbished, NA2P125">American-Federal Pacific NA2P125 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P125H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P125H-p/na2p125h.htm" title="American-Federal Pacific NA2P125H Circuit Breaker Refurbished, NA2P125H">American-Federal Pacific NA2P125H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P60</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P60-p/na2p60.htm" title="American-Federal Pacific NA2P60 Circuit Breaker Refurbished, NA2P60">American-Federal Pacific NA2P60 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P80</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P80-p/na2p80.htm" title="American-Federal Pacific NA2P80 Circuit Breaker Refurbished, NA2P80">American-Federal Pacific NA2P80 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P80H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P80H-p/na2p80h.htm" title="American-Federal Pacific NA2P80H Circuit Breaker Refurbished, NA2P80H">American-Federal Pacific NA2P80H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P90</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P90-p/na2p90.htm" title="American-Federal Pacific NA2P90 Circuit Breaker Refurbished, NA2P90">American-Federal Pacific NA2P90 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA2P90H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA2P90H-p/na2p90h.htm" title="American-Federal Pacific NA2P90H Circuit Breaker Refurbished, NA2P90H">American-Federal Pacific NA2P90H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA30</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA30-p/na30.htm" title="American-Federal Pacific NA30 Circuit Breaker Refurbished, NA30">American-Federal Pacific NA30 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA330</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA330-p/na330.htm" title="American-Federal Pacific NA330 Circuit Breaker Refurbished, NA330">American-Federal Pacific NA330 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA340</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA340-p/na340.htm" title="American-Federal Pacific NA340 Circuit Breaker Refurbished, NA340">American-Federal Pacific NA340 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA35</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA35-p/na35.htm" title="American-Federal Pacific NA35 Circuit Breaker Refurbished, NA35">American-Federal Pacific NA35 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA350</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA350-p/na350.htm" title="American-Federal Pacific NA350 Circuit Breaker Refurbished, NA350">American-Federal Pacific NA350 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P100-p/na3p100.htm" title="American-Federal Pacific NA3P100 Circuit Breaker Refurbished, NA3P100">American-Federal Pacific NA3P100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P15</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P15-p/na3p15.htm" title="American-Federal Pacific NA3P15 Circuit Breaker Refurbished, NA3P15">American-Federal Pacific NA3P15 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P20</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P20-p/na3p20.htm" title="American-Federal Pacific NA3P20 Circuit Breaker Refurbished, NA3P20">American-Federal Pacific NA3P20 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P25</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P25-p/na3p25.htm" title="American-Federal Pacific NA3P25 Circuit Breaker Refurbished, NA3P25">American-Federal Pacific NA3P25 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P30</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P30-p/na3p30.htm" title="American-Federal Pacific NA3P30 Circuit Breaker Refurbished, NA3P30">American-Federal Pacific NA3P30 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P40</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P40-p/na3p40.htm" title="American-Federal Pacific NA3P40 Circuit Breaker Refurbished, NA3P40">American-Federal Pacific NA3P40 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P50</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P50-p/na3p50.htm" title="American-Federal Pacific NA3P50 Circuit Breaker New, NA3P50">American-Federal Pacific NA3P50 Circuit Breaker New</a></td>
+        </tr>
+        <tr>
+          <td>NA3P60-N</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NA3P60-NE-p/na3p60-n.htm" title="American-Federal Pacific NA3P60 Circuit Breaker New, NA3P60-N">American-Federal Pacific NA3P60 Circuit Breaker New</a></td>
+        </tr>
+        <tr>
+          <td>NA3P60</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P60-p/na3p60.htm" title="American-Federal Pacific NA3P60 Circuit Breaker Refurbished, NA3P60">American-Federal Pacific NA3P60 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P70</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P70-p/na3p70.htm" title="American-Federal Pacific NA3P70 Circuit Breaker Refurbished, NA3P70">American-Federal Pacific NA3P70 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P80</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P80-p/na3p80.htm" title="American-Federal Pacific NA3P80 Circuit Breaker Refurbished, NA3P80">American-Federal Pacific NA3P80 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA3P90</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA3P90-p/na3p90.htm" title="American-Federal Pacific NA3P90 Circuit Breaker Refurbished, NA3P90">American-Federal Pacific NA3P90 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NA40</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NA40-p/na40.htm" title="American-Federal Pacific NA40 Circuit Breaker Refurbished, NA40">American-Federal Pacific NA40 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NAGF15</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NAGF15-p/nagf15.htm" title="American-Federal Pacific NAGF15 Circuit Breaker Refurbished, NAGF15">American-Federal Pacific NAGF15 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NAGF20</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NAGF20-p/nagf20.htm" title="American-Federal Pacific NAGF20 Circuit Breaker Refurbished, NAGF20">American-Federal Pacific NAGF20 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NAGF25</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NAGF25-p/nagf25.htm" title="American-Federal Pacific NAGF25 Circuit Breaker Refurbished, NAGF25">American-Federal Pacific NAGF25 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NAGF30</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NAGF30-p/nagf30.htm" title="American-Federal Pacific NAGF30 Circuit Breaker Refurbished, NAGF30">American-Federal Pacific NAGF30 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB100-p/nb100.htm" title="American-Federal Pacific NB100 Circuit Breaker Refurbished, NB100">American-Federal Pacific NB100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB100H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB100H-p/nb100h.htm" title="American-Federal Pacific NB100H Circuit Breaker Refurbished, NB100H">American-Federal Pacific NB100H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111015</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111015-p/nb111015.htm" title="American-Federal Pacific NB111015 Circuit Breaker Refurbished, NB111015">American-Federal Pacific NB111015 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111015H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111015H-p/nb111015h.htm" title="American-Federal Pacific NB111015H Circuit Breaker Refurbished, NB111015H">American-Federal Pacific NB111015H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111020</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111020-p/nb111020.htm" title="American-Federal Pacific NB111020 Circuit Breaker Refurbished, NB111020">American-Federal Pacific NB111020 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111020H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111020H-p/nb111020h.htm" title="American-Federal Pacific NB111020H Circuit Breaker Refurbished, NB111020H">American-Federal Pacific NB111020H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111025</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111025-p/nb111025.htm" title="American-Federal Pacific NB111025 Circuit Breaker Refurbished, NB111025">American-Federal Pacific NB111025 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111025H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111025H-p/nb111025h.htm" title="American-Federal Pacific NB111025H Circuit Breaker Refurbished, NB111025H">American-Federal Pacific NB111025H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111030</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111030-p/nb111030.htm" title="American-Federal Pacific NB111030 Circuit Breaker Refurbished, NB111030">American-Federal Pacific NB111030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111030H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111030H-p/nb111030h.htm" title="American-Federal Pacific NB111030H Circuit Breaker Refurbished, NB111030H">American-Federal Pacific NB111030H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111035</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111035-p/nb111035.htm" title="American-Federal Pacific NB111035 Circuit Breaker Refurbished, NB111035">American-Federal Pacific NB111035 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111035H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111035H-p/nb111035h.htm" title="American-Federal Pacific NB111035H Circuit Breaker Refurbished, NB111035H">American-Federal Pacific NB111035H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111040</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111040-p/nb111040.htm" title="American-Federal Pacific NB111040 Circuit Breaker Refurbished, NB111040">American-Federal Pacific NB111040 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111040H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111040H-p/nb111040h.htm" title="American-Federal Pacific NB111040H Circuit Breaker Refurbished, NB111040H">American-Federal Pacific NB111040H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111045</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111045-p/nb111045.htm" title="American-Federal Pacific NB111045 Circuit Breaker Refurbished, NB111045">American-Federal Pacific NB111045 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111045H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111045H-p/nb111045h.htm" title="American-Federal Pacific NB111045H Circuit Breaker Refurbished, NB111045H">American-Federal Pacific NB111045H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111050</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111050-p/nb111050.htm" title="American-Federal Pacific NB111050 Circuit Breaker Refurbished, NB111050">American-Federal Pacific NB111050 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111050H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111050H-p/nb111050h.htm" title="American-Federal Pacific NB111050H Circuit Breaker Refurbished, NB111050H">American-Federal Pacific NB111050H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111060</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111060-p/nb111060.htm" title="American-Federal Pacific NB111060 Circuit Breaker Refurbished, NB111060">American-Federal Pacific NB111060 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB111060H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB111060H-p/nb111060h.htm" title="American-Federal Pacific NB111060H Circuit Breaker Refurbished, NB111060H">American-Federal Pacific NB111060H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB125</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB125-p/nb125.htm" title="American-Federal Pacific NB125 Circuit Breaker Refurbished, NB125">American-Federal Pacific NB125 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB125H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB125H-p/nb125h.htm" title="American-Federal Pacific NB125H Circuit Breaker Refurbished, NB125H">American-Federal Pacific NB125H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221015</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221015-p/nb221015.htm" title="American-Federal Pacific NB221015 Circuit Breaker Refurbished, NB221015">American-Federal Pacific NB221015 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221015H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221015H-p/nb221015h.htm" title="American-Federal Pacific NB221015H Circuit Breaker Refurbished, NB221015H">American-Federal Pacific NB221015H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221020</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221020-p/nb221020.htm" title="American-Federal Pacific NB221020 Circuit Breaker Refurbished, NB221020">American-Federal Pacific NB221020 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221020H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221020H-p/nb221020h.htm" title="American-Federal Pacific NB221020H Circuit Breaker Refurbished, NB221020H">American-Federal Pacific NB221020H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221025</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221025-p/nb221025.htm" title="American-Federal Pacific NB221025 Circuit Breaker Refurbished, NB221025">American-Federal Pacific NB221025 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221025H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221025H-p/nb221025h.htm" title="American-Federal Pacific NB221025H Circuit Breaker Refurbished, NB221025H">American-Federal Pacific NB221025H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221030</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221030-p/nb221030.htm" title="American-Federal Pacific NB221030 Circuit Breaker Refurbished, NB221030">American-Federal Pacific NB221030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221030H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221030H-p/nb221030h.htm" title="American-Federal Pacific NB221030H Circuit Breaker Refurbished, NB221030H">American-Federal Pacific NB221030H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221035</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221035-p/nb221035.htm" title="American-Federal Pacific NB221035 Circuit Breaker Refurbished, NB221035">American-Federal Pacific NB221035 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221035H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221035H-p/nb221035h.htm" title="American-Federal Pacific NB221035H Circuit Breaker Refurbished, NB221035H">American-Federal Pacific NB221035H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221040</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221040-p/nb221040.htm" title="American-Federal Pacific NB221040 Circuit Breaker Refurbished, NB221040">American-Federal Pacific NB221040 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221040H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221040H-p/nb221040h.htm" title="American-Federal Pacific NB221040H Circuit Breaker Refurbished, NB221040H">American-Federal Pacific NB221040H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221045</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221045-p/nb221045.htm" title="American-Federal Pacific NB221045 Circuit Breaker Refurbished, NB221045">American-Federal Pacific NB221045 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221045H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221045H-p/nb221045h.htm" title="American-Federal Pacific NB221045H Circuit Breaker Refurbished, NB221045H">American-Federal Pacific NB221045H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221050</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221050-p/nb221050.htm" title="American-Federal Pacific NB221050 Circuit Breaker Refurbished, NB221050">American-Federal Pacific NB221050 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221050H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221050H-p/nb221050h.htm" title="American-Federal Pacific NB221050H Circuit Breaker Refurbished, NB221050H">American-Federal Pacific NB221050H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221060</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221060-p/nb221060.htm" title="American-Federal Pacific NB221060 Circuit Breaker Refurbished, NB221060">American-Federal Pacific NB221060 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221060H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221060H-p/nb221060h.htm" title="American-Federal Pacific NB221060H Circuit Breaker Refurbished, NB221060H">American-Federal Pacific NB221060H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221070</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221070-p/nb221070.htm" title="American-Federal Pacific NB221070 Circuit Breaker Refurbished, NB221070">American-Federal Pacific NB221070 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB221070H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB221070H-p/nb221070h.htm" title="American-Federal Pacific NB221070H Circuit Breaker Refurbished, NB221070H">American-Federal Pacific NB221070H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB231070</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB231080H-p/nb231070.htm" title="American-Federal Pacific NB231070 Circuit Breaker Refurbished, NB231070">American-Federal Pacific NB231070 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB231080</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB231080-p/nb231080.htm" title="American-Federal Pacific NB231080 Circuit Breaker Refurbished, NB231080">American-Federal Pacific NB231080 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB231090</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB231090-p/nb231090.htm" title="American-Federal Pacific NB231090 Circuit Breaker Refurbished, NB231090">American-Federal Pacific NB231090 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB231090H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB231090H-p/nb231090h.htm" title="American-Federal Pacific NB231090H Circuit Breaker Refurbished, NB231090H">American-Federal Pacific NB231090H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB231100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB231100-p/nb231100.htm" title="American-Federal Pacific NB231100 Circuit Breaker Refurbished, NB231100">American-Federal Pacific NB231100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB231100H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB231100H-p/nb231100h.htm" title="American-Federal Pacific NB231100H Circuit Breaker Refurbished, NB231100H">American-Federal Pacific NB231100H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232015</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232015-p/nb232015.htm" title="American-Federal Pacific NB232015 Circuit Breaker Refurbished, NB232015">American-Federal Pacific NB232015 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232015H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232015H-p/nb232015h.htm" title="American-Federal Pacific NB232015H Circuit Breaker Refurbished, NB232015H">American-Federal Pacific NB232015H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232020</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232020-p/nb232020.htm" title="American-Federal Pacific NB232020 Circuit Breaker Refurbished, NB232020">American-Federal Pacific NB232020 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232020H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232020H-p/nb232020h.htm" title="American-Federal Pacific NB232020H Circuit Breaker Refurbished, NB232020H">American-Federal Pacific NB232020H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232025</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232025-p/nb232025.htm" title="American-Federal Pacific NB232025 Circuit Breaker Refurbished, NB232025">American-Federal Pacific NB232025 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232030</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232030-p/nb232030.htm" title="American-Federal Pacific NB232030 Circuit Breaker Refurbished, NB232030">American-Federal Pacific NB232030 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232030H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232030H-p/nb232030h.htm" title="American-Federal Pacific NB232030H Circuit Breaker Refurbished, NB232030H">American-Federal Pacific NB232030H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232035</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232035-p/nb232035.htm" title="American-Federal Pacific NB232035 Circuit Breaker Refurbished, NB232035">American-Federal Pacific NB232035 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232040</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232040-p/nb232040.htm" title="American-Federal Pacific NB232040 Circuit Breaker Refurbished, NB232040">American-Federal Pacific NB232040 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232050</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232050-p/nb232050.htm" title="American-Federal Pacific NB232050 Circuit Breaker Refurbished, NB232050">American-Federal Pacific NB232050 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232050H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232050H-p/nb232050h.htm" title="American-Federal Pacific NB232050H Circuit Breaker Refurbished, NB232050H">American-Federal Pacific NB232050H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232060</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232060-p/nb232060.htm" title="American-Federal Pacific NB232060 Circuit Breaker Refurbished, NB232060">American-Federal Pacific NB232060 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232060H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232060H-p/nb232060h.htm" title="American-Federal Pacific NB232060H Circuit Breaker Refurbished, NB232060H">American-Federal Pacific NB232060H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232070</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB232070-p/nb232070.htm" title="American-Federal Pacific NB232070 Circuit Breaker Refurbished, NB232070">American-Federal Pacific NB232070 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB232070H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NB232070H-p/nb232070h.htm" title="American-Federal Pacific NB232070H Circuit Breaker Refurbished, NB232070H">American-Federal Pacific NB232070H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB80</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB80-p/nb80.htm" title="American-Federal Pacific NB80 Circuit Breaker Refurbished, NB80">American-Federal Pacific NB80 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB80H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NB80H-p/nb80h.htm" title="American-Federal Pacific NB80H Circuit Breaker Refurbished, NB80H">American-Federal Pacific NB80H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB90</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB90-p/nb90.htm" title="American-Federal Pacific NB90 Circuit Breaker Refurbished, NB90">American-Federal Pacific NB90 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NB90H</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NB90H-p/nb90h.htm" title="American-Federal Pacific NB90H Circuit Breaker Refurbished, NB90H">American-Federal Pacific NB90H Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC20-N</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/Federal-Pacific-NC20-p/nc20-n.htm" title="American-Federal Pacific NC20 Circuit Breaker New, NC20-N">American-Federal Pacific NC20 Circuit Breaker New</a></td>
+        </tr>
+        <tr>
+          <td>NC20</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC20-p/nc20.htm" title="American-Federal Pacific NC20 Circuit Breaker Refurbished, NC20">American-Federal Pacific NC20 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC215</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC215-p/nc215.htm" title="American-Federal Pacific NC215 Circuit Breaker Refurbished, NC215">American-Federal Pacific NC215 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC220</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC220-p/nc220.htm" title="American-Federal Pacific NC220 Circuit Breaker Refurbished, NC220">American-Federal Pacific NC220 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC225-p/nc225.htm" title="American-Federal Pacific NC225 Circuit Breaker Refurbished, NC225">American-Federal Pacific NC225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC230</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC230-p/nc230.htm" title="American-Federal Pacific NC230 Circuit Breaker Refurbished, NC230">American-Federal Pacific NC230 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC240</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC240-p/nc240.htm" title="American-Federal Pacific NC240 Circuit Breaker Refurbished, NC240">American-Federal Pacific NC240 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC245</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC245-p/nc245.htm" title="American-Federal Pacific NC245 Circuit Breaker Refurbished, NC245">American-Federal Pacific NC245 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC25</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC25-p/nc25.htm" title="American-Federal Pacific NC25 Circuit Breaker Refurbished, NC25">American-Federal Pacific NC25 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NC250</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NC250-p/nc250.htm" title="American-Federal Pacific NC250 Circuit Breaker Refurbished, NC250">American-Federal Pacific NC250 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631100-p/nj631100.htm" title="American-Federal Pacific NJ631100 Circuit Breaker Refurbished, NJ631100">American-Federal Pacific NJ631100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631125</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631125-p/nj631125.htm" title="American-Federal Pacific NJ631125 Circuit Breaker Refurbished, NJ631125">American-Federal Pacific NJ631125 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631150</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631150-p/nj631150.htm" title="American-Federal Pacific NJ631150 Circuit Breaker Refurbished, NJ631150">American-Federal Pacific NJ631150 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631175</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631175-p/nj631175.htm" title="American-Federal Pacific NJ631175 Circuit Breaker Refurbished, NJ631175">American-Federal Pacific NJ631175 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631200</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631200-p/nj631200.htm" title="American-Federal Pacific NJ631200 Circuit Breaker Refurbished, NJ631200">American-Federal Pacific NJ631200 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631225-p/nj631225.htm" title="American-Federal Pacific NJ631225 Circuit Breaker Refurbished, NJ631225">American-Federal Pacific NJ631225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631350</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631350-p/nj631350.htm" title="American-Federal Pacific NJ631350 Circuit Breaker Refurbished, NJ631350">American-Federal Pacific NJ631350 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NJ631400</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NJ631400-p/nj631400.htm" title="American-Federal Pacific NJ631400 Circuit Breaker Refurbished, NJ631400">American-Federal Pacific NJ631400 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NK631125</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NK631125-p/nk631125.htm" title="American-Federal Pacific NK631125 Circuit Breaker Refurbished, NK631125">American-Federal Pacific NK631125 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NK631150</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NK631150-p/nk631150.htm" title="American-Federal Pacific NK631150 Circuit Breaker Refurbished, NK631150">American-Federal Pacific NK631150 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NK631175</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NK631175-p/nk631175.htm" title="American-Federal Pacific NK631175 Circuit Breaker Refurbished, NK631175">American-Federal Pacific NK631175 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NK631200</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NK631200-p/nk631200.htm" title="American-Federal Pacific NK631200 Circuit Breaker Refurbished, NK631200">American-Federal Pacific NK631200 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NK631225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NK631225-p/nk631225.htm" title="American-Federal Pacific NK631225 Circuit Breaker Refurbished, NK631225">American-Federal Pacific NK631225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631070</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631070-p/nkl631070.htm" title="American-Federal Pacific NKL631070 Circuit Breaker Refurbished, NKL631070">American-Federal Pacific NKL631070 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631150</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631150-p/nkl631150.htm" title="American-Federal Pacific NKL631150 Circuit Breaker Refurbished, NKL631150">American-Federal Pacific NKL631150 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631200</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631200-p/nkl631200.htm" title="American-Federal Pacific NKL631200 Circuit Breaker Refurbished, NKL631200">American-Federal Pacific NKL631200 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631225</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631225-p/nkl631225.htm" title="American-Federal Pacific NKL631225 Circuit Breaker Refurbished, NKL631225">American-Federal Pacific NKL631225 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631250</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631250-p/nkl631250.htm" title="American-Federal Pacific NKL631250 Circuit Breaker Refurbished, NKL631250">American-Federal Pacific NKL631250 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631300</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631300-p/nkl631300.htm" title="American-Federal Pacific NKL631300 Circuit Breaker Refurbished, NKL631300">American-Federal Pacific NKL631300 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631350</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631350-p/nkl631350.htm" title="American-Federal Pacific NKL631350 Circuit Breaker Refurbished, NKL631350">American-Federal Pacific NKL631350 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NKL631400</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-NKL631400-p/nkl631400.htm" title="American-Federal Pacific NKL631400 Circuit Breaker Refurbished, NKL631400">American-Federal Pacific NKL631400 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN623080</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN623080-p/nn623080.htm" title="American-Federal Pacific NN623080 Circuit Breaker Refurbished, NN623080">American-Federal Pacific NN623080 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN623090</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN623090-p/nn623090.htm" title="American-Federal Pacific NN623090 Circuit Breaker Refurbished, NN623090">American-Federal Pacific NN623090 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN623100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN623100-p/nn623100.htm" title="American-Federal Pacific NN623100 Circuit Breaker Refurbished, NN623100">American-Federal Pacific NN623100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN623120</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN623120-p/nn623120.htm" title="American-Federal Pacific NN623120 Circuit Breaker Refurbished, NN623120">American-Federal Pacific NN623120 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN633080</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN633080-p/nn633080.htm" title="American-Federal Pacific NN633080 Circuit Breaker Refurbished, NN633080">American-Federal Pacific NN633080 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN633090</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN633090-p/nn633090.htm" title="American-Federal Pacific NN633090 Circuit Breaker Refurbished, NN633090">American-Federal Pacific NN633090 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN633100</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN633100-p/nn633100.htm" title="American-Federal Pacific NN633100 Circuit Breaker Refurbished, NN633100">American-Federal Pacific NN633100 Circuit Breaker Refurbished</a></td>
+        </tr>
+        <tr>
+          <td>NN633120</td>
+          <td>&nbsp;</td>
+          <td><a href="https://www.circuitbreakerwarehouse.com/American-Federal-Pacific-NN633120-p/nn633120.htm" title="American-Federal Pacific NN633120 Circuit Breaker Refurbished, NN633120">American-Federal Pacific NN633120 Circuit Breaker Refurbished</a></td>
+        </tr>
+	</table>
+	<br>
+	<table cellspacing="2" cellpadding="2" border="0">
+	 <tr>
+	  <td colspan="2">Page:
+							<font style="font-weight:bold">1</font>
+								<a href="?Page=2" style="text-decoration: underline">2</a>
+								<a href="?Page=3" style="text-decoration: underline">3</a>
+								<a href="?Page=4" style="text-decoration: underline">4</a>
+								<a href="?Page=5" style="text-decoration: underline">5</a>
+								<a href="?Page=6" style="text-decoration: underline">6</a>
+								<a href="?Page=7" style="text-decoration: underline">7</a>
+								<a href="?Page=8" style="text-decoration: underline">8</a>
+								<a href="?Page=9" style="text-decoration: underline">9</a>
+								<a href="?Page=10" style="text-decoration: underline">10</a>
+								<a href="?Page=11" style="text-decoration: underline">11</a>
+								<a href="?Page=12" style="text-decoration: underline">12</a>
+								<a href="?Page=13" style="text-decoration: underline">13</a>
+								<a href="?Page=14" style="text-decoration: underline">14</a>
+								<a href="?Page=15" style="text-decoration: underline">15</a>
+								<a href="?Page=16" style="text-decoration: underline">16</a>
+								<a href="?Page=17" style="text-decoration: underline">17</a>
+								<a href="?Page=18" style="text-decoration: underline">18</a>
+								<a href="?Page=19" style="text-decoration: underline">19</a>
+								<a href="?Page=20" style="text-decoration: underline">20</a>
+								<a href="?Page=21" style="text-decoration: underline">21</a>
+								<a href="?Page=22" style="text-decoration: underline">22</a>
+								<a href="?Page=23" style="text-decoration: underline">23</a>
+								<a href="?Page=24" style="text-decoration: underline">24</a>
+								<a href="?Page=25" style="text-decoration: underline">25</a>
+								<a href="?Page=26" style="text-decoration: underline">26</a>
+								<a href="?Page=27" style="text-decoration: underline">27</a>
+								<a href="?Page=28" style="text-decoration: underline">28</a>
+								<a href="?Page=29" style="text-decoration: underline">29</a>
+								<a href="?Page=30" style="text-decoration: underline">30</a>
+								<a href="?Page=31" style="text-decoration: underline">31</a>
+								<a href="?Page=32" style="text-decoration: underline">32</a>
+								<a href="?Page=33" style="text-decoration: underline">33</a>
+								<a href="?Page=34" style="text-decoration: underline">34</a>
+								<a href="?Page=35" style="text-decoration: underline">35</a>
+								<a href="?Page=36" style="text-decoration: underline">36</a>
+								<a href="?Page=37" style="text-decoration: underline">37</a>
+								<a href="?Page=38" style="text-decoration: underline">38</a>
+								<a href="?Page=39" style="text-decoration: underline">39</a>
+								<a href="?Page=40" style="text-decoration: underline">40</a>
+								<a href="?Page=41" style="text-decoration: underline">41</a>
+								<a href="?Page=42" style="text-decoration: underline">42</a>
+								<a href="?Page=43" style="text-decoration: underline">43</a>
+								<a href="?Page=44" style="text-decoration: underline">44</a>
+								<a href="?Page=45" style="text-decoration: underline">45</a>
+								<a href="?Page=46" style="text-decoration: underline">46</a>
+								<a href="?Page=47" style="text-decoration: underline">47</a>
+								<a href="?Page=48" style="text-decoration: underline">48</a>
+								<a href="?Page=49" style="text-decoration: underline">49</a>
+								<a href="?Page=50" style="text-decoration: underline">50</a>
+								<a href="?Page=51" style="text-decoration: underline">51</a>
+								<a href="?Page=52" style="text-decoration: underline">52</a>
+								<a href="?Page=53" style="text-decoration: underline">53</a>
+								<a href="?Page=54" style="text-decoration: underline">54</a>
+								<a href="?Page=55" style="text-decoration: underline">55</a>
+								<a href="?Page=56" style="text-decoration: underline">56</a>
+								<a href="?Page=57" style="text-decoration: underline">57</a>
+								<a href="?Page=58" style="text-decoration: underline">58</a>
+								<a href="?Page=59" style="text-decoration: underline">59</a>
+								<a href="?Page=60" style="text-decoration: underline">60</a>
+								<a href="?Page=61" style="text-decoration: underline">61</a>
+								<a href="?Page=62" style="text-decoration: underline">62</a>
+								<a href="?Page=63" style="text-decoration: underline">63</a>
+								<a href="?Page=64" style="text-decoration: underline">64</a>
+								<a href="?Page=65" style="text-decoration: underline">65</a>
+								<a href="?Page=66" style="text-decoration: underline">66</a>
+								<a href="?Page=67" style="text-decoration: underline">67</a>
+								<a href="?Page=68" style="text-decoration: underline">68</a>
+								<a href="?Page=69" style="text-decoration: underline">69</a>
+								<a href="?Page=70" style="text-decoration: underline">70</a>
+								<a href="?Page=71" style="text-decoration: underline">71</a>
+								<a href="?Page=72" style="text-decoration: underline">72</a>
+								<a href="?Page=73" style="text-decoration: underline">73</a>
+								<a href="?Page=74" style="text-decoration: underline">74</a>
+								<a href="?Page=75" style="text-decoration: underline">75</a>
+								<a href="?Page=76" style="text-decoration: underline">76</a>
+								<a href="?Page=77" style="text-decoration: underline">77</a>
+								<a href="?Page=78" style="text-decoration: underline">78</a>
+								<a href="?Page=79" style="text-decoration: underline">79</a>
+								<a href="?Page=80" style="text-decoration: underline">80</a>
+								<a href="?Page=81" style="text-decoration: underline">81</a>
+								<a href="?Page=82" style="text-decoration: underline">82</a>
+					  </td>
+	 </tr>
+	</table>
+	<br>
+	</td>
+  </tr>
+</table>
+</div> <!-- #content_area -->
+                            <!-- PAGE H1: Volusion has no template tag for the current page's title, and most of its pages render
+                                 without an H1. This builds one from what each page already shows, straight after the content is
+                                 parsed so nothing jumps. Pages whose content already has an H1 are left alone. -->
+                            <script>
+                            (function () {
+                                var content = document.getElementById("content_area");
+                                if (!content || document.querySelector("h1")) { return; }
+                                function clean(text) { return (text || "").replace(/\s+/g, " ").trim(); }
+                                function pageTitle(text) { var h1 = document.createElement("h1"); h1.className = "page-title"; h1.textContent = text; return h1; }
+
+                                // Product page: the product name becomes the H1 (its itemprop="name" span moves with it).
+                                var productName = content.querySelector("#v65-product-parent font.productnamecolorLARGE");
+                                if (productName) {
+                                    var productH1 = document.createElement("h1");
+                                    productH1.className = productName.className;
+                                    while (productName.firstChild) { productH1.appendChild(productName.firstChild); }
+                                    productName.parentNode.replaceChild(productH1, productName);
+                                    if (productH1.nextElementSibling && productH1.nextElementSibling.tagName === "BR") { productH1.parentNode.removeChild(productH1.nextElementSibling); }
+                                    return;
+                                }
+
+                                // Category page (page 2+ is served from searchresults.asp, so check the form's category field, not
+                                // the URL): the category name is the last link of the breadcrumb.
+                                var breadcrumb = content.querySelector("#divWaitModal + table > tbody > tr:first-child td");
+                                var crumbs = breadcrumb ? breadcrumb.querySelectorAll("a") : [];
+                                var categoryField = content.querySelector("#MainForm input[name='Cat']");
+                                if (crumbs.length > 1 && categoryField && categoryField.value) {
+                                    breadcrumb.appendChild(pageTitle(clean(crumbs[crumbs.length - 1].textContent)));
+                                    return;
+                                }
+
+                                // Help, About Us, Login, Cart, etc.: these have a heading image that template.css hides.
+                                var headingImg = content.querySelector("img[src*='/headings/heading_']");
+                                if (headingImg) {
+                                    var fileName = headingImg.getAttribute("src").replace(/^.*heading_|\.\w+$/g, "").replace(/([a-z])([A-Z])/g, "$1 $2").replace(/[_-]+/g, " ");
+                                    headingImg.parentNode.insertBefore(pageTitle(clean(headingImg.getAttribute("alt")) || clean(document.title) || fileName), headingImg);
+                                    return;
+                                }
+
+                                // Articles (Terms, Return / Exchange, ...): the article title is a <b> just before the article body.
+                                var article = content.querySelector("[id^='div_articleid_']");
+                                var title = article && article.parentNode.querySelector("b");
+                                if (title && title.parentNode === article.parentNode && title.compareDocumentPosition(article) & Node.DOCUMENT_POSITION_FOLLOWING) {
+                                    title.parentNode.replaceChild(pageTitle(clean(title.textContent)), title);
+                                    return;
+                                }
+
+                                // Everything else (search results, indexes, account pages): use the page's <title>.
+                                if (/searchresults\.asp/i.test(window.location.pathname)) { content.insertBefore(pageTitle("Search Results"), content.firstChild); return; }
+                                if (clean(document.title)) { content.insertBefore(pageTitle(clean(document.title)), content.firstChild); }
+                            })();
+                            // Category/search pager: Volusion puts Previous/Next on a second row under "32 per page / Page 1 of N".
+                            // Move them onto the same line (template.min.js still turns them into buttons afterwards).
+                            (function () {
+                                var perPage = document.querySelector("#content_area .results_per_page_select");
+                                if (!perPage) { return; }
+                                var row = perPage.closest("tr");
+                                row.closest("table").classList.add("category-toolbar"); // hook for the responsive rules in template.css
+                                var nextRow = row.nextElementSibling;
+                                var buttons = nextRow ? nextRow.querySelectorAll(".previous_page_img, .next_page_img") : [];
+                                if (!buttons.length) { return; }
+                                var group = document.createElement("span");
+                                group.className = "pager-buttons";
+                                for (var i = 0; i < buttons.length; i++) { group.appendChild(buttons[i]); }
+                                perPage.parentNode.appendChild(group);
+                                row.cells[0].rowSpan = 1;
+                                nextRow.parentNode.removeChild(nextRow);
+                            })();
+                            </script>
+                                                    </section>
+                    </div> <!-- .row -->
+                </div> <!-- .container -->
+                <footer class="footer" data-ui-block="footer-1">
+                    <div class="footer__section pt--base">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-8 col-md-4">
+                <section class="microblock link-column" data-v-edit-region="Helpful Links"><div class="link-column__title microblock__title">
+                        Helpful Links
+                    </div>
+                    <div id="footer-links" class="link-column__body">
+                        <ul class="link-column__list list-unstyled">
+                        <li class="link-column__item">
+                            <a href="/aboutus.php" title="About Circuit Breaker Warehouse" rel="nofollow">About Us</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/affiliate_signup.php" title="Become an Affiliate" rel="nofollow">Become an Affiliate</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/terms_privacy.php" title="Privacy Policy" rel="nofollow">Privacy Policy</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/Articles.php?ID=83" title="Contact Circuit Breaker Warehouse" rel="nofollow">Contact Us</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="javascript:addbookmark()">Bookmark Us</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/aboutus.php" title="About Circuit Breaker Warehouse" rel="nofollow">Company Info</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/articles.php?ID=7" title="Advertising" rel="nofollow">Advertising</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/pindex.php" title="Product Index" rel="nofollow">Product Index</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/cindex.php" title="Category Index" rel="nofollow">Category Index</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/help.php" title="Help" rel="nofollow">Help</a>
+                        </li>
+                        <li class="link-column__item">
+                            <a href="/terms.php" title="Terms of Use" rel="nofollow">Terms of Use</a>
+                        </li><li class="link-column__item"><a href="https://www.circuitbreakerwarehouse.com/Articles.php?ID=267">Return / Exchange</a></li>
+                        <li class="link-column__item">
+                        </li>
+                </ul> 
+                    </div></section>
+                                </div>
+                                <div class="col-xs-12 col-sm-4 col-md-2">
+                <section class="microblock link-column" data-v-edit-region="Stay Connected"><div class="link-column__title microblock__title">
+                        Stay Connected
+                    </div>
+                    <div id="social" class="link-column__body">
+                        <ul class="link-column__list list-unstyled">
+                        <li class="link-column__item">
+                        </li>
+                        <li class="link-column__item">
+                           
+<a class="facebook" href="https://www.facebook.com/CircuitBreakerWarehouse" target="_blank" title="Like Circuit Breaker Warehouse on Facebook"><svg class="link-column__icon"><use xlink:href="#svg-facebook"></use></svg> Facebook</a>
+
+                        </li>
+                        <!--<li class="link-column__item">
+                            <a class="twitter" href="https://twitter.com/" target="_blank" title="Follow Circuit Breaker Warehouse on Twitter"><svg class="link-column__icon"><use xlink:href="#svg-twitter"></use></svg> Twitter</a>
+                        </li>-->
+                        <li class="link-column__item">
+                            <a class="gplus" href="#" target="_blank" title="Add Circuit Breaker Warehouse to Your Google+ Circle"><svg class="link-column__icon"><use xlink:href="#svg-gplus"></use></svg> Google+</a>
+                        </li>
+                        <li class="link-column__item">
+                        </li>
+                </ul> 
+                    </div></section>                        
+                                </div>
+                                <div class="col-xs-12 col-md-6" id="disclaimer" data-v-edit-region="Disclaimer"><div>
+                                        <div class="link-column__title microblock__title">
+                                            Disclaimer
+                                        </div>
+                                        <p>Free shipping does not apply to "<b>AK</b> "and "<b>HI </b>" states.<br><br><b>Shipping cut-off time is 12:00 (Noon) Pacific Time</b>.</p>
+                                        <p>All prices are [in-stock] pricing. Orders will be processed within 1 business day of clear payment. Shipping subject to product availability.</p>
+                                        <p>Open Mon-Fri 8:00 AM - 4:00 PM Pacific Time.</p>
+                                    </div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer__section">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xs-12 col-md-6">
+                                    <!-- Copyright -->
+                                    <section class="copyright microblock">
+                                        <a href="/terms.php" title="Terms">&copy; Copyright  <span class="insertYear">2015</span>&nbsp;Circuit Breaker Warehouse.</a>
+                                        <span class="copyright__line">
+                                            All Rights Reserved.
+                                            <!--Ecommerce Software by Volusion-->
+                                            <!-- #if_not_hompage -->
+                                        </span>
+                                    </section>
+                                </div>
+                                <div class="col-xs-12 col-md-6">
+                                    <!-- Credit Cards -->
+                                    <div class="credit-cards microblock">
+                                        <svg class="visa"> <use xlink:href="#svg-visa"></use> </svg>
+                                        <svg class="amex"> <use xlink:href="#svg-amex"></use> </svg>
+                                        <svg class="discover"> <use xlink:href="#svg-discover"></use> </svg>
+                                        <svg class="mc"> <use xlink:href="#svg-mc"></use> </svg>
+                                        <svg class="paypal"> <use xlink:href="#svg-paypal"></use> </svg>
+                                    </div>                    <!-- Volusion SSL -->
+                                    <section class="ssl microblock">
+                                        <div class="microblock__body">
+                                            <a href="https://www.volusion.com/ssl.php?url=www.circuitbreakerwarehouse.com" target="_blank" rel="noopener" aria-label="Secure site: verify SSL certificate (opens in a new tab)">
+                                                <svg aria-hidden="true">
+                                                    <use xlink:href="#svg-ssl"></use>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div> <!-- .page-wrap -->
+        </section>
+    </article>
+        <script src="/v/vspfiles/templates/capelec/js/jquery-1.11.1.min.js"></script>
+    <script>var $jQueryModern = jQuery.noConflict(true);</script>
+            <!-- SITE MAP PRETTIFICATION -->
+        <script>
+        /*
+        * This codes needs to be near the top of the template file to prevent flashing of content
+        * A second or two passes before the script runs if it is initialized in template.min.js
+        * So i'm using a different object instead of the VOLUSION for testing purposes
+        * there is also a scss as well, let me know if any issues
+        */
+        if ( window.location.pathname.match("/cindex")  ) {
+            var htmlTag = document.documentElement
+            var globalStoreObject = {};
+            function addSiteClss() {
+                htmlTag.classList.add("vol-site-map");
+            }
+            addSiteClss();
+            /*
+            * @module
+            * @description a module to reformat the cindex page
+            */
+            (function(V, $) {
+                /*
+                * Find root element to beging looping through
+                * if on this pathname window.location.pathname;
+                * --- Find all tds
+                * --- if not dot it will be first level
+                * --- if dot it will second level
+                * --- if > it will be third level
+                */
+                // Find all tds
+                var categoryItems = document.querySelectorAll("#content_area > table > tbody tr:last-child td");
+                var contentArea = document.getElementById("content_area");
+                var parent = document.querySelector("#content_area > table:first-child > tbody:first-child");
+                var insertBeforeEle = document.querySelector("#content_area > table:first-child > tbody:first-child tr:last-child");
+                var htmlTag = document.documentElement;
+                var mainWrap = document.querySelector(".container--content");
+                var softwareWrap = document.getElementById("content_area");
+                var siteContent = [
+                    {text: "Homepage", link: "/" },
+                    {text: "About Us", link: "/aboutus.php"},
+                    {text: "Affiliate Singup", link: "/affiliate_signup.php" },
+                    {text: "Contact Us", link: "/articles.php?ID=83"},
+                    {text: "Deal of the Day", link: "/dealoftheday.php"},
+                    {text: "Help / FAQ", link: "/help.php"},
+                    {text: "Login / Sign In", link: "/login.php"},
+                    {text: "Shipping", link: "/articles.php?ID=57"},
+                    {text: "Terms and Conditions", link: "/terms.php"},
+                    {text: "Privacy Policy", link: "/terms_privacy.php"},
+                    {text: "Product Index", link: "/pindex.php"}
+                ];
+                var acctLinks = [
+                    {text: "Recover Password", link: "/login_sendpass.php"},
+                    {text: "My Rewards", link: "/articles.php?ID=141"},
+                    {text: "My Account", link: "/myaccount.php"},
+                    {text: "Shopping Cart", link: "/shoppingcart.php"},
+                    {text: "Register", link: "/register.php"},
+                    {text: "Email When In Stock", link: "/email_me_when_back_in_stock.php"},
+                    {text: "Wishlist", link: "/wishlist.php"},
+                    {text: "Gift Card Send Options", link: "/giftCert_sendvia.php"}
+                ];
+                /*
+                * @module
+                * @description
+                */
+                V.siteMap = {};
+                /*
+                * @public
+                * @function
+                */
+                /*
+                * @private
+                * @function
+                */
+                function addSiteClss() {
+                    htmlTag.classList.add("vol-site-map");
+                }
+                /*
+                * @private
+                * @function
+                * @description creates ul tag with classes
+                */
+                function createUlTag() {
+                    var ul = document.createElement("ul");
+                    if (arguments.length >= 1) {
+                        for (var i = 0, iLen = arguments.length; i < iLen; i++) {
+                            ul.classList.add(arguments[i]);
+                        }
+                    }
+                    return ul;
+                }
+                /*
+                * @private
+                * @function
+                * @description creates li tag with classes
+                */
+                function createLiTag() {
+                    var li = document.createElement("li");
+                    li.classList.add("vnav__item");
+                    return li;
+                }
+                /*
+                * @private
+                * @function
+                * @description creates anchor tag with classes
+                */
+                function createATag(txt,href) {
+                    var a = document.createElement("a");
+                    a.classList.add("vnav__link");
+                    a.setAttribute("href",href);
+                    a.innerHTML = txt;
+                    return a;
+                }
+                /*
+                * @private
+                * @function
+                * @description creates column tag
+                */
+                function createColumn() {
+                    var div = document.createElement("div");
+                    div.classList.add("col-xs-12","col-sm-3");
+                    return div;
+                }
+                /*
+                * @private
+                * @function
+                * @description create temporory element for parsing purposes
+                */
+                function stringToDOM(string) {
+                    var temp = document.createElement("div");
+                    temp.innerHTML = string;
+                    return temp;
+                }
+                function showCaseBtn() {
+                    var btn = document.createElement("button");
+                    btn.innerHTML = "Activate Site-Map";
+                    btn.classList.add("btn","btn-primary","btn-lg","text-uppercase");
+                    btn.addEventListener("click", function(e){
+                        e.preventDefault();
+                        addSiteClss();
+                        createSiteMap();
+                        this.style.display = 'none';
+                        document.querySelector("title").innerHTML = "Site Map";
+                        setTimeout(function(){
+                            document.querySelector(".site-map__content").classList.add("vol-show");
+                        },500);
+                    });
+                    return btn;
+                }
+                /*
+                * @public
+                * @function
+                * @description
+                */
+                function defaultLinks(title, links) {
+                    var lvl1Ul = createUlTag("vnav", "vnav--level1", "vnav--default");
+                    var lvl1Li = createLiTag();
+                    var lvl1Link = createATag(title,"#");
+                    lvl1Link.addEventListener("click", function(e) { e.preventDefault()});
+                    lvl1Li.appendChild(lvl1Link);
+                    var lvl2Ul = createUlTag("vnav", "vnav__subnav", "vnav--level2");
+                    for (var i = 0, iLen = links.length; i < iLen; i++) {
+                        /* Loop and create links here*/
+                        var lvl2Li = createLiTag();
+                        var lvl2Link = createATag(links[i].text, links[i].link);
+                        var column = createColumn();
+                        column.appendChild(lvl2Link);
+                        lvl2Li.appendChild(column);
+                        lvl2Ul.appendChild(lvl2Li);
+                    }
+                    lvl1Li.appendChild(lvl2Ul);
+                    lvl1Ul.appendChild(lvl1Li);
+                    return lvl1Ul;
+                }
+                /*
+                * @public
+                * @function
+                * @description MAJOR REFACTOR IN THE WORKS
+                */
+                function createSiteMap() {
+                    // container tag for all reorganized site map content
+                    var article = document.createElement("article");
+                    article.classList.add("site-map__content");
+                    // insert all elements into this fragment
+                    var docFrag = document.createDocumentFragment();
+                    for (var i = 3, iLen = categoryItems.length; i < iLen; i++) {
+                        var categoryLinks = categoryItems[i].innerHTML.split("•");
+                        var addSub;
+                        // loop over categoryLinks
+                        for (var j = 0, jLen = categoryLinks.length; j < jLen; j++) {
+                            // This will always run once
+                            if (j === 0) {
+                                var lvl1Ul = createUlTag("vnav", "vnav--level1");
+                                var lvl1Li = createLiTag();
+                                var tempEle = stringToDOM(categoryLinks[j]);
+                                // console.log(tempEle);
+                                var tempLink = tempEle.querySelector("a");
+                                if (!tempLink) {
+                                    continue;
+                                }
+                                var lvl1Link = createATag(tempLink.innerHTML,tempLink.getAttribute("href"));
+                                var addSub = false;
+                            }
+                            else {
+                                if (!addSub) {
+                                    var lvl2Ul = createUlTag("vnav", "vnav__subnav", "vnav--level2");
+                                }
+                                var tempEle = stringToDOM(categoryLinks[j]);
+                                var lvl2LinkList = tempEle.querySelectorAll("a");
+                                var addSub = true;
+                                // Here is where you loop again;
+                                for (var k = 0, kLen = lvl2LinkList.length; k < kLen; k++) {
+                                    if ( kLen === 1) {
+                                        // you know that this is a subcategory level2
+                                        var lvl2Li = createLiTag();
+                                        var column = createColumn();
+                                        var lnkTxt = lvl2LinkList[k].innerHTML;
+                                        var href = lvl2LinkList[k].getAttribute("href");
+                                        var lvl2Link = createATag(lnkTxt,href);
+                                        column.appendChild(lvl2Link);
+                                        lvl2Li.appendChild(column);
+                                        lvl2Ul.appendChild(lvl2Li);
+                                    }
+                                }
+                            }
+                            lvl1Li.appendChild(lvl1Link);
+                            if (addSub) {
+                                lvl1Li.appendChild(lvl2Ul);
+                            }
+                            lvl1Ul.appendChild(lvl1Li);
+                            // Only add if the link contains text
+                            if ( lvl1Ul.querySelector(".vnav__link").innerHTML.trim()) {
+                                docFrag.appendChild(lvl1Ul);
+                            }
+                            // do A if only one item
+                            // do B if only two items
+                        }
+                    }
+                    var defaultSiteLinks = defaultLinks("Site Content", siteContent);
+                    var defaultAcctLinks = defaultLinks("Account Links", acctLinks);
+                    docFrag.appendChild(defaultSiteLinks);
+                    docFrag.appendChild(defaultAcctLinks);
+                    article.appendChild(docFrag);
+                    parent.insertBefore(article,insertBeforeEle);
+                }
+                V.siteMap.init = function() {
+                     createSiteMap();
+                    // mainWrap.insertBefore(showCaseBtn(), softwareWrap);
+                }
+            }( globalStoreObject || {}, $jQueryModern));
+            globalStoreObject.siteMap.init();
+        }
+        </script>    
+    <!-- PAGE SPEED: slider.min.js (Owl Carousel + featured-products slider) is no longer loaded. The homepage slideshow is now a
+         static banner and there is no #fpslider element anywhere, so all it still did was fire an uncached featured-products
+         API request on every homepage view. -->
+    <!-- IE9 FIX - CATEGORY GRID LAYOUT -->
+    <!--[if IE 9]><script>"searchresults.php"===PageName()&&!function(e){e(document).ready(function(){var r,t=0,n=0,i=new Array,h=0;e(".v-product").each(function(){if(r=e(this),h=r.position().top,n!=h){for(currentDiv=0;currentDiv<i.length;currentDiv++)i[currentDiv].height(t);i.length=0,n=h,t=r.height(),i.push(r)}else i.push(r),t=t<r.height()?r.height():t;for(currentDiv=0;currentDiv<i.length;currentDiv++)i[currentDiv].height(t)})})}($jQueryModern);</script><![endif]-->
+        <a class="vol-scroll-top" href="#" aria-label="Back to top">
+            <svg class="icon" aria-hidden="true"><use xlink:href="#svg-arrow-up"></use></svg>
+        </a>    
+    <!-- PAYPAL BUTTON UPDATE -->
+    <!--<script>
+        $(document).ready(function() {
+          $('[src$="/btn_xpressCheckout2.gif"]').attr("src", "/v/vspfiles/templates/capelec/images/template/btn_xpressCheckout2.png");
+          var $homepage_title = $('#homepage_title');
+          if($homepage_title.length){$homepage_title.closest('#display_homepage_title').next('.vlogo').hide();}else{$('#display_homepage_title').addClass('text-hide')};
+        });
+    </script>-->
+        <!--[if lt IE 10]>
+            <script src="/v/vspfiles/templates/capelec/js/min/multi-col.js"></script>
+        <![endif]-->    
+<script>
+    $('#display_menu_8').clone().appendTo($('.push-menu'));
+    $('.left-nav').clone().appendTo($('.push-menu'));
+</script>
+    <script src="/v/vspfiles/templates/capelec/js/min/template.min.js"></script>
+    <!-- ACCESSIBILITY: sort "Go" and Back/Next on category/search pages. Volusion outputs them as images, and template.min.js
+         turns them into buttons on DOM-ready, so this runs after it. The "Go" becomes a <span tabindex="0">, which takes focus
+         but ignored Enter/Space. -->
+    <script>
+    document.addEventListener("keydown", function (e) {
+        var target = e.target;
+        if (target.classList && target.classList.contains("btn_go_gray") && (e.key === "Enter" || e.key === " ")) {
+            e.preventDefault();
+            target.click();
+        }
+    });
+    $(function () {
+        $("#content_area .btn.btn_go_gray").attr({ role: "button", "aria-label": "Apply sort order" });
+        $("#content_area .btn.previous_page_img").text("Previous").attr("aria-label", "Previous page");
+        $("#content_area .btn.next_page_img").attr("aria-label", "Next page");
+    });
+    </script>
+        <script>
+            $(document).megaMenu({
+                //auto: false
+            });
+        </script>
+        <!-- ALGOLIA AUTOCOMPLETE for the header search box (products by part number, name, brand and specs).
+     Stays switched off until appId and searchKey are filled in. searchKey must be the SEARCH-ONLY key from
+     Algolia > Settings > API Keys - never the Admin key. Products are uploaded with algolia/sync.mjs. -->
+<script>
+(function () {
+    var ALGOLIA = { appId: "VVWT4CNE7C", searchKey: "2accdff49add00e4128c6d2f3cbef416", index: "live_products" }; // LIVE. Paste the Search-only key from Algolia > Settings > API Keys
+    var input = document.getElementById("search");
+    var form = input && input.form;
+    if (!ALGOLIA.appId || !ALGOLIA.searchKey || !form || !window.fetch) { return; }
+
+    var style = document.createElement("style");
+    style.textContent =
+        ".ac-list{position:fixed;z-index:10000;margin:0;padding:0;list-style:none;background:#fff;border:1px solid #d7d7d7;box-shadow:0 6px 18px rgba(0,0,0,.15);max-height:70vh;overflow-y:auto;text-align:left}" +
+        ".ac-item a{display:flex;align-items:center;gap:10px;padding:8px 10px;color:#333;text-decoration:none;line-height:1.3}" +
+        ".ac-item.is-active a,.ac-item a:hover{background:#eef6fb}" +
+        ".ac-item img{width:44px;height:44px;object-fit:contain;flex:none}" +
+        ".ac-text{min-width:0}.ac-name{display:block;font-size:14px}.ac-meta{display:block;font-size:12px;color:#666}" +
+        ".ac-list mark{background:none;color:#2185c2;font-weight:700;padding:0}" +
+        ".ac-price{margin-left:auto;padding-left:8px;font-weight:700;white-space:nowrap}" +
+        ".ac-badges{display:block;margin-top:2px;font-size:11px}.ac-badge{display:inline-block;margin-right:6px;font-weight:600}" +
+        ".ac-in{color:#1b7f3b}.ac-out{color:#b3261e}.ac-ship{color:#2185c2}" +
+        ".ac-all a{justify-content:center;font-weight:600;color:#2185c2}.ac-empty{padding:10px;color:#666}" +
+        ".ac-head{padding:8px 10px 4px;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#888}" +
+        ".ac-recent a,.ac-brand a{padding:7px 10px}.ac-recent a:before{content:'\\21BA';color:#999;margin-right:4px}" +
+        ".ac-brand .ac-count{margin-left:auto;color:#999;font-size:12px}" +
+        ".search__form .ac-clear{position:absolute;top:50%;right:52px;transform:translateY(-50%);width:28px;height:28px;padding:0;border:0;border-radius:50%;background:#eee;color:#555;font-size:18px;line-height:28px;text-align:center;cursor:pointer;display:none;z-index:2}" +
+        ".search__form.ac-has-value .ac-clear{display:block}" +
+        ".search__form.ac-has-value .search__input{padding-right:86px !important}" +
+        ".ac-cancel{display:none}" +
+        // Phone: tapping the search box opens a full-width search bar at the top of the screen.
+        "body.ac-mobile .search__form{position:fixed !important;top:0;left:0;right:0;width:auto !important;max-width:none !important;box-sizing:border-box;z-index:10001;height:58px !important;margin:0 !important;padding:8px 84px 8px 8px;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.2)}" +
+        "body.ac-mobile .search__form .search__submit{right:84px !important;top:8px !important;height:42px !important}" +
+        "body.ac-mobile .search__form .ac-clear{right:136px}" +
+        "body.ac-mobile .search__form.ac-has-value .search__input{padding-right:86px !important}" +
+        "body.ac-mobile .ac-cancel{display:block;position:absolute;top:8px;right:8px;height:42px;line-height:42px;margin:0;padding:0 10px;border:0;background:none;color:#2185c2;font-weight:600;font-size:15px;cursor:pointer}";
+    document.head.appendChild(style);
+
+    var list = document.createElement("ul");
+    list.id = "search-suggestions";
+    list.className = "ac-list";
+    list.setAttribute("role", "listbox");
+    list.setAttribute("aria-label", "Product suggestions");
+    list.hidden = true;
+    // Lives in <body>: the header section clips overflow, so the list is positioned under the search box instead.
+    document.body.appendChild(list);
+    input.setAttribute("role", "combobox");
+    input.setAttribute("aria-autocomplete", "list");
+    input.setAttribute("aria-controls", list.id);
+    input.setAttribute("aria-expanded", "false");
+    input.setAttribute("autocomplete", "off");
+
+    var clearBtn = document.createElement("button");
+    clearBtn.type = "button";
+    clearBtn.className = "ac-clear";
+    clearBtn.setAttribute("aria-label", "Clear search");
+    clearBtn.innerHTML = "&times;";
+    form.appendChild(clearBtn);
+    var cancelBtn = document.createElement("button");
+    cancelBtn.type = "button";
+    cancelBtn.className = "ac-cancel";
+    cancelBtn.textContent = "Cancel";
+    form.appendChild(cancelBtn);
+
+    // Keys go in the URL (as Algolia's own client does) so the browser needs no extra CORS preflight round trip.
+    var auth = "?x-algolia-application-id=" + encodeURIComponent(ALGOLIA.appId) + "&x-algolia-api-key=" + encodeURIComponent(ALGOLIA.searchKey);
+    var endpoint = "https://" + ALGOLIA.appId + "-dsn.algolia.net/1/indexes/" + encodeURIComponent(ALGOLIA.index) + "/query" + auth;
+    var cache = {}, timer = null, seq = 0, active = -1, connected = false, brandsPromise = null;
+    var phone = function () { return document.documentElement.clientWidth < 600; };
+
+    // Anonymous visitor id for Algolia click analytics (no personal data).
+    var userToken = store("cbw-ut");
+    if (!userToken) { userToken = "anon-" + Math.random().toString(36).slice(2) + Date.now().toString(36); store("cbw-ut", userToken); }
+
+    function store(key, value) {
+        try {
+            if (value === undefined) { return window.localStorage.getItem(key); }
+            window.localStorage.setItem(key, value);
+        } catch (e) { return null; }
+    }
+    function recent() {
+        try { return JSON.parse(store("cbw-recent") || "[]"); } catch (e) { return []; }
+    }
+    function remember(q) {
+        q = String(q || "").trim();
+        if (q.length < 2) { return; }
+        var list = recent().filter(function (r) { return r.toLowerCase() !== q.toLowerCase(); });
+        list.unshift(q);
+        store("cbw-recent", JSON.stringify(list.slice(0, 5)));
+    }
+    function esc(s) {
+        return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return "&#" + c.charCodeAt(0) + ";"; });
+    }
+    function highlighted(hit, attr) {
+        var h = hit._highlightResult && hit._highlightResult[attr];
+        return h ? esc(h.value).replace(/&#60;(\/?)mark&#62;/g, "<$1mark>") : esc(hit[attr]);
+    }
+    function money(n) { return "$" + Number(n).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+    function normalize(s) { return String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, ""); }
+
+    function query(params) {
+        return fetch(endpoint, { method: "POST", body: JSON.stringify({ params: params }) }).then(function (r) { return r.ok ? r.json() : { hits: [], nbHits: 0 }; });
+    }
+    function search(q) {
+        if (!cache[q]) {
+            cache[q] = query("query=" + encodeURIComponent(q) + "&hitsPerPage=6&clickAnalytics=true&userToken=" + encodeURIComponent(userToken) +
+                "&analyticsTags=" + encodeURIComponent(JSON.stringify(["autocomplete", phone() ? "phone" : "desktop"])) +
+                "&highlightPreTag=" + encodeURIComponent("<mark>") + "&highlightPostTag=" + encodeURIComponent("</mark>"))
+                ["catch"](function () { delete cache[q]; return { hits: [], nbHits: 0 }; });
+        }
+        return cache[q];
+    }
+    function topBrands() {
+        if (!brandsPromise) {
+            brandsPromise = query("query=&hitsPerPage=0&analytics=false&facets=" + encodeURIComponent('["manufacturer"]') + "&maxValuesPerFacet=6")
+                .then(function (res) {
+                    var f = (res.facets && res.facets.manufacturer) || {};
+                    return Object.keys(f).map(function (k) { return { name: k, count: f[k] }; }).sort(function (a, b) { return b.count - a.count; });
+                })["catch"](function () { brandsPromise = null; return []; });
+        }
+        return brandsPromise;
+    }
+
+    // Click analytics: tells Algolia which result was chosen for which search (Algolia > Analytics).
+    function sendClick(res, hit, position) {
+        if (!res || !res.queryID || !hit) { return Promise.resolve(); }
+        var body = JSON.stringify({ events: [{ eventType: "click", eventName: "Product clicked in autocomplete", index: ALGOLIA.index,
+            userToken: userToken, queryID: res.queryID, objectIDs: [hit.objectID], positions: [position] }] });
+        var sent = fetch("https://insights.algolia.io/1/events", { method: "POST", keepalive: true,
+            headers: { "Content-Type": "application/json", "X-Algolia-Application-Id": ALGOLIA.appId, "X-Algolia-API-Key": ALGOLIA.searchKey }, body: body })["catch"](function () {});
+        return Promise.race([sent, new Promise(function (r) { setTimeout(r, 300); })]);
+    }
+    function go(url, res, hit, position) {
+        remember(input.value);
+        sendClick(res, hit, position).then(function () { window.location.href = url; });
+    }
+
+    function place() {
+        var r = form.getBoundingClientRect(), vw = document.documentElement.clientWidth;
+        var width = vw < 600 ? vw - 16 : Math.max(r.width, Math.min(480, vw - 16));
+        var left = vw < 600 ? 8 : Math.max(8, Math.min(r.right - width, vw - width - 8));
+        list.style.top = (r.bottom + 2) + "px";
+        list.style.left = left + "px";
+        list.style.width = width + "px";
+        list.style.maxHeight = Math.max(200, window.innerHeight - r.bottom - 12) + "px";
+    }
+    function options() { return list.querySelectorAll("[role=option]"); }
+    function setActive(i) {
+        var opts = options();
+        if (!opts.length) { return; }
+        active = (i + opts.length) % opts.length;
+        for (var k = 0; k < opts.length; k++) {
+            opts[k].classList.toggle("is-active", k === active);
+            opts[k].setAttribute("aria-selected", k === active ? "true" : "false");
+        }
+        input.setAttribute("aria-activedescendant", opts[active].id);
+        opts[active].scrollIntoView({ block: "nearest" });
+    }
+    function show(html) {
+        list.innerHTML = html;
+        place();
+        list.hidden = false;
+        active = -1;
+        input.setAttribute("aria-expanded", "true");
+        input.removeAttribute("aria-activedescendant");
+    }
+    function close() {
+        list.hidden = true;
+        active = -1;
+        input.setAttribute("aria-expanded", "false");
+        input.removeAttribute("aria-activedescendant");
+    }
+    function exitPhonePanel() { document.body.classList.remove("ac-mobile"); }
+    function syncClear() { form.classList.toggle("ac-has-value", input.value.length > 0); }
+
+    // Before typing: the visitor's recent searches and the brands with the most products.
+    function renderStart() {
+        var rec = recent();
+        topBrands().then(function (brands) {
+            if (document.activeElement !== input || input.value.trim().length >= 2) { return; }
+            var html = "";
+            if (rec.length) {
+                html += '<li class="ac-head" role="presentation">Recent searches</li>';
+                rec.forEach(function (r, i) {
+                    html += '<li class="ac-item ac-recent" role="option" id="ac-rec-' + i + '" aria-selected="false" data-q="' + esc(r) + '"><a href="#" tabindex="-1">' + esc(r) + "</a></li>";
+                });
+            }
+            if (brands.length) {
+                html += '<li class="ac-head" role="presentation">Top brands</li>';
+                brands.forEach(function (b, i) {
+                    html += '<li class="ac-item ac-brand" role="option" id="ac-brand-' + i + '" aria-selected="false" data-q="' + esc(b.name) + '"><a href="#" tabindex="-1">' +
+                        esc(b.name) + '<span class="ac-count">' + b.count.toLocaleString() + " products</span></a></li>";
+                });
+            }
+            if (html) { show(html); } else { close(); }
+        });
+    }
+    function render(q, res) {
+        var hits = res.hits || [], html = "";
+        hits.forEach(function (hit, i) {
+            var meta = [hit.code, hit.manufacturer, hit.condition].concat((hit.amps || []).slice(0, 1), (hit.poles || []).slice(0, 1)).filter(Boolean);
+            var badges = (hit.inStock === 0 ? '<span class="ac-badge ac-out">Out of stock</span>' : '<span class="ac-badge ac-in">In stock</span>') +
+                (hit.freeShipping ? '<span class="ac-badge ac-ship">Free shipping</span>' : "");
+            var price = hit.salePrice || hit.price;
+            html += '<li class="ac-item ac-hit" role="option" id="ac-opt-' + i + '" aria-selected="false" data-i="' + i + '">' +
+                '<a href="' + esc(hit.url) + '" tabindex="-1">' +
+                '<img src="' + esc(hit.image) + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+                '<span class="ac-text"><span class="ac-name">' + highlighted(hit, "name") + '</span>' +
+                '<span class="ac-meta">' + meta.map(esc).join(" &middot; ") + "</span>" +
+                '<span class="ac-badges">' + badges + "</span></span>" +
+                (price ? '<span class="ac-price">' + money(price) + "</span>" : "") + "</a></li>";
+        });
+        if (!hits.length) { html += '<li class="ac-empty" role="presentation">No products match &ldquo;' + esc(q) + "&rdquo;</li>"; }
+        var n = res.nbHits || 0;
+        html += '<li class="ac-item ac-all" role="option" id="ac-opt-all" aria-selected="false"><a href="#" tabindex="-1">See ' +
+            (n > 1 ? "all " + n.toLocaleString() + " results" : n === 1 ? "the result" : "search results") + " for &ldquo;" + esc(q) + "&rdquo;</a></li>";
+        show(html);
+    }
+    function update() {
+        clearTimeout(timer);
+        syncClear();
+        var q = input.value.trim();
+        if (q.length < 2) { renderStart(); return; }
+        timer = setTimeout(function () {
+            var mine = ++seq;
+            search(q).then(function (res) { if (mine === seq && input.value.trim() === q) { render(q, res); } });
+        }, 120);
+    }
+    function choose(li) {
+        var q = input.value.trim();
+        if (li.hasAttribute("data-q")) { input.value = li.getAttribute("data-q"); input.focus(); update(); return; }
+        if (li.id === "ac-opt-all") { remember(q); close(); form.submit(); return; }
+        var i = +li.getAttribute("data-i");
+        search(q).then(function (res) { go(res.hits[i].url, res, res.hits[i], i + 1); });
+    }
+    // Enter on an exact part number (e.g. "qo120afi" or "BAB2080N") goes straight to that product.
+    function submitOrJump(e) {
+        var q = input.value.trim(), code = normalize(q);
+        if (code.length < 3 || /\s/.test(q)) { remember(q); return; }
+        e.preventDefault();
+        var timeout = new Promise(function (r) { setTimeout(function () { r(null); }, 1200); });
+        Promise.race([search(q), timeout]).then(function (res) {
+            var hits = (res && res.hits) || [];
+            for (var i = 0; i < hits.length; i++) {
+                if (normalize(hits[i].code) === code) { go(hits[i].url, res, hits[i], i + 1); return; }
+            }
+            remember(q);
+            form.submit();
+        });
+    }
+
+    input.addEventListener("focus", function () {
+        if (phone()) { document.body.classList.add("ac-mobile"); }
+        if (!connected) {
+            connected = true;
+            var link = document.createElement("link");
+            link.rel = "preconnect";
+            link.href = "https://" + ALGOLIA.appId + "-dsn.algolia.net";
+            link.crossOrigin = "anonymous";
+            document.head.appendChild(link);
+        }
+        update();
+    });
+    input.addEventListener("input", update);
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") { close(); exitPhonePanel(); input.blur(); return; }
+        if (e.key === "Enter") {
+            if (!list.hidden && active > -1) { e.preventDefault(); choose(options()[active]); return; }
+            submitOrJump(e);
+            return;
+        }
+        if (list.hidden) { return; }
+        if (e.key === "ArrowDown") { e.preventDefault(); setActive(active + 1); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); setActive(active - 1); }
+    });
+    form.addEventListener("submit", function () { remember(input.value); });
+    list.addEventListener("mousedown", function (e) { e.preventDefault(); }); // keep focus in the input
+    list.addEventListener("click", function (e) {
+        var li = e.target.closest("[role=option]");
+        if (li) { e.preventDefault(); choose(li); }
+    });
+    clearBtn.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    clearBtn.addEventListener("click", function () { input.value = ""; input.focus(); update(); });
+    cancelBtn.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    cancelBtn.addEventListener("click", function () { close(); exitPhonePanel(); input.blur(); });
+    input.addEventListener("blur", function () {
+        setTimeout(function () { if (document.activeElement !== input) { close(); exitPhonePanel(); } }, 150);
+    });
+    window.addEventListener("scroll", function () { if (!list.hidden) { place(); } }, { passive: true });
+    window.addEventListener("resize", function () { if (!list.hidden) { place(); } });
+    syncClear();
+})();
+</script>
+
+<!-- BEGIN: buySAFE Seal + NSG Seal
+     PAGE SPEED: both seal loaders are fetched asynchronously. Before, each one was a blocking <script> from a different
+     third-party server, so the rest of the page (and everything that waits for DOM-ready) had to wait for both.
+     The seals only render after the page has loaded anyway, so what shoppers see is unchanged. -->
+<span id="BuySafeSealSpan"></span>
+<script type="text/javascript">
+(function () {
+    function loadSealScript(src, onload) {
+        var script = document.createElement("script");
+        script.src = src;
+        script.async = true;
+        script.onload = onload;
+        document.body.appendChild(script);
+    }
+    loadSealScript("//seal.buysafe.com/private/rollover/rollover.js", function () {
+        if (window.buySAFE && buySAFE.Loaded) {
+            buySAFE.Hash = 'R9hmpJwCkiR%2BslNMRKgMO4nraD1d9Gx4udSayow0AunSI3Ep%2BdjB2R4KS3rbTsDaX4%2BF3f8c%2F2MTSCNI7s5eew%3D%3D';
+            WriteBuySafeSeal("BuySafeSealSpan", "GuaranteedSeal");
+        }
+    });
+    loadSealScript("//nsg.symantec.com/Web/Seal/gjs.aspx?SN=936883000", function () {
+        if (window._GUARANTEE && _GUARANTEE.Loaded) {
+            _GUARANTEE.Hash = "R9hmpJwCkiR%2BslNMRKgMO4nraD1d9Gx4udSayow0AunSI3Ep%2BdjB2R4KS3rbTsDaX4%2BF3f8c%2F2MTSCNI7s5eew%3D%3D";
+            _GUARANTEE.WriteSeal();
+        }
+    });
+})();
+</script>
+<!-- END: buySAFE Seal + NSG Seal -->
+
+<!-- ECI: START: Dynamic Remarketing Tag, 27/02/2019 --->
+<script type="text/javascript">
+	$(function(){
+
+		var googleprice = 0;
+		var googleprodid ='';
+		var pathname = window.location.pathname;
+
+		if(pathname == "/" || pathname == "/Default.php" || pathname == "/default.php"){ /* If home page */
+
+			var google_tag_params = {
+				'ecomm_pagetype': 'home'
+			};
+		}else if(pathname.indexOf('-s/') > -1){/* If Category Page */
+
+			var google_tag_params = {
+				'ecomm_pagetype': 'category'
+			};
+
+		}else if((pathname.indexOf('-p/') > -1) || (pathname.indexOf('ProductDetails') > -1)){/* If Product Page */
+
+			googleprice = $('span[itemprop="price"]').text().replace(/[^0-9.]/g,'');
+			googleprodid = window.global_Current_ProductCode;
+
+			var google_tag_params = {
+				'ecomm_prodid': googleprodid, 
+				'ecomm_pagetype': 'product',
+				'ecomm_totalvalue': parseFloat(googleprice)
+			};
+
+		}else if((pathname.indexOf('shoppingcart') > -1) || (pathname.indexOf('ShoppingCart') > -1)){/* If cart Page */
+
+			googleprice = $(".pricecolor.colors_productprice b:first").text().replace(/[^0-9.]/g, '');
+			var productIdArray = new Array();
+			var products = $('a .cart-item-name').length;
+
+			for (var i=0; i < products; i++) { 
+				var link = $('a.cart-item-name').eq(i).attr('href'); 
+				var substr = link.split('&'); 
+				var pcode = substr[0].split('='); 
+				// googleprodid = pcode[1].replace("%","-"); 
+				googleprodid = pcode[1].replace("%2D","-"); 
+				productIdArray.push(googleprodid); 
+			} 
+
+			googleprodid = productIdArray; 
+
+			var google_tag_params = {
+				'ecomm_prodid': googleprodid, 
+				'ecomm_pagetype': 'cart',
+				'ecomm_totalvalue': parseFloat(googleprice)
+			};
+		}
+		else if(pathname.indexOf('OrderFinished') > -1 || pathname.indexOf('orderfinished') > -1){/* If confirmation Page */
+
+			googleprice = Order[3]; 
+			productIdArray = new Array();
+
+			for (var i=0; i < OrderDetails.length; i++) {
+				productIdArray.push(OrderDetails[i][2]); 
+			}
+
+			googleprodid = productIdArray;
+
+			var google_tag_params = {
+				'ecomm_prodid': googleprodid, 
+				'ecomm_pagetype': 'purchase',
+				'ecomm_totalvalue': parseFloat(googleprice)
+			};
+		}else if(pathname.indexOf('searchresults.php') > -1){/* If searchresults Page */
+
+			var google_tag_params = {
+				'ecomm_pagetype': 'searchresults'
+			};
+
+		}		
+		else{
+			var google_tag_params = {
+				'ecomm_pagetype': 'other',
+			};
+		}
+
+		 google_tag_params['send_to'] = 'AW-969136485';
+		console.log('google_tag_params', google_tag_params);
+		gtag('event', 'page_view', google_tag_params);
+
+	});
+
+</script>
+
+<!-- ECI: END: Dynamic Remarketing Tag, 27/02/2019--->
+
+<!-- ECI: START: Adword conversion, 27/02/2019--->
+<script>
+	$(function(){
+
+		var pathname = window.location.pathname;
+		if(pathname.indexOf('OrderFinished') > -1 || pathname.indexOf('orderfinished') > -1){/* If confirmation Page */
+			/*ECI: Adwords EC Code: START - Added 1/30/2024 */
+                        gtag('set', 'user_data', {
+        		        "email": Order[9]
+    			});
+                        /*ECI: Adwords EC Code: END- Added 1/30/2024 */
+			gtag('event', 'conversion', {
+				'send_to': 'AW-969136485/7oZbCJPujAQQ5bKPzgM',
+				'value': Order[3],
+				'currency': 'USD',
+				'transaction_id': Order[0]
+			});
+		}
+	});
+</script>
+<!-- ECI: END: Adword conversion, 27/02/2019--->
+
+<!-- ECI: START GA4 First Time Access Condition , 12/12/2023--->
+<script>
+if(window.location.pathname == '/shoppingcart.php')
+{
+    if(sessionStorage.getItem('orderid') == 'eci_coderaned')
+    {
+         sessionStorage.removeItem('orderid')
+     }
+}
+</script>
+<!-- ECI: END: GA4 First Time Access Condition--->
+<!-- Template Closing Body Tag -->
+<script src="https://storage.googleapis.com/volusion-element/legacy-v1/js/volusion-GA4.js"></script>
+<script>volusionGA4('G-WLR1SJFX1S','Volusion Shopping Cart','USD')</script>
+
+
+<script type="text/javascript">function store_init(event){} AttachEvent(window, 'load', store_init);</script>
+<script type="text/javascript">
+function store_init(event) {
+    }
+AttachEvent(window, 'load', store_init);
+</script>
+  <script>
+     if (document.getElementsByName("MailingList")[0]) {
+        var emailSubscribeForm = document.getElementsByName("MailingList")[0];
+        disableSubscribeSubmit = function() {
+          emailSubscribeButton.removeAttribute("type");
+        }
+        forwardToMailingList = function(e) {
+            var subscribeEmail = emailSubscribeForm.querySelector("input").value;
+          sessionStorage.setItem("subEmailAddress", subscribeEmail);
+          emailSubscribeForm.submit();
+        }
+
+        if (emailSubscribeForm.querySelector("button")) {
+            var emailSubscribeButton = emailSubscribeForm.querySelector("button");
+            emailSubscribeButton.addEventListener("click", forwardToMailingList);
+        }
+    }
+  </script>
+<script src="/a/j/class-name-watcher.js" defer ></script>
+    <script type="text/javascript">
+        window.isUsingPpcp = true;
+        // [SV-000] When Feature_PHP_XferToNet is enabled, PayPal REST JS calls should hit
+        // the already-converted PHP net handlers instead of the legacy .NET ashx/paypalv2 endpoints.
+        window.usePhpXferToNet = true;
+    </script>
+            <script type="text/javascript">
+            window.useNewCheckout = true;
+        </script>
+        <script src="/a/j/paypal-push-cart.js" defer ></script>
+        <script src="/a/j/push-cart.js" defer ></script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a57f70968ee988ea',t:'MTc5NDI1NDgwNQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a57f70968ee988ea',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,83 @@
+[
+ {
+  "id": "pindex-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/pindex.php",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "cindex-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/cindex.php",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "affiliate-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/affiliate_signup.php",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "companyinfo-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/aboutus.php",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "advertising-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/articles.php?ID=7",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "terms-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/terms.php",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "privacy-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/terms_privacy.php",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "returns-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.php?ID=267",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ },
+ {
+  "id": "contact83-desktop",
+  "url": "https://www.circuitbreakerwarehouse.com/Articles.php?ID=83",
+  "device": "desktop",
+  "full": true,
+  "wait": 3000,
+  "quality": 60,
+  "format": "jpeg"
+ }
+]

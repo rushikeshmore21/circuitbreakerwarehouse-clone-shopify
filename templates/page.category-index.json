@@ -1,0 +1,15 @@
+{
+  "sections": {
+    "main": {
+      "type": "cbw-category-index",
+      "settings": {
+        "heading": "Category Index",
+        "extra_links": "main-menu",
+        "exclude": "all,frontpage"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

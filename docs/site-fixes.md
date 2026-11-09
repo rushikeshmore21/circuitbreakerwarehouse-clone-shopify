@@ -32,6 +32,17 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | 16 | Missing pages returned a bare server "page cannot be found" screen with no navigation | Visitors from old links hit a dead end | Themed 404 with header, footer, part-number search and a home link | Fixed |
 | 17 | Empty cart text was an H1 next to the page heading | Two H1s | Empty text is a paragraph | Fixed |
 
+## Round 2 (2026-11-10, owner notes)
+| # | What was wrong | Why it mattered | What we did | Status |
+|---|---|---|---|---|
+| 18 | Sticky header missing | Live header pins after scrolling | Desktop (992px+) sticky header: logo row collapses with a 0.2s transition, search moves into the grey bar, nav stays; phones scroll normally like live | Fixed |
+| 19 | Live sticky header shrinks its placeholder from 220px to 90px, so the page jumps 130px when it pins | Layout shift while scrolling | Placeholder keeps the full header height, so nothing below moves | Fixed |
+| 20 | Cart popup sat at the top of the page, off-screen once scrolled | Shoppers didn't see the add-to-cart confirmation | Popup lives inside the header and travels with the sticky header | Fixed |
+| 21 | Product Index pager lists every page number (82 links) | Long, hard to scan | Shopify's page list with ellipses ("1 2 3 ... 82"); 200 products per page as on live | Fixed |
+| 22 | Category Index is built by Volusion from categories and articles | n/a | Lists every collection plus a chosen menu (default main menu) A to Z in two columns | Fixed |
+| 23 | Cart and cart popup used Dawn's default look | Didn't match the brand | Red pill CHECK OUT, navy VIEW CART, brand font, square quantity box, navy totals, content aligned to the site container | Fixed |
+| 24 | Dawn analytics page-view event had an empty template name on policy pages (console error) | Error in the console; event dropped | Layout passes `request.page_type` when there's no template name | Fixed |
+
 ## SEO and speed
 | # | What was wrong | Why it mattered | What we did | Status |
 |---|---|---|---|---|
@@ -46,6 +57,8 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | P2 | 320 per page (categories), 300/500 per page (search) | Shopify paginates at most 250 per page; those options dropped. Per-page uses `?view=` alternate templates | Platform limit |
 | P3 | Volusion login / My Account pages | Shopify-hosted customer accounts (legacy theme templates are deprecated); owner chose not to match them | Owner decision |
 | P4 | Live home grid shows a random product selection each load | Shopify pages are cached; grid shows the chosen collection in its sort order | Platform limit |
+| P6 | Become an Affiliate is a Volusion affiliate login screen | Shopify has no built-in affiliate program; the page uses the normal page template until an affiliate app is chosen | Platform limit |
+| P7 | Terms, Privacy, Return / Exchange are Volusion articles | Shopify policy pages (`/policies/...`), styled like the content pages; text comes from Settings > Policies | Platform difference |
 | P5 | Phone search placeholder reads "Search..." | Same placeholder "Search our store..." at every width | Open (minor) |
 
 ## Problems found during the build

@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "cbw-product-index",
+      "settings": {
+        "per_page": 200
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

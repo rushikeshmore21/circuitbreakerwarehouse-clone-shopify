@@ -1,0 +1,47 @@
+
+== home [desktop] 5 issue(s)
+  log-error (3): Access to script at 'http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js' from origin 'http://127.0.0.1:9292' has been blocked by CORS policy | Failed to load resource: net::ERR_FAILED http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js | Failed to load resource: the server responded with a status of 404 (Not Found) http://127.0.0.1:9292/favicon.ico
+  req-failed (1): http://cdn.shopify.com/shopifycloud/storefront/assets/storefront/origin_trials-e8afbaf1.js net::ERR_FAILED
+  http-404 (1): http://127.0.0.1:9292/favicon.ico
+
+== product-index [desktop] 0 issue(s)
+
+== category-index [desktop] 0 issue(s)
+
+== policy-refund [desktop] 1 issue(s)
+  console-error (1): [Shopify Standard Events] Invalid payload for "shopify:page:view":
+✖ Too small: expected string to have >=1 characters
+  → at page.template
+
+== cart-filled [desktop] 0 issue(s)
+
+== product [desktop] 0 issue(s)
+
+== home [phone] 2 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+
+== product-index [phone] 2 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens?view=product-index
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=product-index
+
+== category-index [phone] 2 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens?view=category-index
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens?view=category-index
+
+== policy-refund [phone] 3 issue(s)
+  console-error (1): [Shopify Standard Events] Invalid payload for "shopify:page:view":
+✖ Too small: expected string to have >=1 characters
+  → at page.template
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+
+== cart-filled [phone] 2 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+
+== product [phone] 2 issue(s)
+  http-400 (1): http://127.0.0.1:9292/sf_private_access_tokens
+  log-error (1): Failed to load resource: the server responded with a status of 400 (Bad Request) http://127.0.0.1:9292/sf_private_access_tokens
+
+4 of 12 page checks clean

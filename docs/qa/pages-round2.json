@@ -1,0 +1,8 @@
+[
+ {"id":"home","url":"http://127.0.0.1:9292/"},
+ {"id":"product-index","url":"http://127.0.0.1:9292/pages/product-index?view=product-index"},
+ {"id":"category-index","url":"http://127.0.0.1:9292/pages/category-index?view=category-index"},
+ {"id":"policy-refund","url":"http://127.0.0.1:9292/policies/refund-policy"},
+ {"id":"cart-filled","url":"http://127.0.0.1:9292/cart"},
+ {"id":"product","url":"http://127.0.0.1:9292/products/square-d-sqd-ehb14015-circuit-breaker-refurbished"}
+]
