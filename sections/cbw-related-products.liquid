@@ -1,0 +1,123 @@
+{%- liquid
+  assign rec_products = blank
+  if recommendations.performed and recommendations.products_count > 0
+    assign rec_products = recommendations.products
+  elsif product != blank
+    assign fallback_collection = product.collections | first
+    if fallback_collection != blank
+      assign rec_products = fallback_collection.products | reject: 'handle', product.handle
+    endif
+  endif
+-%}
+
+<div class="cbw-container">
+  <product-recommendations
+    class="cbw-related"
+    data-url="{{ routes.product_recommendations_url }}?limit={{ section.settings.products_to_show }}"
+    data-section-id="{{ section.id }}"
+    data-product-id="{{ product.id }}"
+  >
+    {%- if rec_products != blank and rec_products.size > 0 -%}
+      <h2 class="cbw-related__heading">{{ section.settings.heading | escape }}</h2>
+      <ul class="cbw-related__grid" role="list">
+        {%- for recommendation in rec_products limit: section.settings.products_to_show -%}
+          {%- liquid
+            assign rec_variant = recommendation.selected_or_first_available_variant
+            assign rec_alt = recommendation.featured_image.alt | default: recommendation.title
+          -%}
+          <li class="cbw-related__item">
+            <a class="cbw-related__title" href="{{ recommendation.url }}">{{ recommendation.title | escape }}</a>
+            {%- render 'cbw-price', variant: rec_variant, hide_our_price_on_sale: true -%}
+            {%- if recommendation.featured_image != blank -%}
+              <a class="cbw-related__image" href="{{ recommendation.url }}" tabindex="-1" aria-hidden="true">
+                {{ recommendation.featured_image | image_url: width: 120 | image_tag: loading: 'lazy', alt: rec_alt }}
+              </a>
+            {%- endif -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </product-recommendations>
+</div>
+
+{% stylesheet %}
+  .cbw-related {
+    display: block;
+  }
+  @media (min-width: 992px) {
+    .cbw-related {
+      margin-left: 25%;
+      padding-left: 15px;
+    }
+  }
+  .cbw .cbw-related__heading {
+    margin: 40px 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .cbw-related__grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+  }
+  @media (min-width: 768px) {
+    .cbw-related__grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .cbw .cbw-related__title {
+    display: block;
+    padding: 0 15px;
+    color: var(--cbw-text);
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration: none;
+  }
+  .cbw-related .cbw-price__regular .cbw-price__value {
+    font-weight: 400;
+  }
+  .cbw-related__image {
+    display: block;
+    margin-top: 5px;
+  }
+  .cbw-related__image img {
+    display: block;
+    width: auto;
+    max-width: 60px;
+    max-height: 40px;
+    height: auto;
+    margin: 0 auto;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:cbw.related.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "t:cbw.related.heading",
+      "default": "Related Products..."
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "t:cbw.related.products_to_show",
+      "min": 4,
+      "max": 10,
+      "step": 1,
+      "default": 8
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  }
+}
+{% endschema %}

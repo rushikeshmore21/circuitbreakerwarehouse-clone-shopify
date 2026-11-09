@@ -1,0 +1,270 @@
+{%- liquid
+  assign recent_image = ''
+  if product.featured_image != blank
+    assign recent_image = product.featured_image | image_url: width: 120
+  endif
+-%}
+
+<div class="cbw-container">
+  <div class="cbw-extras">
+    {%- if section.settings.show_review_prompt -%}
+      <p class="cbw-extras__review">
+        {{ section.settings.review_text | escape }}
+        <a href="{{ section.settings.review_link | default: '#' }}">{{ section.settings.review_link_text | escape }}</a>
+      </p>
+    {%- endif -%}
+
+    {%- if product.collections.size > 0 -%}
+      <p class="cbw-extras__browse-title">{{ 'cbw.product.browse_same_category' | t }}</p>
+      <ul class="cbw-extras__browse" role="list">
+        {%- for collection in product.collections -%}
+          <li><a href="{{ collection.url }}">{{ collection.title | escape }}</a></li>
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+
+    {%- if section.settings.show_recent -%}
+      <div
+        class="cbw-recent"
+        data-cbw-recent
+        data-handle="{{ product.handle | escape }}"
+        data-title="{{ product.title | escape }}"
+        data-url="{{ product.url }}"
+        data-image="{{ recent_image }}"
+        data-label-off="{{ 'cbw.product.history_off' | t | escape }}"
+        data-label-on="{{ 'cbw.product.history_on' | t | escape }}"
+      >
+        <h2 class="cbw-recent__heading">{{ 'cbw.product.recent_items' | t }}</h2>
+        <ul class="cbw-recent__list" role="list" data-cbw-recent-list></ul>
+        <div class="cbw-recent__actions">
+          <button class="cbw-recent__toggle" type="button" aria-pressed="false" data-cbw-recent-toggle>
+            {%- render 'cbw-icon', name: 'close', class: 'cbw-recent__toggle-icon' -%}
+            <span data-cbw-recent-toggle-label>{{ 'cbw.product.history_off' | t }}</span>
+          </button>
+          <button class="cbw-recent__clear" type="button" data-cbw-recent-clear>
+            {%- render 'cbw-icon', name: 'close', class: 'cbw-recent__clear-icon' -%}
+            {{ 'cbw.product.clear_all' | t }}
+          </button>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .cbw-extras {
+    padding: 20px 0 40px;
+  }
+  @media (min-width: 992px) {
+    .cbw-extras {
+      margin-left: 25%;
+      padding-left: 15px;
+    }
+  }
+  .cbw-extras__review {
+    margin: 20px 0;
+  }
+  .cbw-extras__browse-title {
+    margin: 0 0 15px;
+    font-weight: 700;
+  }
+  .cbw-extras__browse {
+    margin: 0 0 40px;
+    padding: 0;
+    list-style: none;
+  }
+  .cbw .cbw-extras a {
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw .cbw-recent__heading {
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ebebeb;
+    font-size: 20px;
+    line-height: 1.4;
+  }
+  .cbw-recent__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    margin: 0 0 15px;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+    font-size: 12px;
+  }
+  .cbw-recent__list:empty {
+    display: none;
+  }
+  .cbw-recent__list img {
+    display: block;
+    max-width: 80px;
+    height: auto;
+    margin: 0 auto 5px;
+  }
+  .cbw .cbw-recent__list a {
+    color: var(--cbw-text);
+  }
+  .cbw-recent__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+  }
+  .cbw-recent__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 12px 4px 4px;
+    border: 0;
+    border-radius: 20px;
+    background: var(--cbw-navy);
+    color: #fff;
+    font-family: var(--cbw-font);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+  .cbw-recent__toggle-icon {
+    width: 16px;
+    height: 16px;
+    padding: 3px;
+    border-radius: 50%;
+    background: #fff;
+    fill: var(--cbw-navy);
+  }
+  .cbw-recent__clear {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--cbw-red);
+    font-family: var(--cbw-font);
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .cbw-recent__clear-icon {
+    width: 9px;
+    height: 9px;
+    fill: currentColor;
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  const cbwInitRecent = () => {
+    const root = document.querySelector('[data-cbw-recent]');
+    if (!root) return;
+    const KEY = 'cbw-recent-items';
+    const OFF_KEY = 'cbw-recent-off';
+    const list = root.querySelector('[data-cbw-recent-list]');
+    const toggle = root.querySelector('[data-cbw-recent-toggle]');
+    const toggleLabel = root.querySelector('[data-cbw-recent-toggle-label]');
+    const read = (key, fallback) => {
+      try {
+        return JSON.parse(localStorage.getItem(key)) ?? fallback;
+      } catch (error) {
+        return fallback;
+      }
+    };
+    const write = (key, value) => {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+      } catch (error) {}
+    };
+    const render = () => {
+      const items = read(KEY, []).filter((item) => item.handle !== root.dataset.handle);
+      list.replaceChildren(
+        ...items.slice(0, 8).map((item) => {
+          const li = document.createElement('li');
+          const link = document.createElement('a');
+          link.href = item.url;
+          if (item.image) {
+            const img = document.createElement('img');
+            img.src = item.image;
+            img.alt = '';
+            img.loading = 'lazy';
+            img.width = 80;
+            img.height = 80;
+            link.append(img);
+          }
+          link.append(item.title);
+          li.append(link);
+          return li;
+        })
+      );
+      const off = read(OFF_KEY, false);
+      toggle.setAttribute('aria-pressed', String(off));
+      toggleLabel.textContent = off ? root.dataset.labelOn : root.dataset.labelOff;
+    };
+    if (!read(OFF_KEY, false)) {
+      const current = {
+        handle: root.dataset.handle,
+        title: root.dataset.title,
+        url: root.dataset.url,
+        image: root.dataset.image,
+      };
+      const items = read(KEY, []).filter((item) => item.handle !== current.handle);
+      write(KEY, [current, ...items].slice(0, 12));
+    }
+    toggle.addEventListener('click', () => {
+      write(OFF_KEY, !read(OFF_KEY, false));
+      render();
+    });
+    root.querySelector('[data-cbw-recent-clear]').addEventListener('click', () => {
+      write(KEY, []);
+      render();
+    });
+    render();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cbwInitRecent);
+  } else {
+    cbwInitRecent();
+  }
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:cbw.extras.name",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_review_prompt",
+      "label": "t:cbw.extras.show_review_prompt",
+      "info": "t:cbw.extras.show_review_prompt_info",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "review_text",
+      "label": "t:cbw.extras.review_text",
+      "default": "Share your knowledge of this product with other customers..."
+    },
+    {
+      "type": "text",
+      "id": "review_link_text",
+      "label": "t:cbw.extras.review_link_text",
+      "default": "Be the first to write a review"
+    },
+    {
+      "type": "url",
+      "id": "review_link",
+      "label": "t:cbw.extras.review_link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_recent",
+      "label": "t:cbw.extras.show_recent",
+      "default": true
+    }
+  ],
+  "enabled_on": {
+    "templates": ["product"]
+  }
+}
+{% endschema %}

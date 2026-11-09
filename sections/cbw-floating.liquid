@@ -121,7 +121,7 @@
 {% endstylesheet %}
 
 {% javascript %}
-  (() => {
+  const cbwInitBackToTop = () => {
     const button = document.querySelector('[data-cbw-top]');
     if (!button) return;
     const toggle = () => {
@@ -129,7 +129,12 @@
     };
     window.addEventListener('scroll', toggle, { passive: true });
     toggle();
-  })();
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', cbwInitBackToTop);
+  } else {
+    cbwInitBackToTop();
+  }
 {% endjavascript %}
 
 {% schema %}

@@ -572,7 +572,23 @@
     "product": {
       "subject_to_availability": "Subject to availability",
       "free_shipping": "Free Shipping",
-      "placeholder_title": "Product title"
+      "placeholder_title": "Product title",
+      "image_disclaimer": "Images are for illustrative purposes only and may differ from the actual product.",
+      "larger_photo": "Larger Photo",
+      "close_photo": "Close photo",
+      "qualifies_free_shipping": "This item qualifies for free shipping!",
+      "availability_label": "Availability:",
+      "product_code": "Product Code:",
+      "option": "Option",
+      "qty": "Qty:",
+      "add_to_cart": "Add to cart",
+      "add_to_wishlist": "Add To Wishlist",
+      "description_tab": "Description",
+      "browse_same_category": "Browse for more products in the same category as this item:",
+      "recent_items": "Recent Items",
+      "history_off": "Turn history off",
+      "history_on": "Turn history on",
+      "clear_all": "Clear All"
     },
     "breadcrumb": {
       "label": "Breadcrumb",

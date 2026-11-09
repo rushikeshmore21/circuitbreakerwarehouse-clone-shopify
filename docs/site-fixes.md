@@ -17,6 +17,14 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | 6 | No breadcrumb structured data | Lost breadcrumb rich results | `BreadcrumbList` JSON-LD on category, search and product pages | Fixed |
 | 7 | Sort/per-page/page controls needed JavaScript | Broke without JS | Plain GET forms; JS only auto-submits the per-page select | Fixed |
 
+## Product pages
+| # | What was wrong | Why it mattered | What we did | Status |
+|---|---|---|---|---|
+| 11 | Spec label typo "Amprage" and "Availability::" | Looked careless | "Amperage" and "Availability:" | Fixed |
+| 12 | "Larger Photo" opened a popup window | Blocked by popup blockers; not keyboard friendly | Native `<dialog>` with every product image; Escape and backdrop close it | Fixed |
+| 13 | Product microdata only | Weaker rich results | Shopify `structured_data` JSON-LD (Product/Offer) plus BreadcrumbList | Fixed |
+| 14 | Related products depended on a Volusion setting | n/a | Shopify recommendations; falls back to the product's first collection while the store has no recommendation data | Fixed |
+
 ## SEO and speed
 | # | What was wrong | Why it mattered | What we did | Status |
 |---|---|---|---|---|
@@ -39,4 +47,6 @@ Everything that was wrong on the old site, or broke during the build, and what w
 | B1 | Skill's `screenshots.mjs` crashed on tall phone pages (WebP can't encode > 16,383 px) | Added per-shot `"format": "jpeg"` option | Fixed |
 | B2 | Shopify Liquid skill's `validate.mjs` needs npm packages that aren't installed | Validated with `shopify theme check` (same theme-check engine, CLI 4.8.3) | Workaround |
 | B3 | Search breadcrumb showed `&quot;` | Translation output is already escaped; breadcrumb uses `escape_once` | Fixed |
+| B5 | Shopify rejected `templates/product.json` linking spec rows to metafields that have no definition yet | Spec rows take a metafield key (e.g. `custom.type`) and read it directly; rows hide when empty | Fixed |
+| B6 | Cart popup had no background | Passed Dawn's `scheme-1` color scheme to the cart notification | Fixed |
 | B4 | Section CSS isn't loaded on pages that don't render that section (Shopify stylesheet subsetting) | Shared listing grid CSS moved into the `cbw-listing-grid` snippet | Fixed |

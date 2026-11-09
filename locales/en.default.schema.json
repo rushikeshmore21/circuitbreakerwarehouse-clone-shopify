@@ -3522,6 +3522,37 @@
       "name": "CBW search results",
       "title": "Page heading",
       "results_per_page": "Results per page (default view)"
+    },
+    "product": {
+      "name": "CBW product",
+      "reasons_title": "Reasons heading",
+      "show_free_shipping": "Show free shipping badge",
+      "show_wishlist": "Show wishlist link",
+      "show_wishlist_info": "Visual element only until a wishlist app is chosen",
+      "wishlist_link": "Wishlist link",
+      "reason": "Reason",
+      "reason_text": "Text",
+      "reason_bold": "Bold",
+      "condition": "Condition",
+      "condition_info": "Uses the custom.condition metafield, or the New / Refurbished product tag",
+      "spec": "Specification",
+      "spec_label": "Label",
+      "spec_metafield": "Metafield",
+      "spec_metafield_info": "Namespace and key, e.g. custom.type. Hidden when the product has no value"
+    },
+    "related": {
+      "name": "CBW related products",
+      "heading": "Heading",
+      "products_to_show": "Products to show"
+    },
+    "extras": {
+      "name": "CBW product extras",
+      "show_review_prompt": "Show review prompt",
+      "show_review_prompt_info": "Visual element only until a reviews app is chosen",
+      "review_text": "Review prompt text",
+      "review_link_text": "Review link text",
+      "review_link": "Review link",
+      "show_recent": "Show recent items"
     }
   }
 }

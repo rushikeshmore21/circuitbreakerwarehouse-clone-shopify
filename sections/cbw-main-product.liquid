@@ -1,0 +1,592 @@
+{%- liquid
+  assign variant = product.selected_or_first_available_variant
+  assign product_form_id = 'CbwProductForm-' | append: section.id
+  assign main_collection = product.collections | first
+  assign media_count = product.images | size
+  assign reason_blocks = section.blocks | where: 'type', 'reason'
+-%}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+
+<div class="cbw-container">
+  <div class="cbw-layout cbw-layout--sidebar">
+    {%- render 'cbw-sidebar' -%}
+    <div class="cbw-product">
+      {%- if main_collection != blank -%}
+        {%- render 'cbw-breadcrumb', show_shop: false, parent_title: main_collection.title, parent_url: main_collection.url -%}
+      {%- else -%}
+        {%- render 'cbw-breadcrumb', show_shop: false -%}
+      {%- endif -%}
+
+      <h1 class="cbw-product__title">{{ product.title | escape }}</h1>
+
+      <div class="cbw-product__top">
+        <div class="cbw-product__media">
+          {%- if product.featured_image != blank -%}
+            <button
+              class="cbw-product__photo"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="CbwPhotoDialog-{{ section.id }}"
+              data-cbw-dialog-open
+            >
+              {{
+                product.featured_image
+                | image_url: width: 700
+                | image_tag: widths: '350, 525, 700', sizes: '(min-width: 992px) 350px, 90vw', fetchpriority: 'high', loading: 'eager', class: 'cbw-product__photo-img'
+              }}
+            </button>
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'cbw-product__placeholder' }}
+          {%- endif -%}
+          <img
+            class="cbw-product__disclaimer"
+            src="{{ 'cbw-image-disclaimer.gif' | asset_url }}"
+            alt="{{ 'cbw.product.image_disclaimer' | t }}"
+            width="240"
+            height="30"
+            loading="lazy"
+          >
+          {%- if product.featured_image != blank -%}
+            <button
+              class="cbw-product__zoom"
+              type="button"
+              aria-haspopup="dialog"
+              aria-controls="CbwPhotoDialog-{{ section.id }}"
+              data-cbw-dialog-open
+            >
+              {%- render 'cbw-icon', name: 'search', class: 'cbw-product__zoom-icon' -%}
+              {{ 'cbw.product.larger_photo' | t }}
+            </button>
+            <dialog class="cbw-photo-dialog" id="CbwPhotoDialog-{{ section.id }}" aria-label="{{ product.title | escape }}">
+              <button class="cbw-photo-dialog__close" type="button" aria-label="{{ 'cbw.product.close_photo' | t }}" data-cbw-dialog-close>
+                {%- render 'cbw-icon', name: 'close' -%}
+              </button>
+              {%- for image in product.images -%}
+                {{ image | image_url: width: 1200 | image_tag: loading: 'lazy', widths: '600, 900, 1200', sizes: 'min(90vw, 900px)', class: 'cbw-photo-dialog__img' }}
+              {%- endfor -%}
+            </dialog>
+          {%- endif -%}
+        </div>
+
+        <div class="cbw-product__info">
+          {%- if reason_blocks.size > 0 -%}
+            <div class="cbw-product__reasons">
+              <p class="cbw-product__reasons-title">{{ section.settings.reasons_title | escape }}</p>
+              <ol class="cbw-product__reasons-list">
+                {%- for block in reason_blocks -%}
+                  <li class="{% if block.settings.bold %}cbw-product__reason--bold{% endif %}" {{ block.shopify_attributes }}>
+                    {{- block.settings.text | escape -}}
+                  </li>
+                {%- endfor -%}
+              </ol>
+            </div>
+          {%- endif -%}
+
+          <div class="cbw-product__price">
+            {%- render 'cbw-price', variant: variant -%}
+          </div>
+
+          <dl class="cbw-product__specs">
+            {%- for block in section.blocks -%}
+              {%- case block.type -%}
+                {%- when 'condition' -%}
+                  {%- liquid
+                    assign condition = product.metafields.custom.condition.value
+                    if condition == blank
+                      if product.tags contains 'Refurbished'
+                        assign condition = 'Refurbished'
+                      elsif product.tags contains 'New'
+                        assign condition = 'New'
+                      endif
+                    endif
+                  -%}
+                  {%- if condition != blank -%}
+                    <div class="cbw-product__spec" {{ block.shopify_attributes }}>
+                      <dt>{{ block.settings.label | escape }}:</dt>
+                      <dd>{{ condition | escape }}</dd>
+                    </div>
+                  {%- endif -%}
+                {%- when 'spec' -%}
+                  {%- liquid
+                    assign key_parts = block.settings.metafield | strip | split: '.'
+                    assign spec_value = blank
+                    if key_parts.size == 2
+                      assign spec_namespace = key_parts[0]
+                      assign spec_key = key_parts[1]
+                      assign spec_value = product.metafields[spec_namespace][spec_key].value
+                    endif
+                  -%}
+                  {%- if spec_value != blank -%}
+                    <div class="cbw-product__spec" {{ block.shopify_attributes }}>
+                      <dt>{{ block.settings.label | escape }}:</dt>
+                      <dd>{{ spec_value | escape }}</dd>
+                    </div>
+                  {%- endif -%}
+              {%- endcase -%}
+            {%- endfor -%}
+          </dl>
+
+          {%- if section.settings.show_free_shipping -%}
+            <img
+              class="cbw-product__shipping"
+              src="{{ 'cbw-free-shipping.png' | asset_url }}"
+              alt="{{ 'cbw.product.qualifies_free_shipping' | t }}"
+              width="164"
+              height="25"
+              loading="lazy"
+            >
+          {%- endif -%}
+          <p class="cbw-product__availability">
+            <strong>{{ 'cbw.product.availability_label' | t }}</strong>
+            {{ 'cbw.product.subject_to_availability' | t }}
+          </p>
+          {%- if variant.sku != blank -%}
+            <p class="cbw-product__code">
+              <strong>{{ 'cbw.product.product_code' | t }}</strong>
+              {{ variant.sku | escape }}
+            </p>
+          {%- endif -%}
+
+          <product-form class="cbw-product-form" data-section-id="{{ section.id }}" data-hide-errors="false">
+            <div class="product-form__error-message-wrapper cbw-product-form__error" role="alert" hidden>
+              <span class="product-form__error-message"></span>
+            </div>
+            {%- form 'product', product, id: product_form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+              {%- if product.has_only_default_variant -%}
+                <input type="hidden" name="id" value="{{ variant.id }}">
+              {%- else -%}
+                <label class="cbw-product-form__label" for="CbwVariant-{{ section.id }}">{{ 'cbw.product.option' | t }}</label>
+                <select class="cbw-product-form__select" id="CbwVariant-{{ section.id }}" name="id">
+                  {%- for option_variant in product.variants -%}
+                    <option
+                      value="{{ option_variant.id }}"
+                      {% if option_variant == variant %}
+                        selected
+                      {% endif %}
+                      {% unless option_variant.available %}
+                        disabled
+                      {% endunless %}
+                    >
+                      {{- option_variant.title | escape }} - {{ option_variant.price | money -}}
+                    </option>
+                  {%- endfor -%}
+                </select>
+              {%- endif -%}
+              <div class="cbw-product-form__qty">
+                <label for="CbwQty-{{ section.id }}">{{ 'cbw.product.qty' | t }}</label>
+                <input
+                  class="cbw-product-form__qty-input"
+                  id="CbwQty-{{ section.id }}"
+                  type="number"
+                  name="quantity"
+                  value="1"
+                  min="1"
+                  inputmode="numeric"
+                >
+              </div>
+              <button
+                class="cbw-btn cbw-product-form__submit"
+                type="submit"
+                name="add"
+                {% unless variant.available %}
+                  aria-disabled="true"
+                {% endunless %}
+              >
+                <span>
+                  {%- if variant.available -%}
+                    {{ 'cbw.product.add_to_cart' | t }}
+                  {%- else -%}
+                    {{ 'products.product.sold_out' | t }}
+                  {%- endif -%}
+                </span>
+                {%- render 'loading-spinner' -%}
+              </button>
+            {%- endform -%}
+          </product-form>
+
+          {%- if section.settings.show_wishlist -%}
+            <a class="cbw-product__wishlist" href="{{ section.settings.wishlist_link | default: '#' }}">
+              <span class="cbw-product__wishlist-icon" aria-hidden="true">+</span>
+              {{ 'cbw.product.add_to_wishlist' | t }}
+            </a>
+          {%- endif -%}
+
+          {%- for block in section.blocks -%}
+            {%- if block.type == '@app' -%}
+              {% render block %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+
+      {%- if product.description != blank -%}
+        <div class="cbw-product__tabs">
+          <h2 class="cbw-product__tab">{{ 'cbw.product.description_tab' | t }}</h2>
+          <div class="cbw-product__description">{{ product.description }}</div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% stylesheet %}
+  .cbw-product {
+    padding-top: 25px;
+  }
+  .cbw .cbw-product__title {
+    margin: 10px 0;
+    font-size: 30px;
+    line-height: 1.3;
+  }
+  .cbw-product__top {
+    display: grid;
+    gap: 20px;
+  }
+  .cbw-product__media {
+    text-align: center;
+  }
+  .cbw-product__photo,
+  .cbw-product__zoom {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+  }
+  .cbw-product__photo {
+    display: block;
+    margin: 0 auto 15px;
+  }
+  .cbw-product__photo-img {
+    display: block;
+    width: 350px;
+    max-width: 100%;
+    height: auto;
+  }
+  .cbw-product__disclaimer {
+    display: block;
+    margin: 0 auto;
+  }
+  .cbw-product__zoom {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 39px;
+    color: var(--cbw-red);
+    font-family: var(--cbw-font);
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+  .cbw-product__zoom-icon {
+    width: 12px;
+    height: 12px;
+    fill: currentColor;
+  }
+  .cbw-photo-dialog {
+    max-width: min(92vw, 960px);
+    max-height: 90vh;
+    padding: 40px 20px 20px;
+    border: 0;
+    background: #fff;
+    overflow: auto;
+  }
+  .cbw-photo-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+  }
+  .cbw-photo-dialog__close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    padding: 6px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+  .cbw-photo-dialog__close .cbw-icon {
+    width: 16px;
+    height: 16px;
+    fill: var(--cbw-red);
+  }
+  .cbw-photo-dialog__img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 10px;
+  }
+  .cbw-product__reasons-title {
+    margin: 0 0 10px;
+    font-weight: 700;
+  }
+  .cbw-product__reasons-list {
+    margin: 0 0 11px;
+    padding-left: 40px;
+  }
+  .cbw-product__reason--bold {
+    font-weight: 700;
+  }
+  .cbw-product__price .cbw-price__regular {
+    font-weight: 700;
+    color: var(--cbw-price-blue);
+  }
+  .cbw-product__price .cbw-price__sale,
+  .cbw-product__price .cbw-price__save {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .cbw-product__price .cbw-price__sale .cbw-price__value {
+    font-weight: 400;
+  }
+  .cbw-product__price .cbw-price__save {
+    color: #c00000;
+    font-style: normal;
+  }
+  .cbw-product__specs {
+    margin: 0;
+  }
+  .cbw-product__spec {
+    display: flex;
+    gap: 4px;
+  }
+  .cbw-product__spec dt {
+    font-weight: 700;
+  }
+  .cbw-product__spec dd {
+    margin: 0;
+  }
+  .cbw-product__shipping {
+    display: block;
+    margin: 30px 0 0;
+  }
+  .cbw-product__availability,
+  .cbw-product__code {
+    margin: 0;
+  }
+  .cbw-product__code {
+    margin-top: 2px;
+    font-style: italic;
+  }
+  .cbw-product-form {
+    display: block;
+    margin-top: 10px;
+  }
+  .cbw-product-form__error {
+    margin-bottom: 10px;
+    color: var(--cbw-red);
+  }
+  .cbw-product-form__label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 700;
+  }
+  .cbw-product-form__select {
+    height: 42px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+  }
+  .cbw-product-form__qty {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .cbw-product-form__qty-input {
+    width: 66px;
+    height: 42px;
+    padding: 0 16px;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    font-size: 16px;
+    color: var(--cbw-text);
+  }
+  .cbw .cbw-product-form__submit {
+    position: relative;
+    margin-top: 20px;
+    padding: 0 15px;
+    line-height: 40px;
+  }
+  .cbw-product-form__submit[aria-disabled='true'] {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  .cbw-product-form__submit .loading__spinner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cbw-product-form__submit .loading__spinner.hidden {
+    display: none;
+  }
+  .cbw-product-form__submit.loading > span {
+    visibility: hidden;
+  }
+  .cbw .cbw-product__wishlist {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 30px;
+    color: var(--cbw-red);
+    text-decoration: none;
+  }
+  .cbw-product__wishlist-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cbw-red);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .cbw-product__tabs {
+    margin-top: 60px;
+  }
+  .cbw .cbw-product__tab {
+    display: inline-block;
+    margin: 0;
+    padding: 0 15px;
+    background: var(--cbw-navy);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 40px;
+  }
+  .cbw-product__description {
+    padding: 22px;
+    border: 2px solid var(--cbw-navy);
+    font-weight: 400;
+    overflow-wrap: anywhere;
+  }
+  .cbw-product__description h1,
+  .cbw-product__description h2 {
+    font-size: 38px;
+    line-height: 1.1;
+    margin: 0 0 10px;
+  }
+  @media (min-width: 992px) {
+    .cbw .cbw-product__title {
+      font-size: 41px;
+      line-height: 58.57px;
+    }
+    .cbw-product__top {
+      grid-template-columns: 416px minmax(0, 1fr);
+      gap: 18px;
+    }
+    .cbw-product__info {
+      padding: 23px 15px 0;
+    }
+  }
+{% endstylesheet %}
+
+{% javascript %}
+  document.addEventListener('click', (event) => {
+    const opener = event.target.closest('[data-cbw-dialog-open]');
+    if (opener) {
+      document.getElementById(opener.getAttribute('aria-controls'))?.showModal();
+      return;
+    }
+    const closer = event.target.closest('[data-cbw-dialog-close]');
+    if (closer) {
+      closer.closest('dialog').close();
+      return;
+    }
+    if (event.target.matches('dialog.cbw-photo-dialog')) event.target.close();
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "t:cbw.product.name",
+  "settings": [
+    {
+      "type": "text",
+      "id": "reasons_title",
+      "label": "t:cbw.product.reasons_title",
+      "default": "5 Reasons to Shop CBW:"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_free_shipping",
+      "label": "t:cbw.product.show_free_shipping",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wishlist",
+      "label": "t:cbw.product.show_wishlist",
+      "info": "t:cbw.product.show_wishlist_info",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "wishlist_link",
+      "label": "t:cbw.product.wishlist_link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "reason",
+      "name": "t:cbw.product.reason",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "t:cbw.product.reason_text",
+          "default": "Best Customer Service"
+        },
+        {
+          "type": "checkbox",
+          "id": "bold",
+          "label": "t:cbw.product.reason_bold",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "condition",
+      "name": "t:cbw.product.condition",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:cbw.product.spec_label",
+          "default": "Condition",
+          "info": "t:cbw.product.condition_info"
+        }
+      ]
+    },
+    {
+      "type": "spec",
+      "name": "t:cbw.product.spec",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "t:cbw.product.spec_label",
+          "default": "Type"
+        },
+        {
+          "type": "text",
+          "id": "metafield",
+          "label": "t:cbw.product.spec_metafield",
+          "info": "t:cbw.product.spec_metafield_info",
+          "default": "custom.type"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
