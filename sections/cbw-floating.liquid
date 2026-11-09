@@ -18,7 +18,7 @@
 {%- endif -%}
 
 {%- if section.settings.show_message_tab and section.settings.message_text != blank -%}
-  <a class="cbw-floating__message" href="{{ section.settings.message_link | default: '/pages/contact' }}">
+  <a class="cbw-floating__message" href="{{ section.settings.message_link | default: '/pages/contact-us' }}">
     <span>{{ section.settings.message_text | escape }}</span>
     {%- render 'cbw-icon', name: 'email' -%}
   </a>
